@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -1024,36 +1027,46 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton174">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton174ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton399">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton399ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton175">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton175ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton400">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="X"/>
+      </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion,deplacerPion2"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton400ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton176">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton176ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton401">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton401ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton203">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton203ActionPerformed"/>
       </Events>
     </Component>
@@ -1095,16 +1108,19 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton76">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton76ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton77">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton77ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton78">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton78ActionPerformed"/>
       </Events>
     </Component>
@@ -1116,12 +1132,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton80">
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton80clickCaseEventProcess"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="depacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton80ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton81">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton81ActionPerformed"/>
       </Events>
     </Component>
@@ -1200,16 +1217,22 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton73">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton73ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton218">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton218ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton74">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="X"/>
+      </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton74ActionPerformed"/>
       </Events>
     </Component>
@@ -1221,6 +1244,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton75">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton75ActionPerformed"/>
       </Events>
     </Component>
@@ -1286,6 +1310,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton220">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton220ActionPerformed"/>
       </Events>
     </Component>
@@ -1297,6 +1322,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton222">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton222ActionPerformed"/>
       </Events>
     </Component>
@@ -1308,26 +1334,31 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton224">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton224ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton225">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton225ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton226">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton226ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton227">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton227ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton228">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton228ActionPerformed"/>
       </Events>
     </Component>
@@ -1369,6 +1400,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton99">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton99ActionPerformed"/>
       </Events>
     </Component>
@@ -1524,6 +1556,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton267">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton267ActionPerformed"/>
       </Events>
     </Component>
@@ -1535,6 +1568,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton269">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton269ActionPerformed"/>
       </Events>
     </Component>
@@ -1546,6 +1580,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton271">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton271ActionPerformed"/>
       </Events>
     </Component>
@@ -1557,6 +1592,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton273">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton273ActionPerformed"/>
       </Events>
     </Component>
@@ -1567,11 +1603,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton275">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton275ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton114">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton114ActionPerformed"/>
       </Events>
     </Component>
@@ -1583,6 +1621,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton116">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton116ActionPerformed"/>
       </Events>
     </Component>
@@ -1594,6 +1633,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton118">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton118ActionPerformed"/>
       </Events>
     </Component>
@@ -1605,36 +1645,43 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton120">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton120ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton121">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton121ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton122">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton122ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton123">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton123ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton276">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton276ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton277">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton277ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton278">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton278ActionPerformed"/>
       </Events>
     </Component>
@@ -1682,11 +1729,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton124">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton124ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton125">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton125ActionPerformed"/>
       </Events>
     </Component>
@@ -1776,6 +1825,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton318">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton318ActionPerformed"/>
       </Events>
     </Component>
@@ -1787,6 +1837,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton320">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton320ActionPerformed"/>
       </Events>
     </Component>
@@ -1834,6 +1885,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton140">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton140ActionPerformed"/>
       </Events>
     </Component>
@@ -1845,6 +1897,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton142">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton142ActionPerformed"/>
       </Events>
     </Component>
@@ -1856,6 +1909,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton322">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton322ActionPerformed"/>
       </Events>
     </Component>
@@ -1867,31 +1921,37 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton324">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton324ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton325">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton325ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton326">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton326ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton327">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton327ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton328">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton328ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton329">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton329ActionPerformed"/>
       </Events>
     </Component>
@@ -1909,6 +1969,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton144">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton144ActionPerformed"/>
       </Events>
     </Component>
@@ -1920,31 +1981,37 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton146">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton146ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton147">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton147ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton148">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton148ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton149">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton149ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton150">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton150ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton151">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton151ActionPerformed"/>
       </Events>
     </Component>
@@ -2094,6 +2161,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton370">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton370ActionPerformed"/>
       </Events>
     </Component>
@@ -2105,6 +2173,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton372">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton372ActionPerformed"/>
       </Events>
     </Component>
@@ -2116,6 +2185,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton374">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton374ActionPerformed"/>
       </Events>
     </Component>
@@ -2127,16 +2197,19 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton376">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton376ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton377">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton377ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton378">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton378ActionPerformed"/>
       </Events>
     </Component>
@@ -2147,11 +2220,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton380">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton380ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton381">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton381ActionPerformed"/>
       </Events>
     </Component>
@@ -2175,21 +2250,25 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton385">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton385ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton386">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton386ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton387">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton387ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton388">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton388ActionPerformed"/>
       </Events>
     </Component>
@@ -2201,6 +2280,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton389">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton389ActionPerformed"/>
       </Events>
     </Component>
@@ -2212,11 +2292,13 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton390">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton390ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton166">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton166ActionPerformed"/>
       </Events>
     </Component>
@@ -2240,6 +2322,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton168">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton168ActionPerformed"/>
       </Events>
     </Component>
@@ -2263,6 +2346,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton170">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton170ActionPerformed"/>
       </Events>
     </Component>
@@ -2286,6 +2370,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton172">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton172ActionPerformed"/>
       </Events>
     </Component>
@@ -2297,6 +2382,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton173">
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deplacerPion"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton173ActionPerformed"/>
       </Events>
     </Component>

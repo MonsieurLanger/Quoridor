@@ -257,6 +257,11 @@ JButton lastClickedJButton;
         jButton173 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
 
         jButton398.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -269,42 +274,79 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton174.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton174.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton174ActionPerformed(evt);
             }
         });
 
+        jButton399.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton399.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton399ActionPerformed(evt);
             }
         });
 
+        jButton175.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton175.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton175ActionPerformed(evt);
             }
         });
 
+        jButton400.setText("X");
+        jButton400.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+                deplacerPion2(evt);
+            }
+        });
         jButton400.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton400ActionPerformed(evt);
             }
         });
 
+        jButton176.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton176.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton176ActionPerformed(evt);
             }
         });
 
+        jButton401.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton401.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton401ActionPerformed(evt);
             }
         });
 
+        jButton203.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton203.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton203ActionPerformed(evt);
@@ -377,18 +419,33 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton76.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton76.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton76ActionPerformed(evt);
             }
         });
 
+        jButton77.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton77.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton77ActionPerformed(evt);
             }
         });
 
+        jButton78.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton78.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton78ActionPerformed(evt);
@@ -408,7 +465,7 @@ JButton lastClickedJButton;
 
         jButton80.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton80clickCaseEventProcess(evt);
+                depacerPion(evt);
             }
         });
         jButton80.addActionListener(new java.awt.event.ActionListener() {
@@ -417,6 +474,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton81.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton81.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton81ActionPerformed(evt);
@@ -542,18 +604,34 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton73.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton73.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton73ActionPerformed(evt);
             }
         });
 
+        jButton218.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton218.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton218ActionPerformed(evt);
             }
         });
 
+        jButton74.setText("X");
+        jButton74.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton74.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton74ActionPerformed(evt);
@@ -571,6 +649,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton75.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton75.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton75ActionPerformed(evt);
@@ -687,6 +770,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton220.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton220.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton220ActionPerformed(evt);
@@ -704,6 +792,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton222.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton222.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton222ActionPerformed(evt);
@@ -721,30 +814,55 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton224.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton224.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton224ActionPerformed(evt);
             }
         });
 
+        jButton225.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton225.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton225ActionPerformed(evt);
             }
         });
 
+        jButton226.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton226.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton226ActionPerformed(evt);
             }
         });
 
+        jButton227.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton227.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton227ActionPerformed(evt);
             }
         });
 
+        jButton228.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton228.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton228ActionPerformed(evt);
@@ -817,6 +935,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton99.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton99.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton99ActionPerformed(evt);
@@ -1098,6 +1221,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton267.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton267.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton267ActionPerformed(evt);
@@ -1115,6 +1243,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton269.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton269.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton269ActionPerformed(evt);
@@ -1132,6 +1265,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton271.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton271.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton271ActionPerformed(evt);
@@ -1149,6 +1287,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton273.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton273.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton273ActionPerformed(evt);
@@ -1161,12 +1304,22 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton275.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton275.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton275ActionPerformed(evt);
             }
         });
 
+        jButton114.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton114.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton114ActionPerformed(evt);
@@ -1184,6 +1337,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton116.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton116.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton116ActionPerformed(evt);
@@ -1201,6 +1359,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton118.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton118.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton118ActionPerformed(evt);
@@ -1218,42 +1381,77 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton120.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton120.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton120ActionPerformed(evt);
             }
         });
 
+        jButton121.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton121.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton121ActionPerformed(evt);
             }
         });
 
+        jButton122.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton122.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton122ActionPerformed(evt);
             }
         });
 
+        jButton123.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton123.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton123ActionPerformed(evt);
             }
         });
 
+        jButton276.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton276.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton276ActionPerformed(evt);
             }
         });
 
+        jButton277.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton277.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton277ActionPerformed(evt);
             }
         });
 
+        jButton278.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton278.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton278ActionPerformed(evt);
@@ -1337,12 +1535,22 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton124.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton124.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton124ActionPerformed(evt);
             }
         });
 
+        jButton125.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton125.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton125ActionPerformed(evt);
@@ -1503,6 +1711,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton318.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton318.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton318ActionPerformed(evt);
@@ -1520,6 +1733,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton320.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton320.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton320ActionPerformed(evt);
@@ -1603,6 +1821,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton140.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton140.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton140ActionPerformed(evt);
@@ -1620,6 +1843,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton142.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton142.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton142ActionPerformed(evt);
@@ -1637,6 +1865,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton322.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton322.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton322ActionPerformed(evt);
@@ -1654,36 +1887,66 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton324.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton324.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton324ActionPerformed(evt);
             }
         });
 
+        jButton325.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton325.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton325ActionPerformed(evt);
             }
         });
 
+        jButton326.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton326.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton326ActionPerformed(evt);
             }
         });
 
+        jButton327.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton327.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton327ActionPerformed(evt);
             }
         });
 
+        jButton328.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton328.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton328ActionPerformed(evt);
             }
         });
 
+        jButton329.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton329.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton329ActionPerformed(evt);
@@ -1712,6 +1975,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton144.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton144.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton144ActionPerformed(evt);
@@ -1729,36 +1997,66 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton146.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton146.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton146ActionPerformed(evt);
             }
         });
 
+        jButton147.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton147.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton147ActionPerformed(evt);
             }
         });
 
+        jButton148.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton148.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton148ActionPerformed(evt);
             }
         });
 
+        jButton149.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton149.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton149ActionPerformed(evt);
             }
         });
 
+        jButton150.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton150.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton150ActionPerformed(evt);
             }
         });
 
+        jButton151.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton151.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton151ActionPerformed(evt);
@@ -2029,6 +2327,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton370.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton370.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton370ActionPerformed(evt);
@@ -2046,6 +2349,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton372.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton372.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton372ActionPerformed(evt);
@@ -2063,6 +2371,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton374.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton374.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton374ActionPerformed(evt);
@@ -2080,18 +2393,33 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton376.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton376.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton376ActionPerformed(evt);
             }
         });
 
+        jButton377.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton377.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton377ActionPerformed(evt);
             }
         });
 
+        jButton378.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton378.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton378ActionPerformed(evt);
@@ -2104,12 +2432,22 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton380.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton380.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton380ActionPerformed(evt);
             }
         });
 
+        jButton381.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton381.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton381ActionPerformed(evt);
@@ -2149,24 +2487,44 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton385.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton385.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton385ActionPerformed(evt);
             }
         });
 
+        jButton386.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton386.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton386ActionPerformed(evt);
             }
         });
 
+        jButton387.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton387.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton387ActionPerformed(evt);
             }
         });
 
+        jButton388.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton388.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton388ActionPerformed(evt);
@@ -2184,6 +2542,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton389.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton389.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton389ActionPerformed(evt);
@@ -2201,12 +2564,22 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton390.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton390.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton390ActionPerformed(evt);
             }
         });
 
+        jButton166.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton166.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton166ActionPerformed(evt);
@@ -2246,6 +2619,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton168.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton168.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton168ActionPerformed(evt);
@@ -2285,6 +2663,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton170.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton170.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton170ActionPerformed(evt);
@@ -2324,6 +2707,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton172.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton172.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton172ActionPerformed(evt);
@@ -2341,6 +2729,11 @@ JButton lastClickedJButton;
             }
         });
 
+        jButton173.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deplacerPion(evt);
+            }
+        });
         jButton173.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton173ActionPerformed(evt);
@@ -3255,13 +3648,9 @@ JButton lastClickedJButton;
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton79ActionPerformed
 
-    private void jButton80clickCaseEventProcess(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton80clickCaseEventProcess
+    private void depacerPion(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_depacerPion
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton80clickCaseEventProcess
-
-    private void jButton80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton80ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton80ActionPerformed
+    }//GEN-LAST:event_depacerPion
 
     private void jButton81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton81ActionPerformed
         // TODO add your handling code here:
@@ -4095,20 +4484,47 @@ JButton lastClickedJButton;
 
     
     private void deplacerPion(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deplacerPion
-if(lastClickedJButton==null){
+
+deplacerPion2(evt);
+// TODO add your handling code here:
+    }//GEN-LAST:event_deplacerPion
+
+    private void deplacerPion2(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deplacerPion2
+        // TODO add your handling code here:
+        
+        
+        
+        
+        if(lastClickedJButton==null){
     lastClickedJButton = (JButton) evt.getSource();
+    System.out.println("test1");
 }
 else
 {
+    System.out.println("test2");
     lastClickedJButton.setText("");
     lastClickedJButton=null;
     JButton currentBtn = (JButton) evt.getSource();
     currentBtn= (JButton) evt.getSource();
     currentBtn.setText("X");
 }
+        
+        
+        
+        System.out.println("test3");
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_deplacerPion2
 
-// TODO add your handling code here:
-    }//GEN-LAST:event_deplacerPion
+    private void jButton80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton80ActionPerformed
+        // TODO add your handling code here:
+        deplacerPion2(evt);
+    }//GEN-LAST:event_jButton80ActionPerformed
 
     /**
      * @param args the command line arguments
