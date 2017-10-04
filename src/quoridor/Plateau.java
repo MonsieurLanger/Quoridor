@@ -11,5 +11,5 @@ package quoridor;
  * @author hariri
  */
 public class Plateau {
-    
+    //Modif delphine
 }
