@@ -9,13 +9,6 @@ package quoridor;
  *
  * @author Eddine Langer
  */
-public class Quoridor {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Pion {
     
 }
