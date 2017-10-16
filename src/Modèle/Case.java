@@ -13,4 +13,9 @@ public class Case {
     int X;
     int Y;
     int numJoueur;
+
+    public Case(int numJoueur) {
+        this.numJoueur = numJoueur;
+    }
+    
 }
