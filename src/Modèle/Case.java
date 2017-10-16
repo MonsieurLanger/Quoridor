@@ -12,4 +12,5 @@ package Modèle;
 public class Case {
     int X;
     int Y;
+    int test;
 }
