@@ -10,5 +10,6 @@ package Modèle;
  * @author Eddine Langer
  */
 public class Case {
-    
+    int X;
+    int Y;
 }
