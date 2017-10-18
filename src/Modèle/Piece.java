@@ -10,7 +10,7 @@ package Modèle;
  * @author hariri
  */
 public class Piece {
-    Coord coord;
+    private Coord coord;
     Color color;
     
     //Constructeur
@@ -21,8 +21,8 @@ public class Piece {
     
     public void Move(Coord coord){
         if(IsMoveOk(coord)){
-            this.Coord.getX()= coord.x;
-            this.coord.y=coord.y;  
+            this.coord.setX(coord.getX());
+            this.coord.setY(coord.getY());  
         }
         else{
             System.out.append("Impossible pelo!!");
@@ -32,8 +32,8 @@ public class Piece {
     
     //Vérifie si le déplacement se trouve sur le plateau
     private boolean IsMoveOk(Coord coord){
-        return !(coord.x<10 && coord.x>0 && (coord.y<10 && coord.y>0));
+        return !(coord.getX()<10 && coord.getX()>0 && (coord.getY()<10 && coord.getY()>0));
     }
     
-    //testgit
+  
 }
