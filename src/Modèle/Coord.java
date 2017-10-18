@@ -13,6 +13,12 @@ public class Coord {
     private int x;
     private int y;
     
+    //Constructeur par défaut
+    public Coord(){
+        this.x=0;
+        this.y=0;
+    }
+    
     //Constructeur
     public Coord(int x,int y){
             this.x=x;

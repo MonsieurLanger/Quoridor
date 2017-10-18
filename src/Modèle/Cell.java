@@ -11,8 +11,10 @@ package Modèle;
  */
 public class Cell {
     boolean empty;
+    Coord coord = new Coord();
     
-    //Constructeur
+    
+    //Constructeur, par défault la case est vide
     public Cell(){
         this.empty = true;
     }
@@ -21,7 +23,14 @@ public class Cell {
         return this.empty;
     }
     
-    
+    Coord getPiece(){
+        if (this.isEmpty()== false){
+            return this.coord;
+        }
+        else{
+            return null;
+        }
+    }
     
     
 }
