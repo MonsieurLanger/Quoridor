@@ -35,5 +35,5 @@ public class Piece {
         return !(coord.x<10 && coord.x>0 && (coord.y<10 && coord.y>0));
     }
     
-    //testgit
+    //test branche delphine
 }
