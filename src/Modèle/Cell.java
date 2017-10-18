@@ -7,7 +7,7 @@ package Modèle;
 
 /**
  *
- * @author NRMV4488
+ * @author nrmv4488
  */
 public class Cell {
     boolean empty;

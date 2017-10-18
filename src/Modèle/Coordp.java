@@ -7,7 +7,7 @@ package Modèle;
 
 /**
  *
- * @author hariri
+ * @author nrmv4488
  */
 public class Coordp {
     public int x;
