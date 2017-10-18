@@ -10,8 +10,8 @@ package Modèle;
  * @author NRMV4488
  */
 public class Coord {
-    final int x;
-    private final int y;
+    private int x;
+    private int y;
     
     //Constructeur
     public Coord(int x,int y){
@@ -24,11 +24,22 @@ public class Coord {
     }
 
     public int getX() {
-        return this.x;
+        return x;
     }
 
     public int getY() {
-        return this.y;
+        return y;
     }
-      
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    
+    
+    
 }
