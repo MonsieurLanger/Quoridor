@@ -8,13 +8,13 @@ package Modèle;
 /**
  *
  * @author nrmv4488
- */
-public class Coordp {
-    public int x;
-    public int y;
+ *
+public class Coord {
+    private final int x;
+    private final int y;
     
     //Constructeur
-    public Coordp(int x,int y){
+    public Coord(int x,int y){
             this.x=x;
             this.y=y;
     }
@@ -22,6 +22,14 @@ public class Coordp {
     public static boolean coord_valides(int x, int y){
             return ( (x<=7) && (x>=0) && (y<=7) && (y>=0));
     }
-    
-    
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+      
 }
+* */

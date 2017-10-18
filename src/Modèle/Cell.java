@@ -17,5 +17,10 @@ public class Cell {
         this.empty = true;
     }
     
-   
+    boolean isEmpty(){
+        return this.empty;
+    }
+    
+    
+    
 }
