@@ -21,8 +21,8 @@ public class Piece {
     
     public void Move(Coord coord){
         if(IsMoveOk(coord)){
-            this.Coord.getX()= coord.x;
-            this.coord.y=coord.y;  
+          //  this.Coord.getX()= coord.x;
+           // this.coord.y=coord.y;  
         }
         else{
             System.out.append("Impossible pelo!!");
@@ -32,7 +32,8 @@ public class Piece {
     
     //Vérifie si le déplacement se trouve sur le plateau
     private boolean IsMoveOk(Coord coord){
-        return !(coord.x<10 && coord.x>0 && (coord.y<10 && coord.y>0));
+        return false;
+//        return !(coord.x<10 && coord.x>0 && (coord.y<10 && coord.y>0));
     }
     
     //testgit

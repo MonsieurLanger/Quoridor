@@ -5,10 +5,15 @@
  */
 package Graphique;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Eddine Langer
  */
-public class Plateau_IHM {
+public class Plateau_IHM extends JPanel{
+
+    public Plateau_IHM() {
+    }
     
 }

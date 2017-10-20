@@ -12,6 +12,7 @@ package Graphique;
 public class Main {
      public static void main(String[] args) {
         //Chargement des images
-        
+        Game_IHM game=new Game_IHM();
+                
     }
 }
