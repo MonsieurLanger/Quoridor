@@ -7,32 +7,18 @@ package Modèle;
 
 /**
  *
- * @author hariri
+ * @author NRMV4488
  */
-public class Piece {
-    private Coord coord;
-    Color color;
+public class Piece extends AbstractPiece{
     
-    //Constructeur
-    public Piece(Coord coord, Color color){
-        this.coord = coord;
-        this.color = color;
+    public Piece(Color color, Coord coord){
+        super(color, coord);
     }
-    
-    public void Move(Coord coord){
-        if(IsMoveOk(coord)){
-            this.coord.setX(coord.getX());
-            this.coord.setY(coord.getY());  
-        }
-        else{
-            System.out.append("Impossible pelo!!");
-        }
-        
-    }
-    
+
     //Vérifie si le déplacement se trouve sur le plateau
-    private boolean IsMoveOk(Coord coord){
-        return !(coord.getX()<10 && coord.getX()>0 && (coord.getY()<10 && coord.getY()>0));
+    @Override
+    public boolean isMoveOk(int xFinal, int yFinal) {
+        return !(this.getX()<10 && this.getX()>0 && (this.getY()<10 && this.getY()>0));
     }
     
   
