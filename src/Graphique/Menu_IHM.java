@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  * @author Eddine Langer
  */
 public class Menu_IHM {
-   /* public static BufferedImage jouerIMG;
+    /* public static BufferedImage jouerIMG;
     public static BufferedImage paramIMG;
     public AffichagePlateau jeu;
     public Grille grille;

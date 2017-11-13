@@ -16,14 +16,15 @@ import javax.swing.JPanel;
  * @author Eddine Langer
  */
 public class Game_IHM {
+
     public static BufferedImage parametre;
     public static BufferedImage scorebackg;
-   /* public AffichagePlateau jeu;
+    /* public AffichagePlateau jeu;
     public Grille grille;
     private Parametres param;
     private Debut deb;
     private Options opti;*/
-    /*private Plateau_IHM monPlato;
+ /*private Plateau_IHM monPlato;
     private JLabel win;
     private JLabel loose;
     private JPanel panneauJeu;
