@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Graphique;
 
 /**
  *
- * @author Eddine Langer
+ * @author MOREL Charles
  */
 public class Pion_IHM {
-    
+
 }
