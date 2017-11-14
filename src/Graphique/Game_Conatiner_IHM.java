@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import Graphique.Ressources.GetIHMRessources;
 
 /**
  *
@@ -44,9 +45,9 @@ public class Game_Conatiner_IHM extends JPanel {
 
         // Initalisation de la partie basse du JPanel
         JPanel actionsPannel = new JPanel(new GridLayout(1, 5));
-        this.verticalWall = new JLabel(getIconFromRessources("wall_v.jpg"));
+        this.verticalWall = new JLabel(GetIHMRessources.getIconFromRessources("wall_v.jpg"));
         actionsPannel.add(this.verticalWall);
-        this.horizontalWall = new JLabel(getIconFromRessources("wall_h.jpg"));
+        this.horizontalWall = new JLabel(GetIHMRessources.getIconFromRessources("wall_h.jpg"));
         actionsPannel.add(this.horizontalWall);
 
         // Ajout des composants au continer
@@ -55,9 +56,5 @@ public class Game_Conatiner_IHM extends JPanel {
         this.add(actionsPannel, BorderLayout.SOUTH);
     }
 
-    private ImageIcon getIconFromRessources(String ressourceName) {
-        File g = new File("");
-        String imgPath = g.getAbsolutePath() + "/src/Graphique/Ressources/" + ressourceName;
-        return new ImageIcon(imgPath);
-    }
+    
 }
