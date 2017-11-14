@@ -20,6 +20,7 @@ public class Cell {
     }
     
     boolean isEmpty(){
+       
         return this.empty;
     }
     

@@ -18,8 +18,7 @@ public class Piece extends AbstractPiece{
     //Vérifie si le déplacement se trouve sur le plateau
     @Override
     public boolean isMoveOk(int xFinal, int yFinal) {
-        return !(this.getX()<10 && this.getX()>0 && (this.getY()<10 && this.getY()>0));
+        return !(this.getX()<19 && this.getX()>0 && (this.getY()<19 && this.getY()>0));
     }
     
-  
 }
