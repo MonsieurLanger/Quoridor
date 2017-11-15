@@ -20,7 +20,6 @@ public class Board_IHM extends JPanel {
         this.generateBoard();
         this.boadCases.get(0).get(0).setUse(true);
         this.boadCases.get(0).get(1).setUse(true);
-        this.boadCases.get(0).get(1).setFocus(true);
     }
 
     private void generateBoard() {
@@ -60,19 +59,5 @@ public class Board_IHM extends JPanel {
         }
     }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(this.getParent().getSize().height, this.getParent().getSize().height);
-    }
-
-    @Override
-    public Dimension getMaximumSize() {
-        return new Dimension(this.getParent().getSize().height, this.getParent().getSize().height);
-    }
-
-    @Override
-    public Dimension getMinimumSize() {
-        return new Dimension(this.getParent().getSize().height, this.getParent().getSize().height);
-    }
 
 }

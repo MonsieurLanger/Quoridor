@@ -6,7 +6,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Graphique.Ressources.GetIHMRessources;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
@@ -28,10 +30,9 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     private JLabel horizontalWall;
     private JPanel boardCentredPanel;
 
-    JLayeredPane layeredPane;
+    private JLayeredPane layeredPane;
     private JLabel piece;
-    private int xAdjustment;
-    private int yAdjustment;
+    private CaseIHM lastFocusedCase;
 
     public Game_Conatiner_IHM() {
         // Mise en place de la mise en page
@@ -78,7 +79,6 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         layeredPane.setMinimumSize(new Dimension(maxHeight, maxHeight));
         layeredPane.setPreferredSize(new Dimension(maxHeight, maxHeight));
         this.board.setBounds(0, 0, maxHeight, maxHeight);
-        this.repaint();
     }
 
     @Override
@@ -90,16 +90,37 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     public void mousePressed(MouseEvent me) {
         piece = null;
         Component c = this.board.findComponentAt(me.getX(), me.getY());
-        if (c == null || !(c instanceof CaseIHM)) {
+        if (c == null || !(c instanceof CaseContentIHM)) {
             return;
         }
-        
-       CaseIHM currentCase = (CaseIHM) c;
-       currentCase.setFocus(true);
+
+        CaseIHM currentCase = (CaseIHM) c.getParent();
+        currentCase.setUse(false);
+
+        Point parentLocation = currentCase.getLocation();
+
+        piece = (CaseContentIHM) c;
+        piece.setLocation(me.getX(), me.getY());
+        piece.setSize(piece.getWidth(), piece.getHeight());
+        layeredPane.add(piece, JLayeredPane.DRAG_LAYER);
+
     }
 
     @Override
     public void mouseReleased(MouseEvent me) {
+
+        if (piece == null) {
+            return;
+        }
+
+        piece.setVisible(false);
+        Component c = this.board.findComponentAt(me.getX(), me.getY());
+
+        if (c instanceof CaseIHM) {
+            CaseIHM caseCourrante = (CaseIHM) c;
+            caseCourrante.setUse(true);
+        }
+
     }
 
     @Override
@@ -117,7 +138,19 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         if (piece == null) {
             return;
         }
-        piece.setLocation(me.getX() + xAdjustment, me.getY() + yAdjustment);
+        piece.setLocation(me.getX(), me.getY());
+        
+        Component c = this.board.findComponentAt(me.getX(), me.getY());
+
+        if (c instanceof CaseIHM) {
+            CaseIHM caseCourrante = (CaseIHM) c;
+            caseCourrante.setFocus(true);
+            if(this.lastFocusedCase != null && this.lastFocusedCase != caseCourrante)
+            {
+                this.lastFocusedCase.setFocus(false);
+            }
+            this.lastFocusedCase = caseCourrante;
+        }
     }
 
     @Override
