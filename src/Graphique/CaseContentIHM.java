@@ -11,31 +11,32 @@ import javax.swing.JLabel;
 public class CaseContentIHM extends JLabel
 {
     String image;
+    int size;
 
     public CaseContentIHM(String image) {
         this.image = image;
+        this.size = 0;
     }
     
     private void loadScaledImage()
     {
-        this.setIcon(GetIHMRessources.getScaledIconFromRessources(this.image,this.getParent().getSize().width, this.getParent().getSize().height));
+        this.size = this.getParent().getParent().getSize().height / 20;
+        this.setIcon(GetIHMRessources.getScaledIconFromRessources(this.image,this.size, this.size));
     }
     
     @Override
     public Dimension getPreferredSize() {
         this.loadScaledImage();
-        return new Dimension(this.getParent().getSize().width, this.getParent().getSize().height);
+        return new Dimension(this.size,this.size);
     }
 
     @Override
     public Dimension getMaximumSize() {
-        this.loadScaledImage();
-        return new Dimension(this.getParent().getSize().width, this.getParent().getSize().height);
+        return this.getPreferredSize();
     }
 
     @Override
     public Dimension getMinimumSize() {
-        this.loadScaledImage();
-        return new Dimension(this.getParent().getSize().width, this.getParent().getSize().height);
+        return this.getPreferredSize();
     }    
 }

@@ -72,5 +72,6 @@ public class CaseIHM extends JPanel {
     private void updateCase() {
         this.updateCaseColor();
         this.updateContent();
+        this.revalidate();
     }
 }
