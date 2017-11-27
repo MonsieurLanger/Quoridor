@@ -1,8 +1,5 @@
 package Graphique;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
@@ -16,10 +13,10 @@ public class Board_IHM extends JPanel {
     private List<List<CaseIHM>> boadCases;
 
     public Board_IHM() {
-        this.setLayout(new GridBagLayout());
+        this.setLayout(null);
         this.generateBoard();
-        this.boadCases.get(0).get(0).setUse(true);
-        this.boadCases.get(0).get(1).setUse(true);
+        this.boadCases.get(0).get(8).setUse(true);
+        this.boadCases.get(16).get(8).setUse(true);
     }
 
     private void generateBoard() {
@@ -30,34 +27,24 @@ public class Board_IHM extends JPanel {
             this.boadCases.add(new ArrayList<CaseIHM>());
         }
 
-        //On crée nos différents conteneurs de couleur différente
-        this.setLayout(new GridBagLayout());
-
         //L'objet servant à positionner les composants
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
         for (int i = 0; i < 289; i++) {
-            gbc.gridx = i % 17;
-            gbc.gridy = i / 17;
-            if (gbc.gridx == 16) {
-                gbc.gridwidth = GridBagConstraints.REMAINDER;
-            } else {
-                gbc.gridwidth = 1;
-            }
-            CaseIHM currentCase = null;
-            if ((i / 17) % 2 == 0) {
-                gbc.weighty = 4;
-                gbc.weightx = (i % 2 == 1 ? 1 : 4);
-                currentCase = (i % 2 == 1 ? new CaseIHM(TypeCaseIHM.VERTICAL_WALL) : new CaseIHM(TypeCaseIHM.PIECE));
-            } else {
-                gbc.weightx = 1;
-                gbc.weighty = 1;
-                currentCase = (i % 2 == 1 ? new CaseIHM(TypeCaseIHM.HORIZNTAL_WALL) : new CaseIHM(TypeCaseIHM.CENTRAL_WALL));
-            }
-            this.add(currentCase, gbc);
-            this.boadCases.get(gbc.gridx).add(currentCase);
+            int x = i % 17;
+            int y = i / 17;
+            CaseIHM currentCase = new CaseIHM(x, y);
+            this.add(currentCase);
+            this.boadCases.get(y).add(currentCase);
         }
     }
 
+    @Override
+    public void setBounds(int x, int y, int width, int height) {
+        super.setBounds(x, y, width, height);
+        for (List<CaseIHM> listeCases : this.boadCases) {
+            for (CaseIHM caseCourrante : listeCases) {
+                caseCourrante.updateSize(width, height);
+            }
+        }
+    }
 
 }
