@@ -12,9 +12,9 @@ public class Wall extends AbstractWall{
     }
 
     //Vérifie si la barrière peut être placée sur ces cases
-    //On peut additionner les deux coordonnées pour x et les deux pour y (respect de la parité)
     @Override
-    public boolean isPlaceOk(int xFinal, int yFinal) {
-        return ((this.getX()%2==1 && this.getY()%2==1) || (this.getX()%2==0 && this.getY()%2==0));
+    public boolean isPlaceOk(int xLeftOrUp, int yLeftOrUp) {
+        return ((this.getX()%2==1 && this.getY()%2==1) || (this.getX()%2==0 && this.getY()%2==0)
+                && ((this.getX()>=0 || this.getY()>=0 )) && ((this.getX()<18 || this.getY()<18 )));
     }
 }
