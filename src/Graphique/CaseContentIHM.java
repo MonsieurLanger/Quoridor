@@ -8,26 +8,22 @@ import javax.swing.JLabel;
  *
  * @author MOREL Charles <charles.morel@cpe.fr>
  */
-public class CaseContentIHM extends JLabel
-{
+public class CaseContentIHM extends JLabel {
+
     String image;
-    int size;
 
     public CaseContentIHM(String image) {
         this.image = image;
-        this.size = 0;
     }
-    
-    private void loadScaledImage()
-    {
-        this.size = this.getParent().getParent().getSize().height / 20;
-        this.setIcon(GetIHMRessources.getScaledIconFromRessources(this.image,this.size, this.size));
+
+    private void loadScaledImage() {
+        this.setIcon(GetIHMRessources.getScaledIconFromRessources(this.image, this.getParent().getSize().width, this.getParent().getSize().height));
     }
-    
+
     @Override
     public Dimension getPreferredSize() {
         this.loadScaledImage();
-        return new Dimension(this.size,this.size);
+        return new Dimension(this.getParent().getSize().width, this.getParent().getSize().height);
     }
 
     @Override
@@ -38,5 +34,5 @@ public class CaseContentIHM extends JLabel
     @Override
     public Dimension getMinimumSize() {
         return this.getPreferredSize();
-    }    
+    }
 }

@@ -97,8 +97,6 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         CaseIHM currentCase = (CaseIHM) c.getParent();
         currentCase.setUse(false);
 
-        Point parentLocation = currentCase.getLocation();
-
         piece = (CaseContentIHM) c;
         piece.setLocation(me.getX(), me.getY());
         piece.setSize(piece.getWidth(), piece.getHeight());
@@ -119,6 +117,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         if (c instanceof CaseIHM) {
             CaseIHM caseCourrante = (CaseIHM) c;
             caseCourrante.setUse(true);
+            caseCourrante.setFocus(false);
         }
 
     }
@@ -139,14 +138,13 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             return;
         }
         piece.setLocation(me.getX(), me.getY());
-        
+
         Component c = this.board.findComponentAt(me.getX(), me.getY());
 
         if (c instanceof CaseIHM) {
             CaseIHM caseCourrante = (CaseIHM) c;
             caseCourrante.setFocus(true);
-            if(this.lastFocusedCase != null && this.lastFocusedCase != caseCourrante)
-            {
+            if (this.lastFocusedCase != null && this.lastFocusedCase != caseCourrante) {
                 this.lastFocusedCase.setFocus(false);
             }
             this.lastFocusedCase = caseCourrante;
