@@ -63,8 +63,8 @@ public class Menu_Accueil extends Menu{
             System.exit(0);
         }
         else if(src==jouer){
-            System.out.println("afficheChoix");
-            this.parentPanel.afficheChoix();
+            
+            this.parentPanel.afficheChoix(this);
         }
         
     }

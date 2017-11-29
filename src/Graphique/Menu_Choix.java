@@ -23,8 +23,8 @@ public class Menu_Choix extends Menu{
         super(gIHM);
         c.insets = new Insets(30, 30, 30, 30);
 
-         join = new JButton("Rejoindre une partie");
-         join.setPreferredSize(new Dimension(200, 50));
+        join = new JButton("Rejoindre une partie");
+        join.setPreferredSize(new Dimension(200, 50));
         c.gridx=0;
         c.gridy=0;
         this.add(join,c);
@@ -40,6 +40,7 @@ public class Menu_Choix extends Menu{
         c.gridx=0;
         c.gridy=2;
         this.add(backAcc,c);
+        
         initButtonListener();
         this.setVisible(true);
     }
@@ -85,8 +86,16 @@ public class Menu_Choix extends Menu{
             
         Object src=ae.getSource();
         if(src==backAcc){
-            System.out.println("afficheChoix");
+            System.out.println("afficheChoix menu choix");
             this.parentPanel.afficheAccueil(this);
+        }
+        else if(src==join){
+            System.out.println("afficheChoix2");
+            this.parentPanel.afficheJoueur(this);
+        }
+        else if(src==create){
+            System.out.println("afficheChoix3 ");
+            this.parentPanel.afficheConfig(this);
         }
     }
     

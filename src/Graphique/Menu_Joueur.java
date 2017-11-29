@@ -32,7 +32,7 @@ private JButton annuler;
 
     public Menu_Joueur(Game_IHM gIHM) {
         super(gIHM);
-        c.insets = new Insets(30, 30, 30, 30);
+        c.insets = new Insets(15, 15, 15, 15);
         labelJoueur = new JLabel("Nom du Joueur :");
         labelJoueur.setPreferredSize(new Dimension(100, 50));
         c.gridx=0;
@@ -103,8 +103,9 @@ private JButton annuler;
         this.setVisible(true);
     }
 
-    protected void inRitButtonListener() {
-        //super.initButtonListener(); //To change body of generated methods, choose Tools | Templates.
+@Override
+    protected void initButtonListener() {
+        super.initButtonListener(); //To change body of generated methods, choose Tools | Templates.
         pret.addActionListener(this);
         annuler.addActionListener(this);
         nomJoueur.addActionListener(this);
@@ -117,18 +118,15 @@ private JButton annuler;
     @Override
     public void actionPerformed(ActionEvent ae) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        String text = nomJoueur.getText();
-        System.out.println(text);
-         Object src=ae.getSource();
+       String text = nomJoueur.getText();
+       System.out.println(text);
+       Object src=ae.getSource();
        if(src==annuler){
-           
-            this.parentPanel.afficheChoix();
+            this.parentPanel.afficheChoix(this);
         }
        if(src==pret){
-         this.parentPanel.afficheLobby();
+            this.parentPanel.afficheJeu(this);
        }
-    
-    
     }
 
     @Override
