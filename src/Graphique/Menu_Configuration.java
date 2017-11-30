@@ -55,6 +55,7 @@ private JCheckBox rule2cb ;
         c.gridy=1;
         c.gridwidth=1;
         this.add(twoPlayB,c);
+        twoPlayB.setSelected(true);
         
         fourPlayB = new JRadioButton("4");
         fourPlayB.setPreferredSize(new Dimension(50, 50));
@@ -76,6 +77,7 @@ private JCheckBox rule2cb ;
         c.gridy=3;
         c.gridwidth=1;
         this.add(localB,c);
+        localB.setSelected(true);
         
         onlineB = new JRadioButton("En Ligne");
         onlineB.setPreferredSize(new Dimension(90, 50));
@@ -119,8 +121,12 @@ private JCheckBox rule2cb ;
     @Override
     protected void initButtonListener() {
         //super.initButtonListener(); //To change body of generated methods, choose Tools | Templates.
-//        twoPlayB.addActionListener(this);
-//        fourPlayB.addActionListener(this);
+        twoPlayB.addActionListener(this);
+        fourPlayB.addActionListener(this);
+        onlineB.addActionListener(this);
+        localB.addActionListener(this);
+        rule1cb.addActionListener(this);
+        rule2cb.addActionListener(this);
         retour.addActionListener(this);
         lancer.addActionListener(this);
     }
@@ -154,10 +160,29 @@ private JCheckBox rule2cb ;
     public void actionPerformed(ActionEvent ae) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         
-            Object src=ae.getSource();
-        if(src==lancer){
-            this.parentPanel.afficheJoueur(this);
-            
+        Object src=ae.getSource();
+        if(src==localB){                
+                onlineB.setSelected(false);}
+        if(src==onlineB){              
+                localB.setSelected(false);}
+        if(src==twoPlayB){
+                fourPlayB.setSelected(false);}
+        if(src==fourPlayB){
+                twoPlayB.setSelected(false);}
+                
+        if(src==lancer){            
+                if(rule1cb.isSelected()==true){
+                    rules.get(0).setActive(true);
+                }
+                if(rule2cb.isSelected()==true){
+                    rules.get(1).setActive(true);
+                }                
+                if(localB.isSelected()==true){
+                    this.parentPanel.afficheJeu(this);
+                }
+                else{
+                    this.parentPanel.afficheJoueur(this);
+                }
         }
         if(src==retour){
             this.parentPanel.afficheChoix(this);

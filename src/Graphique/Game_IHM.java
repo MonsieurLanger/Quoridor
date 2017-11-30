@@ -103,7 +103,13 @@ public class Game_IHM extends JFrame{
     }
     
     void afficheAccueil(Object t) {
-        this.remove(choixPanel);
+        if(t==choixPanel){
+            this.remove(choixPanel);
+        }
+        if(t==jeuPanel){
+            this.remove(jeuPanel);
+        }
+        
         c.gridx = 0;
         c.gridy = 0;
 
@@ -166,7 +172,9 @@ public class Game_IHM extends JFrame{
         if(t==joueurPanel){
            this.remove(joueurPanel);
         }
-       
+       if(t==configPanel){
+           this.remove(configPanel);
+       }
       
         c.gridx = 0;
         c.gridy = 0;

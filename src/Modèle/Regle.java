@@ -42,6 +42,10 @@ public class Regle {
         this.active = active;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
 
     
 }
