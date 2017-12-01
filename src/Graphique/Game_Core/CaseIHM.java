@@ -1,4 +1,4 @@
-package Graphique;
+package Graphique.Game_Core;
 
 import Graphique.Ressources.GetIHMRessources;
 import Modèle.Coord;
