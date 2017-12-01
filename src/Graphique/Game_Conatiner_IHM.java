@@ -64,20 +64,19 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.updateSubComponentsSize();
 
         // Initalisation de la partie basse du JPanel
-        this.actionsPannel = new JPanel(new GridLayout(1, 5));
+        this.actionsPannel = new JPanel();
+        this.actionsPannel.setLayout(null);
         this.actionsPannel.addMouseListener(this);
         this.actionsPannel.addMouseMotionListener(this);
 
         this.verticalWall = new JPanel();
         this.verticalWall.add(new CaseContentIHM("wall_v.jpg"));
+        this.actionsPannel.add(this.verticalWall);
+        
         this.horizontalWall = new JPanel();
         this.horizontalWall.add(new CaseContentIHM("wall_h.jpg"));
-
-        this.actionsPannel.add(new JPanel());
-        this.actionsPannel.add(this.verticalWall);
-        this.actionsPannel.add(new JPanel());
         this.actionsPannel.add(this.horizontalWall);
-        this.actionsPannel.add(new JPanel());
+
 
         // Ajout des composants au continer
         this.add(infosPanel, BorderLayout.NORTH);
@@ -86,22 +85,23 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     }
 
     private void updateSubComponentsSize() {
-        int maxHeight = (int) (this.getSize().height * 0.85);
-        this.layeredPane.setMaximumSize(new Dimension(maxHeight, maxHeight));
-        this.layeredPane.setMinimumSize(new Dimension(maxHeight, maxHeight));
-        this.layeredPane.setPreferredSize(new Dimension(maxHeight, maxHeight));
-        this.board.setBounds(0, 0, maxHeight, maxHeight);
-        maxHeight = this.getSize().height;
+        int uniteHauteur = (int) (this.getSize().height*0.01);
+        int uniteLaugeur = (int) (this.getSize().width*0.01);
+        int tailleGrille = uniteHauteur * 85;
+        this.layeredPane.setMaximumSize(new Dimension(tailleGrille, tailleGrille));
+        this.layeredPane.setMinimumSize(new Dimension(tailleGrille, tailleGrille));
+        this.layeredPane.setPreferredSize(new Dimension(tailleGrille, tailleGrille));
+        this.board.setBounds(0, 0, tailleGrille, tailleGrille);
         if (this.actionsPannel != null) {
-            this.actionsPannel.setPreferredSize(new Dimension(this.getSize().width - 1, maxHeight / 10));
-            this.actionsPannel.setMaximumSize(new Dimension(this.getSize().width - 1, maxHeight / 10));
-            this.actionsPannel.setMaximumSize(new Dimension(this.getSize().width - 1, maxHeight / 10));
+            this.actionsPannel.setPreferredSize(new Dimension(uniteLaugeur*100 - 1, uniteHauteur*10));
+            this.actionsPannel.setMaximumSize(new Dimension(uniteLaugeur*100 - 1, uniteHauteur*10));
+            this.actionsPannel.setMinimumSize(new Dimension(uniteLaugeur*100 - 1, uniteHauteur*10));
         }
         if (this.verticalWall != null) {
-            this.verticalWall.setBounds(0, 0, maxHeight / 60, maxHeight / 60);
+            this.verticalWall.setBounds(uniteLaugeur*30, 0, uniteHauteur*5, uniteHauteur * 15);
         }
         if (this.horizontalWall != null) {
-            this.horizontalWall.setBounds((maxHeight / 60) * 4, 0, maxHeight / 60, maxHeight / 60);
+            this.horizontalWall.setBounds(uniteLaugeur*60, 0, uniteHauteur*15, uniteHauteur*5);
         }
         this.repaint();
         this.revalidate();
