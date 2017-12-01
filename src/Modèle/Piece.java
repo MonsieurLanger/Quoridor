@@ -44,7 +44,7 @@ public class Piece extends AbstractPiece{
             return "[Cordonnées =" + this.coord+ "] Couleur= "+ this.color;
     }
         
-    /*public static void main(String[] args){
+    public static void main(String[] args){
         int x= 0;
         int y= 0;
         Coord coord[];
@@ -76,6 +76,6 @@ public class Piece extends AbstractPiece{
         System.out.println("piece[k]= "+ piece[0]);
         piece[0].Move(coord[1]);
         System.out.println("piece[k]= "+ piece[0]);
-    }*/
+    }
 }
 

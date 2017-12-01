@@ -14,12 +14,14 @@ package Modèle;
 public class Cell {
     boolean empty;
     Coord coord;
+    String type;
   
     
     //Constructeur, par défault la case est vide
-    public Cell(Coord coord){
+    public Cell(Coord coord, String type){
         this.coord = coord;
         this.empty = true;
+        type="Case_Empty";
     }
     
     boolean isEmpty(){
