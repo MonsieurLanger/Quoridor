@@ -5,6 +5,9 @@
  */
 package Graphique;
 
+import Modèle.Game;
+import Modèle.Player;
+
 /**
  *
  * @author Eddine Langer
@@ -12,6 +15,7 @@ package Graphique;
 public class Main {
      public static void main(String[] args) {
         //Chargement des images
+        Game g=new Game(new Player("Joueur 1"), Color, null)
         Game_IHM game=new Game_IHM();
                 
     }

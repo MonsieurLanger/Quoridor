@@ -9,6 +9,6 @@ package Modèle;
  *
  * @author Eddine Langer
  */
-public class Plateau {
+public class Board {
     
 }
