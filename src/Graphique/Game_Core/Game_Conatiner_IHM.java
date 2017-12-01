@@ -1,4 +1,4 @@
-package Graphique;
+package Graphique.Game_Core;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
