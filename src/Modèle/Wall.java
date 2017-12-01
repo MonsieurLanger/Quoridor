@@ -7,8 +7,8 @@ package Modèle;
 public class Wall extends AbstractWall{
     
     
-    public Wall( Color color, Coord coord){
-        super(color, coord);
+    public Wall(Coord coord){
+        super(coord);
     }
 
     //Vérifie si la barrière peut être placée sur ces cases
