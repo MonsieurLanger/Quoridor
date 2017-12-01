@@ -11,12 +11,14 @@ import javax.swing.JPanel;
 public class Board_IHM extends JPanel {
 
     private List<List<CaseIHM>> boadCases;
+    private List<CaseIHM> focusedCases;
 
     public Board_IHM() {
         this.setLayout(null);
         this.generateBoard();
-        this.boadCases.get(0).get(8).setUse(true);
-        this.boadCases.get(16).get(8).setUse(true);
+        this.focusedCases = new ArrayList<CaseIHM>();
+        this.boadCases.get(8).get(0).setUse(true);
+        this.boadCases.get(8).get(16).setUse(true);
     }
 
     private void generateBoard() {
@@ -33,7 +35,7 @@ public class Board_IHM extends JPanel {
             int y = i / 17;
             CaseIHM currentCase = new CaseIHM(x, y);
             this.add(currentCase);
-            this.boadCases.get(y).add(currentCase);
+            this.boadCases.get(x).add(currentCase);
         }
     }
 
@@ -44,6 +46,20 @@ public class Board_IHM extends JPanel {
             for (CaseIHM caseCourrante : listeCases) {
                 caseCourrante.updateSize(width, height);
             }
+        }
+    }
+
+    public void resetFocusedCases() {
+        for (CaseIHM caseToUnfosus : this.focusedCases) {
+            caseToUnfosus.setFocus(false);
+        }
+        this.focusedCases.clear();
+    }
+
+    public void setFocusOnCase(int x, int y) {
+        if (x >= 0 && x <= 16 && y >= 0 && y <= 16) {
+            this.focusedCases.add(this.boadCases.get(x).get(y));
+            this.boadCases.get(x).get(y).setFocus(true);
         }
     }
 

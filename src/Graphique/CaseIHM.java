@@ -1,6 +1,7 @@
 package Graphique;
 
 import Graphique.Ressources.GetIHMRessources;
+import Modèle.Coord;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
@@ -12,13 +13,13 @@ import javax.swing.JPanel;
  * @author MOREL Charles <charles.morel@cpe.fr>
  */
 public class CaseIHM extends JPanel {
-
+    
     private TypeCaseIHM type;
     private boolean isUsed;
     private boolean isFocused;
     private int x;
     private int y;
-
+    
     public CaseIHM(int x, int y) {
         this.type = type;
         this.isUsed = false;
@@ -33,7 +34,7 @@ public class CaseIHM extends JPanel {
         this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
         this.updateCase();
     }
-
+    
     private void updateCaseColor() {
         if (!this.isFocused) {
             if (type == TypeCaseIHM.PIECE) {
@@ -47,7 +48,7 @@ public class CaseIHM extends JPanel {
             this.setBackground(Color.yellow);
         }
     }
-
+    
     private void updateContent() {
         this.removeAll();
         if (this.isUsed) {
@@ -68,22 +69,22 @@ public class CaseIHM extends JPanel {
             this.add(caseContent);
         }
     }
-
+    
     private void updateCase() {
         this.updateCaseColor();
         this.updateContent();
         this.revalidate();
         this.repaint();
     }
-
+    
     public void updateSize(int width, int height) {
         // Calculs préliminaires
         int nbCasesPionAvtCelleCiDansLigne = this.x / 2 + (this.x % 2);
         int nbCasesBarriereAvtCelleCiDansLigne = (this.x / 2);
-
+        
         int nbCasesPionAvtCelleCiDansColonne = this.y / 2 + (this.y % 2);
         int nbCasesBarriereAvtCelleCiDansColonne = (this.y / 2);
-
+        
         int tailleCasePion = width / 11;
         int tailleCaseBarriere = width / 44;
 
@@ -116,14 +117,22 @@ public class CaseIHM extends JPanel {
         // Mise à jour de la case
         this.setBounds(xGille, yGrille, largeur, hauteur);
     }
-
+    
     public void setUse(boolean isUsed) {
         this.isUsed = isUsed;
         this.updateCase();
     }
-
+    
     public void setFocus(boolean isFocused) {
         this.isFocused = isFocused;
         this.updateCase();
+    }
+    
+    public TypeCaseIHM getType() {
+        return this.type;
+    }
+    
+    public Coord getCoords() {
+        return new Coord(this.x, this.y);
     }
 }
