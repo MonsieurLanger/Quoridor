@@ -25,7 +25,17 @@ public enum Color {
         this.name=name;
     }
     
+    @Override
     public String toString(){
         return name;
     }
-}
+    
+   /*public static void main(String [] args){
+        Color color[];
+        String tab[]= {"BLEU","ROSE","JAUNE","VERT","ORANGE"};
+        for (int i=0; i<5;i++){
+            color[i](tab[i]);
+            System.out.println("color"+i+"= "+color[i]);
+        }
+    }
+*/}

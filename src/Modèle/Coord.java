@@ -25,12 +25,30 @@ public class Coord {
             this.y=y;
     }
 
-    public static boolean coord_valides(int x, int y){
-            return ( (x<=7) && (x>=0) && (y<=7) && (y>=0));
+    public static boolean coord_valides(Coord coord){
+            return ( ((coord.x)<=16) && ((coord.x)>=0) && ((coord.y)<=16) && ((coord.y)>=0));
     }
     
     @Override
     public String toString() {
             return "[x=" + x + ", y=" + y + "]";
     }
+    
+    /*public static void main (String[] args){
+        int x= 4;
+        int y= 4;
+        Coord coord[];
+        coord = new Coord[5];
+        for(int i=0; i<5; i++){
+            if (coord_valides(x,y)){
+            coord[i]=new Coord(x,y);
+            x++;
+            y++;
+            System.out.println("print + "+i+" "+coord[i]);
+            }
+            else{
+                System.out.println("Erreur de coordonnées.");
+            }
+        }
+    }*/
 }
