@@ -20,11 +20,11 @@ public class Piece extends AbstractPiece{
         boolean ret=false;
         //vérif coord sur le plateau
         if(Coord.coord_valides(coord_finales)){
-        //vérif coord déplacement +1 et non diagonal    
+        //vérif coord déplacement +2 et non diagonal (car +1 == case barriere   
             int xFinal= coord_finales.x;
             int yFinal= coord_finales.y;
-            if(Math.abs(xFinal - this.coord.x)== 0 && Math.abs(yFinal - this.coord.y)== 1
-            || Math.abs(xFinal - this.coord.x)== 1 && Math.abs(yFinal - this.coord.y)== 0){
+            if(Math.abs(xFinal - this.coord.x)== 0 && Math.abs(yFinal - this.coord.y)== 2
+            || Math.abs(xFinal - this.coord.x)== 2 && Math.abs(yFinal - this.coord.y)== 0){
                 //vérif non impaire/impaire 
                 if(!(xFinal%2!=0 && yFinal%2!=0)){
                     ret = true;
@@ -59,11 +59,11 @@ public class Piece extends AbstractPiece{
         Cell tab[];
         tab = new Cell[5];
         for(int j=0; j<5; j++){
-            tab[j] = new Cell(coord[j]);
+            //a revoir  tab[j] = new Cell(coord[j]);
             System.out.printf("tab[j]= "+tab[j].coord+"\n");
         }
       
-        Cell test = new Cell(test_coord);
+        //Cell test = new Cell(test_coord);
         
         Piece piece[];
         piece = new Piece[2];
