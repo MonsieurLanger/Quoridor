@@ -14,31 +14,36 @@ public class Board {
     Cell plateau[];
     
     
-   public Board(Cell plateau[]){
-       this.plateau = new Cell[324];
+   public Board(){
+       this.plateau = new Cell[289];
     }
     
-   public void init(Board board){
+   public static void init_Board(Board board){
        int k=0;
-        for(int i=0;i<16;i++){
-           for(int j=0;j<16;j++){
+        for(int i=0;i<17;i++){
+           for(int j=0;j<17;j++){
                Coord coord = new Coord(i,j);
                if(coord.x%2!=0 && coord.y%2!=0){
                    Cell cell = new Cell(coord,"Inutilisable");
                    board.plateau[k]=cell;
+                   cell.indice=k;
                    k++;
                }if((coord.x%2!=0 && coord.y%2==0)||(coord.x%2==0 && coord.y%2!=0)){
                    Cell cell = new Cell(coord,"Barriere");
                    board.plateau[k]=cell;
+                   cell.indice=k;
                    k++;
                }if(coord.x%2==0 && coord.y%2==0){
-                   if((coord.x==8 && coord.y==0)||(coord.x==16 && coord.y==0)){
+                   if((coord.x==8 && coord.y==0)||(coord.x==8 && coord.y==16)){
                      Cell cell = new Cell(coord,"Joueur");
+                     cell.empty=false;
                      board.plateau[k]=cell;
+                     cell.indice=k;
                      k++;
                    }else{
                         Cell cell = new Cell(coord,"Vide");
                         board.plateau[k]=cell;
+                        cell.indice=k;
                         k++;
                    }
                }               
@@ -46,7 +51,7 @@ public class Board {
         }
     }
     
-    public boolean isPieceHere(Cell cell){
+    public static boolean isPieceHere(Cell cell){
         boolean ret=false;
         if(cell.isEmpty()==true){
             ret=true;
@@ -54,7 +59,7 @@ public class Board {
         return ret;
     }
     
-    public void placeWall(Cell cell, Board board){
+    public void placeWall(Cell cell){
         if ("Barriere".equals(cell.type)){
             if(cell.isEmpty()==true){
                 cell.type="Barriere";
@@ -65,7 +70,7 @@ public class Board {
         }
     }
     
-    public boolean movePiece(){
+    public boolean movePiece(){//reste à gérer type ancienne case et nouvelle case
         boolean ret=false;
         return ret;
         
@@ -77,12 +82,26 @@ public class Board {
         }else{
             ActualPlayer=Player[0];
         }
-    }*/
-    
+    }
+        }*///A TESTER//
+
     public boolean isEnd(){
         return false;
     }
     
+    public static void main(String[] args){
+        int cptr=0;
+        Board board_test = new Board();
+        init_Board(board_test);
+        for (int i=0;i<board_test.plateau.length;i++){
+            //System.out.println(i+". Case:" + board_test.plateau[i]);
+            if(board_test.plateau[i].empty==false){
+                    cptr++;
+                    System.out.println("Coordonnées du joueur "+cptr+" : "+board_test.plateau[i].coord+ "["+i+"]");
+            }
+        }
+       System.out.println("Piece vide? "+isPieceHere(board_test.plateau[152]));
+    }
     
     
 }

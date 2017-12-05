@@ -15,13 +15,14 @@ public class Cell {
     boolean empty;
     Coord coord;
     String type;
+    int indice;
   
     
     //Constructeur, par défault la case est vide
     public Cell(Coord coord, String type){
         this.coord = coord;
         this.empty = true;
-        type="Case_Empty";
+        this.type=type;
     }
     
     boolean isEmpty(){
@@ -35,6 +36,11 @@ public class Cell {
         else{
             return null;
         }
+    }
+    
+    @Override
+    public String toString(){
+        return "Case type :"+this.type+" ,Case coordonnées: "+this.coord;
     }
     
   /*public static void main(String [] args){
