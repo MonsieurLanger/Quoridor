@@ -10,9 +10,8 @@ package Modèle;
  * @author nrmv4488
  */
 public class Board {
-    Player ActualPlayer;
+    //Player ActualPlayer; pour implémentation de Game.java
     Cell plateau[];
-    
     
    public Board(){
        this.plateau = new Cell[289];
@@ -75,15 +74,56 @@ public class Board {
         return ret;
         
     }
+         
     
-    /*public void switchPlayer(){
+    public boolean isMoveOk(Piece piece, Cell cell_finale){
+        boolean ret=false;
+        if(piece.isMoveOk(cell_finale.coord)){
+            if(!"Joueur".equals(cell_finale.type)){//vérif s'il y a un joueur
+                //récup si déplacement +/-1 en x/y --> voir si x==finale.x etc
+                //avec findCell si cell.type == barriere ret false
+                Coord coord_temp = new Coord();
+                //if(){//vérif s'il y a un mur
+                    
+                //}
+            }
+            return true;
+        }
+        return ret;
+    }
+    
+    public boolean isPlayerHere(Cell cell){
+        boolean ret=false;
+        if(cell.isEmpty()==ret){
+            if("Joueur".equals(cell.type)){
+               ret=true;
+            }
+        }
+        return ret;
+    }
+    
+    //faire fonction de recherche de cellule en fonction de ooordonnées
+    // --> creer une Cell, lire Cell du tableau
+    public Cell findCell(Coord coord, Board board){
+        Coord coord_temp;
+        coord_temp = new Coord(0,0);
+        Cell cell = new Cell(coord,null);
+        for(int i=0;i<board.plateau.length;i++){
+            if(board.plateau[i].coord==coord){
+                return cell;
+            }
+        }
+        return cell;
+    }
+    
+    
+    /*public void switchPlayer(){ //à voir --> à gérer dans classe GAME
         if(ActualPlayer==Player[0]){
             ActualPlayer=Player[1];
         }else{
             ActualPlayer=Player[0];
         }
-    }
-        }*///A TESTER//
+    }*/
 
     public boolean isEnd(){
         return false;

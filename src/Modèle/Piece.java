@@ -34,8 +34,6 @@ public class Piece extends AbstractPiece{
                 }
             }
          }
-        //vérif s'il y a un joueur
-        //vérif s'il y a un mur
         return ret;
     }
     

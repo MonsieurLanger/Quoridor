@@ -53,5 +53,5 @@ public abstract class AbstractPiece implements Interface_Piece{
     }
 
     @Override
-    public abstract boolean isMoveOk(Coord coord_finales);
+    public abstract boolean isMoveOk(Coord coord_finale);
 }
