@@ -74,7 +74,7 @@ public class Board {
         return ret;
     }
     
-    public boolean movePiece(Piece piece,Cell cell_finale, Board board){
+    public static boolean movePiece(Piece piece,Cell cell_finale, Board board){
         boolean ret=false;
         Coord coord_temp=new Coord(piece.coord.x,piece.coord.y);
         if(piece.isMoveOk(cell_finale.coord,board)==true){
@@ -127,9 +127,11 @@ public class Board {
     
     public static void main(String[] args){
         int cptr=0;
-        Coord coord_test = new Coord(1,1);
+        Coord coord_test = new Coord(8,0);
+        Coord coord_finales_test = new Coord(8,2);
         Board board_test = new Board();
         init_Board(board_test);
+        Piece piece_test = new Piece(Color.BLEU, coord_test);
         for (int i=0;i<board_test.plateau.length;i++){
             //System.out.println(i+". Case:" + board_test.plateau[i]);
             if(isPlayerHere(board_test.plateau[i])==true){
@@ -138,7 +140,8 @@ public class Board {
             }
         }
        System.out.println("Piece vide? "+isPieceHere(board_test.plateau[152]));
-        System.out.println("findCell: "+findCell(coord_test,board_test));
+       System.out.println("findCell: "+findCell(coord_test,board_test));
+       System.out.println(movePiece(piece_test,findCell(coord_finales_test,board_test),board_test));
     }
     
     
