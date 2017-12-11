@@ -64,7 +64,7 @@ public class Cell {
           tab[j] = new Cell(coord[j]);
           System.out.printf("tab[j]= "+tab[j].coord+"\n");
       }
-  }*/  
+  }*/
     
     
 }

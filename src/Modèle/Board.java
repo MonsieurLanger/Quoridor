@@ -58,7 +58,8 @@ public class Board {
         return ret;
     }
     
-    public boolean placeWall(Wall wall, Cell cell_finale){ //---> à remplacer avec le futur objet Wall?
+    //---> voir plus tard, gestion au niveau d'un tableau de Wall du joueur etc
+    public boolean placeWall(Wall wall, Cell cell_finale){ 
         boolean ret=false;
         if ("Barriere".equals(cell_finale.type)){
             if(cell_finale.isEmpty()==true){
@@ -73,30 +74,24 @@ public class Board {
         return ret;
     }
     
-    public boolean movePiece(){//reste à gérer type ancienne case et nouvelle case
+    public boolean movePiece(Piece piece,Cell cell_finale, Board board){
         boolean ret=false;
+        Coord coord_temp=new Coord(piece.coord.x,piece.coord.y);
+        if(piece.isMoveOk(cell_finale.coord,board)==true){
+            //maj coordonnées du joueur
+            piece.coord=cell_finale.coord;
+            //maj attribut de la case d'arrivée
+            cell_finale.empty=false;
+            cell_finale.type="Joueur";
+            //maj attribut de la case de départ
+            findCell(coord_temp, board).empty=true;
+            findCell(coord_temp, board).type="Vide";
+            ret = true;
+        }
         return ret;
         
     }
          
-    //isMoveOk à gérer dans Piece, et Wall.....
-    /*public boolean isMoveOk(Piece piece, Cell cell_finale){
-        boolean ret=false;
-        if(piece.isMoveOk(cell_finale.coord)){
-            if(!"Joueur".equals(cell_finale.type)){//vérif s'il y a un joueur
-                
-                //récup si déplacement +/-1 en x/y --> voir si x==finale.x etc
-                //avec findCell si cell.type == barriere ret false
-                Coord coord_temp = new Coord();
-                //if(){//vérif s'il y a un mur
-                    
-                //}
-            }
-            return true;
-        }
-        return ret;
-    }*/
-    
     public static boolean isPlayerHere(Cell cell){
         boolean ret=false;
         if(cell.isEmpty()==ret){
@@ -118,8 +113,7 @@ public class Board {
         return cell;
     }
     
-    
-    /*public void switchPlayer(){ //à voir --> à gérer dans classe GAME
+    /*public void switchPlayer(){ 
         if(ActualPlayer==Player[0]){
             ActualPlayer=Player[1];
         }else{
