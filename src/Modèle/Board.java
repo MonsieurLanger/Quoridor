@@ -58,15 +58,19 @@ public class Board {
         return ret;
     }
     
-    public void placeWall(Cell cell){ //à remplacer avec le futur objet Wall?
-        if ("Barriere".equals(cell.type)){
-            if(cell.isEmpty()==true){
-                cell.type="Barriere";
-                cell.empty=false;
+    public boolean placeWall(Wall wall, Cell cell_finale){ //---> à remplacer avec le futur objet Wall?
+        boolean ret=false;
+        if ("Barriere".equals(cell_finale.type)){
+            if(cell_finale.isEmpty()==true){
+                cell_finale.type="Barriere";
+                cell_finale.empty=false;
+                ret=true;
             }
         }else{
             System.out.println("Pose de barrière impossible.");
+            ret=false;
         }
+        return ret;
     }
     
     public boolean movePiece(){//reste à gérer type ancienne case et nouvelle case
@@ -75,11 +79,12 @@ public class Board {
         
     }
          
-    
-    public boolean isMoveOk(Piece piece, Cell cell_finale){
+    //isMoveOk à gérer dans Piece, et Wall.....
+    /*public boolean isMoveOk(Piece piece, Cell cell_finale){
         boolean ret=false;
         if(piece.isMoveOk(cell_finale.coord)){
             if(!"Joueur".equals(cell_finale.type)){//vérif s'il y a un joueur
+                
                 //récup si déplacement +/-1 en x/y --> voir si x==finale.x etc
                 //avec findCell si cell.type == barriere ret false
                 Coord coord_temp = new Coord();
@@ -90,7 +95,7 @@ public class Board {
             return true;
         }
         return ret;
-    }
+    }*/
     
     public static boolean isPlayerHere(Cell cell){
         boolean ret=false;
@@ -102,7 +107,7 @@ public class Board {
         return ret;
     }
     
-    //faire fonction de recherche de cellule en fonction de ooordonnées
+    //faire fonction de recherche de cellule en fonction de cooordonnées
     public static Cell findCell(Coord coord, Board board){
         Cell cell = new Cell(coord,null);
         for(int i=0;i<board.plateau.length;i++){

@@ -44,8 +44,8 @@ public abstract class AbstractPiece implements Interface_Piece{
     }
 
     @Override
-    public boolean Move(Coord coord_finales) {
-        if(isMoveOk(coord_finales)){
+    public boolean Move(Coord coord_finales, Board board) {
+        if(isMoveOk(coord_finales, board)){
         coord.x = coord_finales.x;
         coord.y = coord_finales.y;
         }
@@ -53,5 +53,5 @@ public abstract class AbstractPiece implements Interface_Piece{
     }
 
     @Override
-    public abstract boolean isMoveOk(Coord coord_finale);
+    public abstract boolean isMoveOk(Coord coord_finale, Board board);
 }
