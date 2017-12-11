@@ -5,14 +5,15 @@
  */
 package Graphique;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Eddine Langer
  */
-public class Main {
-     public static void main(String[] args) {
-        //Chargement des images
-        Game_IHM game=new Game_IHM();
-                
+public class Plateau_IHM extends JPanel{
+
+    public Plateau_IHM() {
     }
+    
 }
