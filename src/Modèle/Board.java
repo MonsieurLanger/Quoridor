@@ -58,7 +58,7 @@ public class Board {
         return ret;
     }
     
-    public void placeWall(Cell cell){
+    public void placeWall(Cell cell){ //à remplacer avec le futur objet Wall?
         if ("Barriere".equals(cell.type)){
             if(cell.isEmpty()==true){
                 cell.type="Barriere";
@@ -92,7 +92,7 @@ public class Board {
         return ret;
     }
     
-    public boolean isPlayerHere(Cell cell){
+    public static boolean isPlayerHere(Cell cell){
         boolean ret=false;
         if(cell.isEmpty()==ret){
             if("Joueur".equals(cell.type)){
@@ -103,14 +103,11 @@ public class Board {
     }
     
     //faire fonction de recherche de cellule en fonction de ooordonnées
-    // --> creer une Cell, lire Cell du tableau
-    public Cell findCell(Coord coord, Board board){
-        Coord coord_temp;
-        coord_temp = new Coord(0,0);
+    public static Cell findCell(Coord coord, Board board){
         Cell cell = new Cell(coord,null);
         for(int i=0;i<board.plateau.length;i++){
-            if(board.plateau[i].coord==coord){
-                return cell;
+            if((board.plateau[i].coord.x == coord.x) && (board.plateau[i].coord.y == coord.y)){
+                return board.plateau[i];
             }
         }
         return cell;
@@ -131,16 +128,18 @@ public class Board {
     
     public static void main(String[] args){
         int cptr=0;
+        Coord coord_test = new Coord(1,1);
         Board board_test = new Board();
         init_Board(board_test);
         for (int i=0;i<board_test.plateau.length;i++){
             //System.out.println(i+". Case:" + board_test.plateau[i]);
-            if(board_test.plateau[i].empty==false){
+            if(isPlayerHere(board_test.plateau[i])==true){
                     cptr++;
                     System.out.println("Coordonnées du joueur "+cptr+" : "+board_test.plateau[i].coord+ "["+i+"]");
             }
         }
        System.out.println("Piece vide? "+isPieceHere(board_test.plateau[152]));
+        System.out.println("findCell: "+findCell(coord_test,board_test));
     }
     
     
