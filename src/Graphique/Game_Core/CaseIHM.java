@@ -9,40 +9,48 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
+ * Classe permettant de symboliser une case de plateau
  *
  * @author MOREL Charles <charles.morel@cpe.fr>
  */
 public class CaseIHM extends JPanel {
 
-    private TypeCaseIHM type;
+    private final TypeCaseIHM type;
     private boolean isUsed;
     private boolean isFocused;
     private int x;
     private int y;
 
     public CaseIHM(int x, int y) {
-        this.type = type;
+        // Initialisation du statut non utilisé ni focused + cooredonnées
         this.isUsed = false;
+        this.isFocused = false;
         this.x = x;
         this.y = y;
+        // Recherche du type de case en fonction de ses coordonnées
         int i = y * 17 + x;
         if ((i / 17) % 2 == 0) {
             this.type = (i % 2) == 1 ? TypeCaseIHM.VERTICAL_WALL : TypeCaseIHM.PIECE;
         } else {
             this.type = (i % 2 == 1) ? TypeCaseIHM.HORIZNTAL_WALL : TypeCaseIHM.CENTRAL_WALL;
         }
+        // Création des bordures de la case
         this.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
+        // Mise à jour graphique de la case
         this.updateCase();
     }
 
     private void updateCaseColor() {
         if (this.isFocused) {
+            // Si on es focus et qu'il n'y a pas de pièce, alors on es coloré en jaune
             if (this.isUsed) {
                 this.setBackground(Color.red);
             } else {
+                // Si on es focus et qu'il y a une pièce, alors on es coloré en rouge
                 this.setBackground(Color.yellow);
             }
         } else if (this.isUsed) {
+            // Si on est utilisé alors on colore en fonction de s'il s'agit d'une case pièce ou mur
             switch (this.type) {
                 case PIECE:
                     this.setBackground(Color.white);
@@ -52,6 +60,7 @@ public class CaseIHM extends JPanel {
                     break;
             }
         } else {
+            // Si on n'est pas utilisé alors on colore en fonction de s'il s'agit d'une case pièce ou mur
             switch (this.type) {
                 case PIECE:
                     this.setBackground(Color.white);
@@ -64,6 +73,7 @@ public class CaseIHM extends JPanel {
     }
 
     private void updateContent() {
+        // Mise à jour de l'image en fonction de si l'on a une pièce ou un mur dans la case
         this.removeAll();
         if (this.isUsed) {
             JLabel caseContent = new JLabel();
@@ -85,8 +95,12 @@ public class CaseIHM extends JPanel {
     }
 
     private void updateCase() {
+        // Mise à jour graphique de la case:
+        //    Sa couleur
         this.updateCaseColor();
+        //    Son contenu
         this.updateContent();
+        //    MaJ Swing
         this.revalidate();
         this.repaint();
     }

@@ -1,6 +1,7 @@
 package Graphique.Game_Core;
 
 /**
+ * Enumération des type de cases
  *
  * @author MOREL Charles <charles.morel@cpe.fr>
  */
