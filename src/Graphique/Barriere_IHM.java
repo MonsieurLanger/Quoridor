@@ -10,5 +10,5 @@ package Graphique;
  * @author Eddine Langer
  */
 public class Barriere_IHM {
-    
+
 }
