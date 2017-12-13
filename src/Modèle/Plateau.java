@@ -12,7 +12,7 @@ package Modèle;
 public class Plateau {
 
     
-    Piece piece[][]= new Piece[9][9];
+   /* Piece piece[][]= new Piece[9][9];
     Wall wall[][]= new Wall[8][8];
     Coord coord= new Coord(0,0);
     Color color= new Color("Rouge");
@@ -27,4 +27,4 @@ public class Plateau {
         }
         return false;
     }
-}
+*/}

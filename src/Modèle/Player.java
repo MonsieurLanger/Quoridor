@@ -7,15 +7,15 @@ package Modèle;
 
 /**
  *
- * @author Eddine Langer
+ * @author nrmv4488
  */
-public class Case {
-    int X;
-    int Y;
-    int numJoueur;
+public class Player {
 
-    public Case(int numJoueur) {
-        this.numJoueur = numJoueur;
-    }
+
+public Player(){
+    Color color;
+    String nom;
     
+}   
+
 }

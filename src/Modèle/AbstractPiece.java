@@ -11,7 +11,7 @@ package Modèle;
  */
 public abstract class AbstractPiece implements Interface_Piece{
     Coord coord;
-    private final Color color;
+    final Color color;
 
     AbstractPiece(Color color, Coord coord) {
         this.color = color;
@@ -44,13 +44,14 @@ public abstract class AbstractPiece implements Interface_Piece{
     }
 
     @Override
-    public boolean Move(int xFinal, int yFinal) {
-        coord.x = xFinal;
-        coord.y = yFinal;
+    public boolean Move(Coord coord_finales, Board board) {
+        if(isMoveOk(coord_finales, board)){
+        coord.x = coord_finales.x;
+        coord.y = coord_finales.y;
+        }
         return true;
     }
 
     @Override
-    public abstract boolean isMoveOk(int xFinal,
-                                     int yFinal);
+    public abstract boolean isMoveOk(Coord coord_finale, Board board);
 }

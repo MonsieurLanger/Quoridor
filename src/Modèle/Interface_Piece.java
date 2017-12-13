@@ -19,8 +19,8 @@ public interface Interface_Piece {
 
     public int getY();
 
-    public boolean isMoveOk(int xFinal, int yFinal);
+    public boolean isMoveOk(Coord coord_finales, Board board);
 
-    public boolean Move(int xFinal, int yFinal);
+    public boolean Move(Coord coord_finales, Board board);
     
 }
