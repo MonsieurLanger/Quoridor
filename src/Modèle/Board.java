@@ -144,5 +144,5 @@ public class Board {
        System.out.println(movePiece(piece_test,findCell(coord_finales_test,board_test),board_test));
     }
     
-    
 }
+    

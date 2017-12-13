@@ -19,8 +19,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.InternalFrameListener;
+import Graphique.Game_Core.Game_Conatiner_IHM;
+import Modèle.ColorPlayer;
+import Modèle.Game;
+import Modèle.Player;
 
 /**
  *
@@ -34,21 +36,14 @@ public class Game_IHM extends JFrame implements ComponentListener {
     private Menu_Jeu jeuPanel;
     private Menu_Joueur joueurPanel;
     private Menu_Lobby lobbyPanel;
-
-    private Game_Conatiner_IHM monPlato;
+    public Game myGame;
+    private JPanel monPlato;
 
     public static ArrayList<Regle> rules;
 
     private GridBagConstraints c;
 
     public Game_IHM() {
-        this.addComponentListener(this);
-        rules = new ArrayList<Regle>();
-        rules.add(new Regle(1, "Règle par défault", "Chaque Joueur commence au debut de sa frontière. Votre objectif est de traverser le no man's land avant son adversaire.\n"
-                + "Vous disposez de plusieurs barrières afin de ralentir votre rival et ainsi gagner l'avantage. Le jeu se joue par tour et à chaque tour vous aurez le choix entre avancer dans une case adjacente ou poser une barrière.\n"
-                + "Vous avez la possibilité de sauter par dessus votre adversaire si celui-ci se trouve devant vous ou ,exceptionnelement dans cette situation, vous deplacer en diagonale si aucune barrière se trouve sur la trajectoire.\n \n"));
-        rules.add(new Regle(2, "Les Pièges", "Vous disposez d'une liste de pièges que vous pouvez poser sur le terrain de jeu afin de ralentir votre adversaire.\n"
-                + "Des boosts ou pièges peuvent apparaître sur le terrain, il vous suffit de passer dessus pour les récuperer et les utiliser sur votre rival pour prendre l'avantage.\n \n"));
         //Construction générale de la fenêtre
         this.setTitle("Koridunor");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,6 +55,7 @@ public class Game_IHM extends JFrame implements ComponentListener {
                 updateSubComponentsSize();
             }
         });
+        this.addComponentListener(this);
         init();
         c.gridx = 0;
         c.gridy = 0;
@@ -79,20 +75,18 @@ public class Game_IHM extends JFrame implements ComponentListener {
 
     private void init() {
         c = new GridBagConstraints();
-        monPlato = new Game_Conatiner_IHM();
-        monPlato.setPreferredSize(new Dimension(700, 700));
+        myGame = new Game(new Player("Joueur 1", ColorPlayer.BLEU), new Player("Joueur 2", ColorPlayer.ROUGE), null);
+        monPlato = new JPanel();
         accueilPanel = new Menu_Accueil(this);
         choixPanel = new Menu_Choix(this);
         configPanel = new Menu_Configuration(this);
         joueurPanel = new Menu_Joueur(this);
         jeuPanel = new Menu_Jeu(this);
-
-        accueilPanel.setPreferredSize(new Dimension(400, 700));
         this.setLayout(new GridBagLayout());
+        this.updateSubComponentsSize();
     }
 
     public void actualisation() {
-
         this.revalidate();
         this.repaint();
     }
@@ -122,14 +116,16 @@ public class Game_IHM extends JFrame implements ComponentListener {
         }
         if (t == jeuPanel) {
             this.remove(jeuPanel);
+            this.remove(monPlato);
         }
-
+        monPlato = new JPanel();
         c.gridx = 0;
         c.gridy = 0;
 
         this.add(accueilPanel, c);
         this.setVisible(true);
 
+        this.updateSubComponentsSize();
         actualisation();
     }
 
@@ -180,17 +176,26 @@ public class Game_IHM extends JFrame implements ComponentListener {
     void afficheJeu(Object t) {
         if (t == joueurPanel) {
             this.remove(joueurPanel);
+            this.remove(monPlato);
         }
         if (t == configPanel) {
             this.remove(configPanel);
+            this.remove(monPlato);
         }
 
         c.gridx = 0;
         c.gridy = 0;
 
         this.add(jeuPanel, c);
+
+        c.gridx = 1;
+        c.gridy = 0;
+        monPlato = new Game_Conatiner_IHM();
+
+        this.add(monPlato, c);
         this.setVisible(true);
 
+        this.updateSubComponentsSize();
         actualisation();
     }
 
@@ -223,7 +228,10 @@ public class Game_IHM extends JFrame implements ComponentListener {
             this.monPlato.setPreferredSize(dimPlateau);
             this.monPlato.setMaximumSize(dimPlateau);
             this.monPlato.setMinimumSize(dimPlateau);
-            this.monPlato.updateComponentAndSubComponentsSize();
+            if (this.monPlato instanceof Game_Conatiner_IHM) {
+                Game_Conatiner_IHM tmpPlateau = (Game_Conatiner_IHM) this.monPlato;
+                tmpPlateau.updateComponentAndSubComponentsSize();
+            }
         }
         Dimension dimAccueil = new Dimension(widthpcent * 30, height);
         if (this.accueilPanel != null) {

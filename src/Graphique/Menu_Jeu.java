@@ -5,7 +5,6 @@
  */
 package Graphique;
 
-import static Graphique.Game_IHM.rules;
 import Modèle.Regle;
 import java.awt.Dimension;
 import java.awt.Insets;
@@ -61,7 +60,7 @@ private JButton giveup;
     }
     private String messageRule(){
         String s=new String();
-        for (Regle object: rules) {
+        for (Regle object: this.parentPanel.myGame.getRules()) {
             if(object.isActive()==true){
                 s+=object.getRecap()+"\n"+object.getDescribeRule()+"\n";
             }
