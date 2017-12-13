@@ -14,7 +14,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import Graphique.Game_Core.Game_Conatiner_IHM;
+import Modèle.ColorPlayer;
+import Modèle.Game;
+import Modèle.Player;
 
 /**
  *
@@ -27,8 +30,8 @@ public class Game_IHM extends JFrame{
   private Menu_Jeu jeuPanel;
   private Menu_Joueur joueurPanel;
   private Menu_Lobby lobbyPanel;
-  
-  private Plateau_IHM monPlato;
+  public Game myGame;
+  private JPanel monPlato;
   
   
 
@@ -42,8 +45,7 @@ public class Game_IHM extends JFrame{
         init();
         c.gridx = 0;
         c.gridy = 0;
-      
-       
+        
        this.add(accueilPanel, c);
       //  this.add(partiePanel, c);
        //this.add(joueurPanel, c);
@@ -56,17 +58,18 @@ public class Game_IHM extends JFrame{
         this.setVisible(true);
         this.repaint();
     }
+  
     private void init() {
-        c = new GridBagConstraints();
-        monPlato = new Plateau_IHM();
+        c = new GridBagConstraints();      
+        myGame=new Game(new Player("Joueur 1", ColorPlayer.BLEU),new Player("Joueur 2",ColorPlayer.ROUGE),null);
+
+        monPlato = new JPanel();
         monPlato.setPreferredSize(new Dimension(700, 700));
-        monPlato.setLayout(new GridBagLayout());
         accueilPanel = new Menu_Accueil(this);
         choixPanel=new Menu_Choix(this);
         configPanel=new Menu_Configuration(this);
         joueurPanel=new Menu_Joueur(this);
         jeuPanel=new Menu_Jeu(this);
-        
         accueilPanel.setPreferredSize(new Dimension(400, 700));
         this.setLayout(new GridBagLayout());
     }
@@ -102,8 +105,10 @@ public class Game_IHM extends JFrame{
         }
         if(t==jeuPanel){
             this.remove(jeuPanel);
+            this.remove(monPlato);
         }
-        
+        monPlato = new JPanel();
+        monPlato.setPreferredSize(new Dimension(700, 700));
         c.gridx = 0;
         c.gridy = 0;
 
@@ -165,17 +170,32 @@ public class Game_IHM extends JFrame{
      void afficheJeu(Object t) {
         if(t==joueurPanel){
            this.remove(joueurPanel);
+           this.remove(monPlato);
         }
        if(t==configPanel){
            this.remove(configPanel);
+           this.remove(monPlato);
        }
       
         c.gridx = 0;
         c.gridy = 0;
 
         this.add(jeuPanel, c);
-        this.setVisible(true);
+        
+       c.gridx=1;
+       c.gridy=0;
+       monPlato=new Game_Conatiner_IHM();
+       this.add(monPlato,c);
+      // Game_Conatiner_IHM tmp =  (Game_Conatiner_IHM) monPlato;
+       
+       monPlato.setPreferredSize(new Dimension(700, 700));
 
-        actualisation();
+     // tmp.updateSubComponentsSize();
+     // monPlato.repaint();
+     //  monPlato.revalidate();
+       
+       this.setVisible(true);
+
+       actualisation();
     }
 }
