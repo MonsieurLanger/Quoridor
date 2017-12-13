@@ -11,11 +11,13 @@ package Modèle;
  */
 public class Player {
     private String pseudo;
-    private Color colorPlyer;
+    private ColorPlayer colorPlayer;
+    private int winner;
+    
 
-    public Player(String pseudo, Color colorPlyer) {
+    public Player(String pseudo, ColorPlayer colorPlyer) {
         this.pseudo = pseudo;
-        this.colorPlyer = colorPlyer;
+        this.colorPlayer = colorPlyer;
     }
 
     public String getPseudo() {
@@ -26,12 +28,17 @@ public class Player {
         this.pseudo = pseudo;
     }
 
-    public Color getColorPlyer() {
-        return colorPlyer;
+    public ColorPlayer getColorPlyer() {
+        return colorPlayer;
     }
 
-    public void setColorPlyer(Color colorPlyer) {
-        this.colorPlyer = colorPlyer;
+    public void setColorPlyer(ColorPlayer colorPlyer) {
+        this.colorPlayer = colorPlyer;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" + "pseudo=" + pseudo + ", colorPlayer=" + colorPlayer + '}';
     }
     
     

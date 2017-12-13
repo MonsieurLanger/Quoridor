@@ -5,7 +5,8 @@
  */
 package Graphique;
 
-import static Graphique.Game_IHM.rules;
+
+import Modèle.ColorPlayer;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -86,14 +87,14 @@ private JCheckBox rule2cb ;
         c.gridwidth=1;
         this.add(onlineB,c);
         
-        rule1cb = new JCheckBox(rules.get(0).getRecap());
+        rule1cb = new JCheckBox(this.parentPanel.myGame.getRules().get(0).getRecap());
         rule1cb.setPreferredSize(new Dimension(200, 50));
         c.gridx=0;
         c.gridy=4;
         c.gridwidth=2;
         this.add(rule1cb,c);
         
-        rule2cb = new JCheckBox(rules.get(1).getRecap());
+        rule2cb = new JCheckBox(this.parentPanel.myGame.getRules().get(1).getRecap());
         rule2cb.setPreferredSize(new Dimension(200, 50));
         c.gridx=0;
         c.gridy=5;
@@ -162,7 +163,8 @@ private JCheckBox rule2cb ;
         
         Object src=ae.getSource();
         if(src==localB){                
-                onlineB.setSelected(false);}
+                onlineB.setSelected(false);
+        }
         if(src==onlineB){              
                 localB.setSelected(false);}
         if(src==twoPlayB){
@@ -170,17 +172,30 @@ private JCheckBox rule2cb ;
         if(src==fourPlayB){
                 twoPlayB.setSelected(false);}
                 
-        if(src==lancer){            
+        if(src==lancer){
                 if(rule1cb.isSelected()==true){
-                    rules.get(0).setActive(true);
+                    this.parentPanel.myGame.getRules().get(0).setActive(true);
                 }
                 if(rule2cb.isSelected()==true){
-                    rules.get(1).setActive(true);
+                    this.parentPanel.myGame.getRules().get(1).setActive(true);
                 }                
                 if(localB.isSelected()==true){
+                    this.parentPanel.myGame.setOnline(false);
+                    this.parentPanel.myGame.setNomPlayerP1("Joueur 1");
+                    this.parentPanel.myGame.setNomPlayerP2("Joueur 2");
+                    this.parentPanel.myGame.setColorPlayerP1(ColorPlayer.BLEU);
+                    this.parentPanel.myGame.setColorPlayerP2(ColorPlayer.ROUGE);
                     this.parentPanel.afficheJeu(this);
                 }
                 else{
+                    this.parentPanel.myGame.setOnline(true);
+                    if(twoPlayB.isSelected()){
+                        this.parentPanel.myGame.setNbJoueur(2);
+                    }
+                    if(fourPlayB.isSelected()){
+                        this.parentPanel.myGame.setNbJoueur(4);
+                    }
+                    
                     this.parentPanel.afficheJoueur(this);
                 }
         }

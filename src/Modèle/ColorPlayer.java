@@ -9,7 +9,7 @@ package Modèle;
  *
  * @author nrmv4488
  */
-public enum Color {
+public enum ColorPlayer {
     BLEU ("Bleu"),
     ROUGE ("Rouge"),
     ROSE ("Rose"),
@@ -21,7 +21,7 @@ public enum Color {
     private String name = "";
     
     //Constructeur
-    Color(String name){
+    ColorPlayer(String name){
         this.name=name;
     }
     

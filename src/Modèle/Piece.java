@@ -11,10 +11,10 @@ package Modèle;
  */
 public class Piece {
     Coord coord;
-    Color color;
+    ColorPlayer color;
     
     //Constructeur
-    public Piece(Coord coord, Color color){
+    public Piece(Coord coord, ColorPlayer color){
         this.coord = coord;
         this.color = color;
     }

@@ -84,7 +84,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.add(actionsPannel, BorderLayout.SOUTH);
     }
 
-    private void updateSubComponentsSize() {
+    public void updateSubComponentsSize() {
         int uniteHauteur = (int) (this.getSize().height*0.01);
         int uniteLaugeur = (int) (this.getSize().width*0.01);
         int tailleGrille = uniteHauteur * 85;
