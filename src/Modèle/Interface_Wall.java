@@ -7,18 +7,13 @@ package Modèle;
 
 /**
  *
- * @author cbl.ho
+ * @author hariri
  */
 public interface Interface_Wall {
-    
     public Color getColor();
-
     public int getX();
-
     public int getY();
-
-    public boolean isPlaceOk(int xFinal, int yFinal);
-
-    public boolean Place(int xFinal, int yFinal);
+    public boolean Place(int xfinal,int yFinal);
+    public boolean isPlaceOK(int x,int y);
     
 }

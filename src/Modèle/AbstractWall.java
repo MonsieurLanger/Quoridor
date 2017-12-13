@@ -7,40 +7,43 @@ package Modèle;
 
 /**
  *
- * @author cbl.ho
+ * @author hariri
  */
-public abstract class AbstractWall implements Interface_Wall{
-    Coord coord;
-    private final Color color;
+public class AbstractWall implements Interface_Wall{
+    Coord coordwall;
+    Color colorwall;
 
-    AbstractWall(Color color, Coord coord) {
-        this.color = color;
-        this.coord = coord;
+    public AbstractWall(Coord coordwall, Color colorwall) {
+        this.coordwall = coordwall;
+        this.colorwall = colorwall;
     }
 
     @Override
     public Color getColor() {
-        return color;
+       return colorwall;
     }
 
     @Override
     public int getX() {
-        return coord.x;
+        return coordwall.x;
     }
 
     @Override
     public int getY() {
-        return coord.y;
+        return coordwall.y;
     }
 
     @Override
-    public boolean Place(int xFinal, int yFinal) {
-        coord.x = xFinal;
-        coord.y = yFinal;
-        return true;
+    public boolean Place(int xfinal, int yFinal) {
+        boolean bool=false;
+        return bool;
     }
 
     @Override
-    public abstract boolean isPlaceOk(int xFinal,
-                                     int yFinal);
+    public boolean isPlaceOK(int x, int y) {
+        boolean bool=false;
+        return bool; 
+    }
+    
+    
 }
