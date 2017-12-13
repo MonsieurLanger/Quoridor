@@ -22,7 +22,7 @@ import javax.swing.JLayeredPane;
  *
  * @author MOREL Charles <charles.morel@cpe.fr>
  */
-public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMotionListener, ComponentListener {
+public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMotionListener {
 
     private JLabel gameTimer;
     private JLabel currentPlayerTimer;
@@ -34,13 +34,12 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     private JPanel boardCentredPanel;
 
     private JLayeredPane layeredPane;
-    private JLabel pieceDeplaced;
+    private CaseContentIHM pieceDeplaced;
     private TypeCaseIHM typePieceDeplaced;
 
     public Game_Conatiner_IHM() {
         // Mise en place de la mise en page
         super(new BorderLayout());
-        this.addComponentListener(this);
 
         // Initialisation de la partie supérieure du JPanel
         JPanel infosPanel = new JPanel(new GridLayout(1, 3));
@@ -61,7 +60,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         layeredPane.add(this.board, JLayeredPane.DEFAULT_LAYER);
         boardCentredPanel.add(layeredPane, BorderLayout.CENTER);
 
-        this.updateSubComponentsSize();
+        this.updateComponentAndSubComponentsSize();
 
         // Initalisation de la partie basse du JPanel
         this.actionsPannel = new JPanel();
@@ -72,11 +71,10 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.verticalWall = new JPanel();
         this.verticalWall.add(new CaseContentIHM("wall_v.jpg"));
         this.actionsPannel.add(this.verticalWall);
-        
+
         this.horizontalWall = new JPanel();
         this.horizontalWall.add(new CaseContentIHM("wall_h.jpg"));
         this.actionsPannel.add(this.horizontalWall);
-
 
         // Ajout des composants au continer
         this.add(infosPanel, BorderLayout.NORTH);
@@ -84,24 +82,24 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.add(actionsPannel, BorderLayout.SOUTH);
     }
 
-    private void updateSubComponentsSize() {
-        int uniteHauteur = (int) (this.getSize().height*0.01);
-        int uniteLaugeur = (int) (this.getSize().width*0.01);
-        int tailleGrille = uniteHauteur * 85;
+    public void updateComponentAndSubComponentsSize() {
+        int uniteHauteur = (int) (this.getSize().height * 0.01);
+        int uniteLargeur = (int) (this.getSize().width * 0.01);
+        int tailleGrille = (uniteHauteur < uniteLargeur) ? uniteHauteur * 85 : uniteLargeur * 85;
         this.layeredPane.setMaximumSize(new Dimension(tailleGrille, tailleGrille));
         this.layeredPane.setMinimumSize(new Dimension(tailleGrille, tailleGrille));
         this.layeredPane.setPreferredSize(new Dimension(tailleGrille, tailleGrille));
         this.board.setBounds(0, 0, tailleGrille, tailleGrille);
         if (this.actionsPannel != null) {
-            this.actionsPannel.setPreferredSize(new Dimension(uniteLaugeur*100 - 1, uniteHauteur*10));
-            this.actionsPannel.setMaximumSize(new Dimension(uniteLaugeur*100 - 1, uniteHauteur*10));
-            this.actionsPannel.setMinimumSize(new Dimension(uniteLaugeur*100 - 1, uniteHauteur*10));
+            this.actionsPannel.setPreferredSize(new Dimension(uniteLargeur * 100 - 1, uniteHauteur * 14));
+            this.actionsPannel.setMaximumSize(new Dimension(uniteLargeur * 100 - 1, uniteHauteur * 14));
+            this.actionsPannel.setMinimumSize(new Dimension(uniteLargeur * 100 - 1, uniteHauteur * 14));
         }
         if (this.verticalWall != null) {
-            this.verticalWall.setBounds(uniteLaugeur*30, 0, uniteHauteur*5, uniteHauteur * 15);
+            this.verticalWall.setBounds(uniteLargeur * 30, 0, (int) (uniteHauteur * 2.5), uniteHauteur * 10);
         }
         if (this.horizontalWall != null) {
-            this.horizontalWall.setBounds(uniteLaugeur*60, 0, uniteHauteur*15, uniteHauteur*5);
+            this.horizontalWall.setBounds(uniteLargeur * 60, uniteHauteur * 5, uniteHauteur * 10, (int) (uniteHauteur * 2.5));
         }
         this.repaint();
         this.revalidate();
@@ -122,27 +120,35 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             currentCase.setUse(false);
             pieceDeplaced = (CaseContentIHM) c;
             pieceDeplaced.setLocation(me.getX(), me.getY());
-            pieceDeplaced.setSize(pieceDeplaced.getWidth(), pieceDeplaced.getHeight());
+            pieceDeplaced.setSize(c.getWidth(), c.getHeight());
+            pieceDeplaced.stopAutoFit();
             this.typePieceDeplaced = currentCase.getType();
             layeredPane.add(pieceDeplaced, JLayeredPane.DRAG_LAYER);
         }
+
+        int uniteHauteur = (int) (this.getSize().height * 0.01);
 
         c = this.actionsPannel.findComponentAt(me.getX(), me.getY());
         if (c != null && c instanceof CaseContentIHM) {
             JPanel parent = (JPanel) c.getParent();
             if (parent.equals(this.horizontalWall)) {
-                pieceDeplaced = new CaseContentIHM("wall_h.jpg");
+                pieceDeplaced = new CaseContentIHM("wall_h.jpg", false);
                 this.typePieceDeplaced = TypeCaseIHM.HORIZNTAL_WALL;
+                pieceDeplaced.updateSize(uniteHauteur * 10, (int) (uniteHauteur * 2.5));
+                pieceDeplaced.setSize(uniteHauteur * 10, (int) (uniteHauteur * 2.5));
             }
             if (parent.equals(this.verticalWall)) {
-                pieceDeplaced = new CaseContentIHM("wall_v.jpg");;
+                pieceDeplaced = new CaseContentIHM("wall_v.jpg", false);
                 this.typePieceDeplaced = TypeCaseIHM.VERTICAL_WALL;
+                pieceDeplaced.updateSize((int) (uniteHauteur * 2.5), uniteHauteur * 10);
+                pieceDeplaced.setSize((int) (uniteHauteur * 2.5), uniteHauteur * 10);
             }
-            pieceDeplaced.setLocation(0, 0);
-            pieceDeplaced.setSize(50, 50);
+            pieceDeplaced.getMaximumSize();
+            pieceDeplaced.setLocation(-100, -100);
             layeredPane.add(pieceDeplaced, JLayeredPane.DRAG_LAYER);
         }
     }
+    JPanel jp;
 
     @Override
     public void mouseReleased(MouseEvent me) {
@@ -163,6 +169,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             caseCourrante.setUse(true);
             caseCourrante.setFocus(false);
         }
+        this.board.resetFocusedCases();
 
     }
 
@@ -211,23 +218,6 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
 
     @Override
     public void mouseMoved(MouseEvent me) {
-    }
-
-    @Override
-    public void componentResized(ComponentEvent e) {
-        this.updateSubComponentsSize();
-    }
-
-    @Override
-    public void componentMoved(ComponentEvent e) {
-    }
-
-    @Override
-    public void componentShown(ComponentEvent e) {
-    }
-
-    @Override
-    public void componentHidden(ComponentEvent e) {
     }
 
 }
