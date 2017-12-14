@@ -13,37 +13,45 @@ import java.util.Arrays;
  */
 public class Board {
     //Player ActualPlayer; pour implémentation de Game.java
-    Cell plateau[];
+    private Cell plateau[];
+
+    public Cell[] getPlateau() {
+        return plateau;
+    }
+
+    public void setPlateau(Cell[] plateau) {
+        this.plateau = plateau;
+    }
     
    public Board(){
        this.plateau = new Cell[289];
     }
     
-   public static void init_Board(Board board){
+   public void init_Board(){
        int k=0;
         for(int i=0;i<17;i++){
            for(int j=0;j<17;j++){
                Coord coord = new Coord(i,j);
                if(coord.x%2!=0 && coord.y%2!=0){
                    Cell cell = new Cell(coord,"Inutilisable");
-                   board.plateau[k]=cell;
+                   this.plateau[k]=cell;
                    cell.indice=k;
                    k++;
                }if((coord.x%2!=0 && coord.y%2==0)||(coord.x%2==0 && coord.y%2!=0)){
                    Cell cell = new Cell(coord,"Barriere");
-                   board.plateau[k]=cell;
+                   this.plateau[k]=cell;
                    cell.indice=k;
                    k++;
                }if(coord.x%2==0 && coord.y%2==0){
                    if((coord.x==8 && coord.y==0)||(coord.x==8 && coord.y==16)){
                      Cell cell = new Cell(coord,"Joueur");
                      cell.empty=false;
-                     board.plateau[k]=cell;
+                     this.plateau[k]=cell;
                      cell.indice=k;
                      k++;
                    }else{
                         Cell cell = new Cell(coord,"Vide");
-                        board.plateau[k]=cell;
+                        this.plateau[k]=cell;
                         cell.indice=k;
                         k++;
                    }
@@ -52,7 +60,7 @@ public class Board {
         }
     }
     
-    public static boolean isPieceHere(Cell cell){
+    public  boolean isPieceHere(Cell cell){
         boolean ret=false;
         if(cell.isEmpty()==true){
             ret=true;
@@ -62,7 +70,7 @@ public class Board {
     
     //---> voir plus tard, gestion au niveau d'un tableau de Wall du joueur etc
     //ajout modif dans le board?
-    public static boolean placeWall(Wall wall, Cell cell_finale, Board board){ 
+    public  boolean placeWall(Wall wall, Cell cell_finale, Board board){ 
         boolean ret=false;
         Coord coord_finales = new Coord(cell_finale.coord.x,cell_finale.coord.y);
         if (Wall.isMoveOk(coord_finales,board)){
@@ -78,7 +86,7 @@ public class Board {
         return ret;
     }
     
-    public static boolean movePiece(Piece piece,Cell cell_finale, Board board){
+    public  boolean movePiece(Piece piece,Cell cell_finale, Board board){
         boolean ret=false;
         Coord coord_temp=new Coord(piece.coord.x,piece.coord.y);
         if(piece.isMoveOk(cell_finale.coord,board)==true){
@@ -96,7 +104,7 @@ public class Board {
         
     }
          
-    public static boolean isPlayerHere(Cell cell){
+    public  boolean isPlayerHere(Cell cell){
         boolean ret=false;
         if(cell.isEmpty()==ret){
             if("Joueur".equals(cell.type)){
@@ -107,7 +115,7 @@ public class Board {
     }
 
      //Fonction qui retour tableau de joueur (afin de récup leur coord etc..
-    public static Coord[] coord_Player(Board board){
+    public  Coord[] coord_Player(Board board){
         int cptr=0;
         Coord[] coord= new Coord[2];
         Coord coord_j2= new Coord();
@@ -145,14 +153,14 @@ public class Board {
         return false;
     }
     
-    public static void main(String[] args){
+    public void affiche(){
         int cptr=0;
         Coord coord_test = new Coord(8,0);
         Coord coord_finales_test = new Coord(8,2);
         Coord coord_wall= new Coord(0,1);
         Coord coord_wall_finales= new Coord();
-        Board board_test = new Board();
-        init_Board(board_test);
+
+        this.init_Board();
         Piece piece_test = new Piece(Color.BLEU, coord_test);
         /*for (int i=0;i<board_test.plateau.length;i++){
             System.out.println(i+". Case:" + board_test.plateau[i]);
@@ -161,15 +169,16 @@ public class Board {
                     System.out.println("Coordonnées du joueur "+cptr+" : "+board_test.plateau[i].coord+ "["+i+"]");
             }
         }*/
-       System.out.println("Piece vide? "+isPieceHere(board_test.plateau[152]));
-       System.out.println("findCell: "+findCell(coord_test,board_test));
-       System.out.println(movePiece(piece_test,findCell(coord_finales_test,board_test),board_test));
+        System.out.println("Test");
+       System.out.println("Piece vide? "+isPieceHere(this.plateau[152]));
+       System.out.println("findCell: "+findCell(coord_test,this));
+       System.out.println(movePiece(piece_test,findCell(coord_finales_test,this),this));
        System.out.println("Nouvelles coordonnées de la pièce: "+piece_test.coord+".");
-       System.out.println("Coordonnées des joueurs avec coord_Player : "+Arrays.toString(coord_Player(board_test)));
+       System.out.println("Coordonnées des joueurs avec coord_Player : "+Arrays.toString(coord_Player(this)));
        Wall wall_test = new Wall();
-        System.out.println(board_test.plateau[1].isEmpty());
-        System.out.println("test place_wall : "+placeWall(wall_test,board_test.plateau[1],board_test));
-        System.out.println(board_test.plateau[1].isEmpty());
+        System.out.println(this.plateau[1].isEmpty());
+        System.out.println("test place_wall : "+placeWall(wall_test,this.plateau[1],this));
+        System.out.println(this.plateau[1].isEmpty());
     }
 }
 

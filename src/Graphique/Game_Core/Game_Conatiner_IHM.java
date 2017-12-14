@@ -1,5 +1,6 @@
 package Graphique.Game_Core;
 
+import Modèle.Game;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -39,11 +40,12 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     private int gameTime;
     private int numJoueur;
     private boolean fromStock;
+    private Game myGame;
 
-    public Game_Conatiner_IHM() {
+    public Game_Conatiner_IHM(Game g) {
         // Mise en place de la mise en page
         super(new BorderLayout());
-
+        
         // Initialisation de la partie supérieure du JPanel
         JPanel infosPanel = new JPanel(new GridLayout(1, 3));
         this.gameTime = 0;
@@ -52,6 +54,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.currentPlayerTimer = new JLabel();
         this.currentPlayerName = new JPanel();
         this.numJoueur = 2;
+        this.myGame=g;
         this.updateCurrentPlayer();
         infosPanel.add(this.gameTimer);
         infosPanel.add(this.currentPlayerTimer);

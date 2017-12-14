@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Graphique.Game_Core.Game_Conatiner_IHM;
+import Modèle.Board;
 import Modèle.Color;
 import Modèle.Game;
 import Modèle.Player;
@@ -75,7 +76,7 @@ public class Game_IHM extends JFrame implements ComponentListener {
 
     private void init() {
         c = new GridBagConstraints();
-        myGame = new Game(new Player("Joueur 1", Color.BLEU), new Player("Joueur 2", Color.ROUGE), null);
+        myGame = new Game(new Player("Joueur 1", Color.BLEU), new Player("Joueur 2", Color.ROUGE), new Board());
         monPlato = new JPanel();
         accueilPanel = new Menu_Accueil(this);
         choixPanel = new Menu_Choix(this);
@@ -195,8 +196,8 @@ public class Game_IHM extends JFrame implements ComponentListener {
         c.gridx = 1;
         c.gridy = 0;
 
-        monPlato = new Game_Conatiner_IHM();
-                        this.updateSubComponentsSize();
+        monPlato = new Game_Conatiner_IHM(myGame);
+        this.updateSubComponentsSize();
 
         this.add(monPlato, c);
         this.setVisible(true);

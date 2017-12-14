@@ -29,7 +29,9 @@ public class Game {
         this.pcourant=this.p1;
         
         this.jouable=false;
-        this.myBoard = myBoard;
+        this.myBoard = myBoard; 
+        myBoard.init_Board();
+        myBoard.affiche();
         rules =new ArrayList<Regle>();
         rules.add(new Regle(1,"Règle par défault","\"DEROULEMENT D'UNE PARTIE:\"\n" 
            + "Chaque tour, le joueur choisit entre déplacer son pion ou poser une barrière (jusqu'à ce qu'il n'y en ait plus).\"\n\n" 
