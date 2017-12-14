@@ -18,31 +18,26 @@ public class Piece extends AbstractPiece {
     @Override
     public boolean isMoveOk(Coord coord_finales, Board board) {
         boolean ret = false;
-        System.out.println("1");
         //vérif coord sur le plateau
         if (Coord.coord_valides(coord_finales)) {
-            System.out.println("2");
             //vérif coord déplacement +2 et non diagonal (car +1 == case barriere)   
             int xFinal = coord_finales.x;
             int yFinal = coord_finales.y;
             if (Math.abs(xFinal - this.coord.x) == 0 && Math.abs(yFinal - this.coord.y) == 2 || Math.abs(xFinal - this.coord.x) == 2 && Math.abs(yFinal - this.coord.y) == 0) {
-                System.out.println("3");
                 //vérif non impaire/impaire 
                 if (!(xFinal % 2 != 0 && yFinal % 2 != 0)) {
-                    System.out.println("4");
                     //vérif s'il y a un autre joueur
                     if (Board.findCell(coord_finales, board).empty == true) {
-                        System.out.println("5");
                         //vérif s'il y a une barriere::
                         //déplacement en X
                         if (yFinal == this.coord.y) {
-                            System.out.println("6");
                             if (xFinal > this.coord.x) {//déplacement vers la droite
                                 //--> créer coord pour le findCell
-                                System.out.println("7");
                                 Coord coord_temp = new Coord(this.coord.x + 1, this.coord.y);
                                 if (Board.findCell(coord_temp, board).empty == true) {//si cell en +1 isEmpty==true ok 
                                     ret = true;
+                                }else{
+                                    System.out.println("Déplacement non autorisé, il y a une barrière.");
                                 }
                             }
                         //déplacement en Y
@@ -52,11 +47,19 @@ public class Piece extends AbstractPiece {
                                 Coord coord_temp = new Coord(this.coord.x, this.coord.y + 1);
                                 if (Board.findCell(coord_temp, board).empty == true) {//si cell en +1 isEmpty==true ok 
                                     ret = true;
+                                }else{
+                                    System.out.println("Déplacement non autorisé, il y a une barrière.");
                                 }
                             }
                         }
+                    }else{
+                        System.out.println("Déplacement non autorisé, il y a un autre joueur sur la case.");
                     }
+                }else{
+                    System.out.println("Déplacement non autorisé, la case ne fait pas partie du jeu.");
                 }
+            }else{
+                System.out.println("Déplacement non autorisé, un déplacement se fait d'une case, non diagonal.");
             }
         } else {
             System.out.println("Mouvement impossible");

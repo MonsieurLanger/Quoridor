@@ -10,37 +10,30 @@ package Modèle;
  * @author hariri
  */
 public class AbstractWall implements Interface_Wall{
-    Coord coordwall;
-    Color colorwall;
+    Coord coord;
 
-    public AbstractWall(Coord coordwall, Color colorwall) {
-        this.coordwall = coordwall;
-        this.colorwall = colorwall;
+    public AbstractWall() {
     }
 
-    @Override
-    public Color getColor() {
-       return colorwall;
-    }
 
     @Override
     public int getX() {
-        return coordwall.x;
+        return coord.x;
     }
 
     @Override
     public int getY() {
-        return coordwall.y;
+        return coord.y;
     }
 
     @Override
-    public boolean Place(int xfinal, int yFinal) {
+    public boolean Move(int xfinal, int yFinal) {
         boolean bool=false;
         return bool;
     }
 
     @Override
-    public boolean isPlaceOK(int x, int y) {
+    public boolean isMoveOK(int x, int y) {
         boolean bool=false;
         return bool; 
     }

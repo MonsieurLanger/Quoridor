@@ -10,10 +10,9 @@ package Modèle;
  * @author hariri
  */
 public interface Interface_Wall {
-    public Color getColor();
     public int getX();
     public int getY();
-    public boolean Place(int xfinal,int yFinal);
-    public boolean isPlaceOK(int x,int y);
+    public boolean Move(int xfinal,int yFinal);
+    public boolean isMoveOK(int x,int y);
     
 }

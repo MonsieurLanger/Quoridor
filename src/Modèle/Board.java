@@ -5,6 +5,8 @@
  */
 package Modèle;
 
+import java.util.Arrays;
+
 /**
  *
  * @author nrmv4488
@@ -59,9 +61,11 @@ public class Board {
     }
     
     //---> voir plus tard, gestion au niveau d'un tableau de Wall du joueur etc
-    public boolean placeWall(Wall wall, Cell cell_finale){ 
+    //ajout modif dans le board?
+    public static boolean placeWall(Wall wall, Cell cell_finale, Board board){ 
         boolean ret=false;
-        if ("Barriere".equals(cell_finale.type)){
+        Coord coord_finales = new Coord(cell_finale.coord.x,cell_finale.coord.y);
+        if (Wall.isMoveOk(coord_finales,board)){
             if(cell_finale.isEmpty()==true){
                 cell_finale.type="Barriere";
                 cell_finale.empty=false;
@@ -101,8 +105,24 @@ public class Board {
         }
         return ret;
     }
+
+     //Fonction qui retour tableau de joueur (afin de récup leur coord etc..
+    public static Coord[] coord_Player(Board board){
+        int cptr=0;
+        Coord[] coord= new Coord[2];
+        Coord coord_j2= new Coord();
+        for (int i=0;i<board.plateau.length;i++){
+            if(isPlayerHere(board.plateau[i])==true){
+                    coord[cptr]=board.plateau[i].coord;
+                    cptr++;
+                    System.out.println("Coordonnées du joueur "+cptr+" : "+board.plateau[i].coord+ "["+i+"]");
+            }
+        }
+        return coord;
+    }
+
     
-    //faire fonction de recherche de cellule en fonction de cooordonnées
+    //Fonction de recherche de cellule en fonction de cooordonnées
     public static Cell findCell(Coord coord, Board board){
         Cell cell = new Cell(coord,null);
         for(int i=0;i<board.plateau.length;i++){
@@ -129,20 +149,30 @@ public class Board {
         int cptr=0;
         Coord coord_test = new Coord(8,0);
         Coord coord_finales_test = new Coord(8,2);
+        Coord coord_wall= new Coord(0,1);
+        Coord coord_wall_finales= new Coord();
         Board board_test = new Board();
         init_Board(board_test);
         Piece piece_test = new Piece(Color.BLEU, coord_test);
-        for (int i=0;i<board_test.plateau.length;i++){
-            //System.out.println(i+". Case:" + board_test.plateau[i]);
+        /*for (int i=0;i<board_test.plateau.length;i++){
+            System.out.println(i+". Case:" + board_test.plateau[i]);
             if(isPlayerHere(board_test.plateau[i])==true){
                     cptr++;
                     System.out.println("Coordonnées du joueur "+cptr+" : "+board_test.plateau[i].coord+ "["+i+"]");
             }
-        }
+        }*/
        System.out.println("Piece vide? "+isPieceHere(board_test.plateau[152]));
        System.out.println("findCell: "+findCell(coord_test,board_test));
        System.out.println(movePiece(piece_test,findCell(coord_finales_test,board_test),board_test));
+       System.out.println("Nouvelles coordonnées de la pièce: "+piece_test.coord+".");
+       System.out.println("Coordonnées des joueurs avec coord_Player : "+Arrays.toString(coord_Player(board_test)));
+       Wall wall_test = new Wall();
+        System.out.println(board_test.plateau[1].isEmpty());
+        System.out.println("test place_wall : "+placeWall(wall_test,board_test.plateau[1],board_test));
+        System.out.println(board_test.plateau[1].isEmpty());
     }
-    
 }
-    
+
+
+
+//--> tester la création de Wall et pose de Wall 
