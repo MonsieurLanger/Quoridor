@@ -20,7 +20,7 @@ public abstract class Menu extends JPanel implements ActionListener,MouseListene
     protected  GridBagConstraints c;
     
     public Menu(Game_IHM gIHM){
-        this.setSize(400,700);
+        this.setSize(500,900);
         parentPanel=gIHM;
         this.addMouseListener(this);
         this.setLayout(new GridBagLayout());

@@ -21,7 +21,7 @@ public class Menu_Choix extends Menu{
     private JButton backAcc;
     public Menu_Choix(Game_IHM gIHM) {
         super(gIHM);
-        c.insets = new Insets(30, 30, 30, 30);
+         c.insets = new Insets(30, 30, 30, 30);
 
         join = new JButton("Rejoindre une partie");
         join.setPreferredSize(new Dimension(200, 50));

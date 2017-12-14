@@ -48,6 +48,7 @@ public class Menu_Accueil extends Menu{
         this.setVisible(true);
     }
     
+    @Override
     protected void initButtonListener(){
        jouer.addActionListener(this);
        classment.addActionListener(this);

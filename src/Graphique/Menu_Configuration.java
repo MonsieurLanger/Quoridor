@@ -6,7 +6,7 @@
 package Graphique;
 
 
-import Modèle.ColorPlayer;
+import Modèle.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -41,7 +41,7 @@ private JCheckBox rule2cb ;
 
     public Menu_Configuration(Game_IHM gIHM) {
         super(gIHM);
-        c.insets = new Insets(15, 15, 15, 15);
+        c.insets = new Insets(10, 10, 10, 10);
         nmbjoueur = new JLabel("Nombre de joueurs :");
         nmbjoueur.setPreferredSize(new Dimension(200, 50));
         c.gridx=0;
@@ -183,8 +183,8 @@ private JCheckBox rule2cb ;
                     this.parentPanel.myGame.setOnline(false);
                     this.parentPanel.myGame.setNomPlayerP1("Joueur 1");
                     this.parentPanel.myGame.setNomPlayerP2("Joueur 2");
-                    this.parentPanel.myGame.setColorPlayerP1(ColorPlayer.BLEU);
-                    this.parentPanel.myGame.setColorPlayerP2(ColorPlayer.ROUGE);
+                    this.parentPanel.myGame.setColorPlayerP1(Color.BLEU);
+                    this.parentPanel.myGame.setColorPlayerP2(Color.ROUGE);
                     this.parentPanel.afficheJeu(this);
                 }
                 else{

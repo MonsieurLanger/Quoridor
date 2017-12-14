@@ -31,11 +31,43 @@ public class Game {
         this.jouable=false;
         this.myBoard = myBoard;
         rules =new ArrayList<Regle>();
-        rules.add(new Regle(1,"Règle par défault","Chaque Joueur commence au debut de sa frontière. Votre objectif est de traverser le no man's land avant son adversaire.\n"
-                +"Vous disposez de plusieurs barrières afin de ralentir votre rival et ainsi gagner l'avantage. Le jeu se joue par tour et à chaque tour vous aurez le choix entre avancer dans une case adjacente ou poser une barrière.\n"
-                +"Vous avez la possibilité de sauter par dessus votre adversaire si celui-ci se trouve devant vous ou ,exceptionnelement dans cette situation, vous deplacer en diagonale si aucune barrière se trouve sur la trajectoire.\n \n"));  
+        rules.add(new Regle(1,"Règle par défault","\"DEROULEMENT D'UNE PARTIE:\"\n" 
+           + "Chaque tour, le joueur choisit entre déplacer son pion ou poser une barrière (jusqu'à ce qu'il n'y en ait plus).\"\n\n" 
+           +"DEPLACEMENT DES PIONS:\n"
+           + "Les pions se déplacent d'une case (horizontalement ou verticalement), en avant ou en arrière.\nLes barrières doivent être contournées.\"\n\n" 
+                + "POSE DES BARRIERES:\n" +
+             "Une barrière doit être posée sur deux intercases (grises) adjacentes et alignées horizontalement ou verticalement.\"\n"
++             "Elle ne peut pas complètement bloquer l'accès de l'adversaire à sa ligne de but.\"\n\n" +
+            "FACE A FACE:\n" +
+            "Quand 2 pions sont sur des cases voisines (sans barrière entre les 2), le joueur dont c'est le tour peut sauter son adversaire.\"\n" +
+            "S'il y a une barrière derrière l'adversaire, le joueur peut se placer à droite ou à gauche de son adversaire.\"\n\n" +
+             "FIN DE LA PARTIE:\"\n" +
+             "Le premier joueur qui atteind une des cases de la ligne opposée à son départ gagne la partie.\n\n"
+        +"DEROULEMENT D'UNE PARTIE:\n"
+            + "Chaque tour, le joueur choisit entre déplacer son pion ou poser une barrière (jusqu'à ce qu'il n'y en ait plus).\n"
+            + "DEPLACEMENT DES PIONS:\n"
+            + "Les pions se déplacent d'une case (horizontalement ou verticalement), en avant ou en arrière.\nLes barrières doivent être contournées.\n\n"
+            + "POSE DES BARRIERES:\n"
+            + "Une barrière doit être posée sur deux intercases (grises) adjacentes et alignées horizontalement ou verticalement.\n"
+            + "Elle ne peut pas complètement bloquer l'accès de l'adversaire à sa ligne de but.\n\n"
+            + "FACE A FACE:\n"
+            + "Quand 2 pions sont sur des cases voisines (sans barrière entre les 2), le joueur dont c'est le tour peut sauter son adversaire (1 seul adversaire sauté par tour).\n"
+            + "S'il y a une barrière derrière l'adversaire, le joueur peut se placer à droite ou à gauche de son adversaire.\n\n"
+            + "FIN DE LA PARTIE:\n"
+            + "Le premier joueur qui atteind une des cases de la ligne opposée à son départ gagne la partie."
+        
+    
+        ));  
         rules.add(new Regle(2,"Les Pièges","Vous disposez d'une liste de pièges que vous pouvez poser sur le terrain de jeu afin de ralentir votre adversaire.\n"
-                + "Des boosts ou pièges peuvent apparaître sur le terrain, il vous suffit de passer dessus pour les récuperer et les utiliser sur votre rival pour prendre l'avantage.\n \n"));
+                + "Des boosts ou pièges peuvent apparaître sur le terrain, il vous suffit de passer dessus pour les récuperer et les utiliser sur votre rival pour prendre l'avantage.\n \n"
+        
+        
+        
+        
+        
+        ));
+        
+       
         
     }
     
@@ -90,11 +122,11 @@ public class Game {
      p2.setPseudo(nomP2);
     }
     
-    public void setColorPlayerP1(ColorPlayer cP1){
+    public void setColorPlayerP1(Color cP1){
      p1.setColorPlyer(cP1);
     }
     
-    public void setColorPlayerP2(ColorPlayer cP2){
+    public void setColorPlayerP2(Color cP2){
      p2.setColorPlyer(cP2);
     }
 }
