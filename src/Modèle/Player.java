@@ -15,7 +15,6 @@ public class Player {
 public Player(){
     Color color;
     String nom;
-    
 }   
 
 }
