@@ -7,14 +7,39 @@ package Modèle;
 
 /**
  *
- * @author nrmv4488
+ * @author Eddine Langer
  */
 public class Player {
+    private String pseudo;
+    private ColorPlayer colorPlayer;
+    private int winner;
+    
 
+    public Player(String pseudo, ColorPlayer colorPlyer) {
+        this.pseudo = pseudo;
+        this.colorPlayer = colorPlyer;
+    }
 
-public Player(){
-    Color color;
-    String nom;
-}   
+    public String getPseudo() {
+        return pseudo;
+    }
 
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    public ColorPlayer getColorPlyer() {
+        return colorPlayer;
+    }
+
+    public void setColorPlyer(ColorPlayer colorPlyer) {
+        this.colorPlayer = colorPlyer;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" + "pseudo=" + pseudo + ", colorPlayer=" + colorPlayer + '}';
+    }
+    
+    
 }
