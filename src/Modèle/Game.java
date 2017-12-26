@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class Game {
     private Player p1;
     private Player p2;
+    private Player p3;
+    private Player p4;
     //potentiellement d'autres joueurs
     private Player pcourant;
     private boolean online;
@@ -131,4 +133,44 @@ public class Game {
     public void setColorPlayerP2(Color cP2){
      p2.setColorPlyer(cP2);
     }
+    
+    public Player getPlayer1(){
+        if(p1!=null){
+                return p1;
+        }
+        
+        return null;
+    }
+    public Player getPlayer2(){
+     if(p2!=null){
+                return p2;
+        }
+        
+        return null;
+    }
+    public Player getPlayer3(){
+         if(p3!=null){
+                return p3;
+        }
+        
+        return null;
+    }
+    public Player getPlayer4(){
+     if(p4!=null){
+                return p4;
+        }
+        
+        return null;
+    }
+    
+    
+    public void afficherJoueur(){
+    
+        System.out.println("Les Joueurs sont :" + p1 +p2);
+        
+        if(nbJoueur==4){
+            System.out.println(""+ p3 +p4);
+        }
+    
+    } 
 }

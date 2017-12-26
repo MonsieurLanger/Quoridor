@@ -14,7 +14,7 @@ import java.util.Arrays;
 
 public class Classement {
 
-    private Joueur joueurclass[];
+    private Player joueurclass[];
     private int i;
     public Classement(){
 //        joueurclass[0]=new Joueur("moi",Couleur.BLEU,20);
@@ -22,7 +22,7 @@ public class Classement {
 //        joueurclass[2]=new Joueur("ELLE",Couleur.ORANGE,33);
     }
     
-    public void addjoueur(Joueur joueur){
+    public void addjoueur(Player joueur){
         int i=joueurclass.length;
         joueurclass[i]=joueur;
     }

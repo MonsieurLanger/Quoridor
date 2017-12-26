@@ -12,14 +12,14 @@ package Modèle;
 public enum Color {
     BLEU ("Bleu"),
     ROUGE ("Rouge"),
-    ROSE ("Rose"),
+    NOIR ("Noir"),
     JAUNE ("Jaune"),
     VIOLET ("Violet"),
     VERT ("Vert"),
     ORANGE ("Orange");
     
     private String name = "";
-    
+    private boolean taken=false;
     //Constructeur
     Color(String name){
         this.name=name;
@@ -29,7 +29,7 @@ public enum Color {
     public String toString(){
         return name;
     }
-    
+   
    /*public static void main(String [] args){
         Color color[];
         String tab[]= {"BLEU","ROSE","JAUNE","VERT","ORANGE"};
@@ -38,4 +38,13 @@ public enum Color {
             System.out.println("color"+i+"= "+color[i]);
         }
     }
-*/}
+*/
+
+    public boolean getTaken() {
+        return taken;
+    }
+
+    public void setTaken(boolean taken) {
+        this.taken = taken;
+    }
+}

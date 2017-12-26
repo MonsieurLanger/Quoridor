@@ -73,6 +73,9 @@ private JButton giveup;
 Object src=ae.getSource();
         if(src==pause){
             System.out.println("Pause");
+            this.parentPanel.myGame.afficherJoueur();
+            System.out.println("Changement de Joueur ");
+            this.parentPanel.monPlato.updateCurrentPlayer();
         }
         else if(src==regles){
             JOptionPane.showMessageDialog(this.parentPanel,messageRule());

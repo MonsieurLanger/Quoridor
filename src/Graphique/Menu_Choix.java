@@ -86,15 +86,15 @@ public class Menu_Choix extends Menu{
             
         Object src=ae.getSource();
         if(src==backAcc){
-            System.out.println("afficheChoix menu choix");
+            System.out.println("Retour");
             this.parentPanel.afficheAccueil(this);
         }
         else if(src==join){
-            System.out.println("afficheChoix2");
+            System.out.println("Rejoindre");
             this.parentPanel.afficheJoueur(this);
         }
         else if(src==create){
-            System.out.println("afficheChoix3 ");
+            System.out.println("Créer ");
             this.parentPanel.afficheConfig(this);
         }
     }

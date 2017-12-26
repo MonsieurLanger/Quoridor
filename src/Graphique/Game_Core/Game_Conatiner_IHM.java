@@ -159,14 +159,19 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
 
     }
 
-    private void updateCurrentPlayer() {
+    public void updateCurrentPlayer() {
         if (this.numJoueur == 1) {
             this.numJoueur = 2;
         } else {
             this.numJoueur = 1;
         }
         this.currentPlayerName.removeAll();
-        this.currentPlayerName.add(new JLabel("Joueur courrant: " + this.numJoueur));
+        if(this.numJoueur==1){
+            this.currentPlayerName.add(new JLabel("Joueur courrant: "+ this.myGame.getPlayer1().getPseudo()));
+        }
+        else if(this.numJoueur==2){
+            this.currentPlayerName.add(new JLabel("Joueur courrant: "+ this.myGame.getPlayer2().getPseudo()));
+        }
         this.currentPlayerName.revalidate();
         this.currentPlayerName.repaint();
     }

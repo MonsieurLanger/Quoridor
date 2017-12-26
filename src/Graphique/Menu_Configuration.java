@@ -203,7 +203,7 @@ private JCheckBox rule2cb ;
             this.parentPanel.afficheChoix(this);
         }
         else{
-            System.out.println("Config no choice"+src.toString().getClass());
+            //System.out.println("Config no choice"+src.toString().getClass());
         }
       
     }
