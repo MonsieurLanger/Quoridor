@@ -20,8 +20,6 @@ public class Board_IHM extends JPanel {
         this.generateBoard();
         // On met en place la liste des cases focused
         this.focusedCases = new ArrayList<CaseIHM>();
-        this.boadCases.get(8).get(0).setUse(true);
-        this.boadCases.get(8).get(16).setUse(true);
     }
 
     private void generateBoard() {
@@ -68,6 +66,13 @@ public class Board_IHM extends JPanel {
         if (x >= 0 && x <= 16 && y >= 0 && y <= 16) {
             this.focusedCases.add(this.boadCases.get(x).get(y));
             this.boadCases.get(x).get(y).setFocus(true);
+        }
+    }
+    
+    public void setUseOnCase(int x, int y) {
+        // On met le use sur une case
+        if (x >= 0 && x <= 16 && y >= 0 && y <= 16) {
+            this.boadCases.get(x).get(y).setUse(true);
         }
     }
 

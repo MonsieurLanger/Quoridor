@@ -173,4 +173,9 @@ public class Game {
         }
     
     } 
+
+    public Board getMyBoard() {
+        return myBoard;
+    }
+    
 }

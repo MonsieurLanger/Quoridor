@@ -67,9 +67,9 @@ public class Game_IHM extends JFrame implements ComponentListener {
         //this.add(configPanel,c);
         c.gridx = 1;
         c.gridy = 0;
-       
-        this.add(monPlato, c);
-        monPlato.setVisible(false);
+
+//        this.add(monPlato, c);
+//        monPlato.setVisible(false);
         this.pack();
         this.setVisible(true);
         this.repaint();
@@ -78,7 +78,7 @@ public class Game_IHM extends JFrame implements ComponentListener {
     private void init() {
         c = new GridBagConstraints();
         myGame = new Game(new Player("Joueur 1", Color.BLEU), new Player("Joueur 2", Color.ROUGE), new Board());
-        monPlato = new Game_Conatiner_IHM(myGame);
+        monPlato = null;
         accueilPanel = new Menu_Accueil(this);
         choixPanel = new Menu_Choix(this);
         configPanel = new Menu_Configuration(this);
@@ -168,7 +168,7 @@ public class Game_IHM extends JFrame implements ComponentListener {
         if (t == configPanel) {
             this.remove(configPanel);
         }
-        if(t== joueurPanel){
+        if (t == joueurPanel) {
             this.remove(joueurPanel);
         }
 
@@ -185,7 +185,9 @@ public class Game_IHM extends JFrame implements ComponentListener {
     void afficheJeu(Object t) {
         if (t == joueurPanel) {
             this.remove(joueurPanel);
-            this.remove(monPlato);
+            if (this.monPlato != null) {
+                this.remove(monPlato);
+            }
         }
         if (t == configPanel) {
             this.remove(configPanel);
@@ -200,20 +202,21 @@ public class Game_IHM extends JFrame implements ComponentListener {
         c.gridx = 1;
         c.gridy = 0;
 
-        //this.updateSubComponentsSize();
+        this.monPlato = new Game_Conatiner_IHM(this.myGame);
         this.add(monPlato, c);
         monPlato.setVisible(true);
-        
+
         this.setVisible(true);
-        
+
         actualisation();
         monPlato.updateCurrentPlayer();
+        this.updateSubComponentsSize();
 
     }
 
     @Override
     public void componentResized(ComponentEvent e) {
-       // this.updateSubComponentsSize();
+        this.updateSubComponentsSize();
     }
 
     @Override
@@ -230,7 +233,7 @@ public class Game_IHM extends JFrame implements ComponentListener {
     public void componentHidden(ComponentEvent e) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-/*
+
     private void updateSubComponentsSize() {
         int height = this.getSize().height;
         int width = this.getSize().width;
@@ -252,6 +255,6 @@ public class Game_IHM extends JFrame implements ComponentListener {
             this.accueilPanel.setMinimumSize(dimAccueil);
         }
         this.actualisation();
-    }*/
+    }
 
 }

@@ -1,6 +1,10 @@
 package Graphique.Game_Core;
 
+import Modèle.Cell;
+import Modèle.Color;
+import Modèle.Coord;
 import Modèle.Game;
+import Modèle.Piece;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -12,6 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.JLayeredPane;
 import javax.swing.Timer;
 
@@ -45,7 +52,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     public Game_Conatiner_IHM(Game g) {
         // Mise en place de la mise en page
         super(new BorderLayout());
-        
+
         // Initialisation de la partie supérieure du JPanel
         JPanel infosPanel = new JPanel(new GridLayout(1, 3));
         this.gameTime = 0;
@@ -54,7 +61,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.currentPlayerTimer = new JLabel();
         this.currentPlayerName = new JPanel();
         this.numJoueur = 2;
-        this.myGame=g;
+        this.myGame = g;
         this.updateCurrentPlayer();
         infosPanel.add(this.gameTimer);
         infosPanel.add(this.currentPlayerTimer);
@@ -64,7 +71,10 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.boardCentredPanel = new JPanel();
         this.board = new Board_IHM();
         layeredPane = new JLayeredPane();
-
+        List<Coord> test = (List<Coord>) Arrays.asList(this.myGame.getMyBoard().coord_Player());
+        for (Coord coord : test) {
+            this.board.setUseOnCase(coord.x, coord.y);
+        }
         layeredPane.addMouseListener(this);
         layeredPane.addMouseMotionListener(this);
         layeredPane.add(this.board, JLayeredPane.DEFAULT_LAYER);
@@ -166,11 +176,10 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             this.numJoueur = 1;
         }
         this.currentPlayerName.removeAll();
-        if(this.numJoueur==1){
-            this.currentPlayerName.add(new JLabel("Joueur courrant: "+ this.myGame.getPlayer1().getPseudo()));
-        }
-        else if(this.numJoueur==2){
-            this.currentPlayerName.add(new JLabel("Joueur courrant: "+ this.myGame.getPlayer2().getPseudo()));
+        if (this.numJoueur == 1) {
+            this.currentPlayerName.add(new JLabel("Joueur courrant: " + this.myGame.getPlayer1().getPseudo()));
+        } else if (this.numJoueur == 2) {
+            this.currentPlayerName.add(new JLabel("Joueur courrant: " + this.myGame.getPlayer2().getPseudo()));
         }
         this.currentPlayerName.revalidate();
         this.currentPlayerName.repaint();
@@ -180,6 +189,8 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     public void mouseClicked(MouseEvent me) {
 
     }
+
+    private CaseIHM caseDepart;
 
     @Override
     public void mousePressed(MouseEvent me) {
@@ -193,6 +204,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             CaseIHM currentCase = (CaseIHM) c.getParent();
             // On enlève la pièce de la case
             currentCase.setUse(false);
+            caseDepart = currentCase;
             // On crée une pièce pour la partie Drag n Drop
             pieceDeplaced = (CaseContentIHM) c;
             pieceDeplaced.setLocation(me.getX(), me.getY());
@@ -252,6 +264,12 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             // Si on es dans une case, alors on la met à jour
             // et on enlève le focus
             CaseIHM caseCourrante = (CaseIHM) c;
+            boolean conclusion = this.myGame.getMyBoard().movePiece(new Piece(Color.NOIR, new Modèle.Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y)), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Joueur"));
+            if (conclusion) {
+                System.out.println("OK");
+            } else {
+                System.err.println("!OK");
+            }
             caseCourrante.setUse(true);
             caseCourrante.setFocus(false);
             // On met à jour l'indicateur de barrières en stock

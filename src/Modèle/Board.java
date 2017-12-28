@@ -86,18 +86,18 @@ public class Board {
         return ret;
     }
     
-    public  boolean movePiece(Piece piece,Cell cell_finale, Board board){
+    public  boolean movePiece(Piece piece,Cell cell_finale){
         boolean ret=false;
         Coord coord_temp=new Coord(piece.coord.x,piece.coord.y);
-        if(piece.isMoveOk(cell_finale.coord,board)==true){
+        if(piece.isMoveOk(cell_finale.coord,this)==true){
             //maj coordonnées du joueur
             piece.coord=cell_finale.coord;
             //maj attribut de la case d'arrivée
             cell_finale.empty=false;
             cell_finale.type="Joueur";
             //maj attribut de la case de départ
-            findCell(coord_temp, board).empty=true;
-            findCell(coord_temp, board).type="Vide";
+            findCell(coord_temp, this).empty=true;
+            findCell(coord_temp, this).type="Vide";
             ret = true;
         }
         return ret;
@@ -115,15 +115,15 @@ public class Board {
     }
 
      //Fonction qui retour tableau de joueur (afin de récup leur coord etc..
-    public  Coord[] coord_Player(Board board){
+    public  Coord[] coord_Player(){
         int cptr=0;
         Coord[] coord= new Coord[2];
         Coord coord_j2= new Coord();
-        for (int i=0;i<board.plateau.length;i++){
-            if(isPlayerHere(board.plateau[i])==true){
-                    coord[cptr]=board.plateau[i].coord;
+        for (int i=0;i<this.plateau.length;i++){
+            if(isPlayerHere(this.plateau[i])==true){
+                    coord[cptr]=this.plateau[i].coord;
                     cptr++;
-                    System.out.println("Coordonnées du joueur "+cptr+" : "+board.plateau[i].coord+ "["+i+"]");
+                    System.out.println("Coordonnées du joueur "+cptr+" : "+this.plateau[i].coord+ "["+i+"]");
             }
         }
         return coord;
@@ -172,9 +172,9 @@ public class Board {
         System.out.println("Test");
        System.out.println("Piece vide? "+isPieceHere(this.plateau[152]));
        System.out.println("findCell: "+findCell(coord_test,this));
-       System.out.println(movePiece(piece_test,findCell(coord_finales_test,this),this));
+       System.out.println(movePiece(piece_test,findCell(coord_finales_test,this)));
        System.out.println("Nouvelles coordonnées de la pièce: "+piece_test.coord+".");
-       System.out.println("Coordonnées des joueurs avec coord_Player : "+Arrays.toString(coord_Player(this)));
+       System.out.println("Coordonnées des joueurs avec coord_Player : "+Arrays.toString(coord_Player()));
        Wall wall_test = new Wall();
         System.out.println(this.plateau[1].isEmpty());
         System.out.println("test place_wall : "+placeWall(wall_test,this.plateau[1],this));
