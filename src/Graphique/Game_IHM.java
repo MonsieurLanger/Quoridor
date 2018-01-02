@@ -50,12 +50,6 @@ public class Game_IHM extends JFrame implements ComponentListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(true);
         this.setMinimumSize(new Dimension(900, 700));
-        /* this.addWindowStateListener(new WindowStateListener() {
-            @Override
-            public void windowStateChanged(WindowEvent arg0) {
-                updateSubComponentsSize();
-            }
-        });*/
         this.addComponentListener(this);
         init();
         c.gridx = 0;
@@ -85,7 +79,6 @@ public class Game_IHM extends JFrame implements ComponentListener {
         joueurPanel = new Menu_Joueur(this);
         jeuPanel = new Menu_Jeu(this);
         this.setLayout(new GridBagLayout());
-        //this.updateSubComponentsSize();
     }
 
     public void actualisation() {
@@ -128,7 +121,6 @@ public class Game_IHM extends JFrame implements ComponentListener {
         this.add(accueilPanel, c);
         this.setVisible(true);
 
-        //this.updateSubComponentsSize();
         actualisation();
     }
 
@@ -139,7 +131,6 @@ public class Game_IHM extends JFrame implements ComponentListener {
 
         this.add(accueilPanel, c);
         this.setVisible(true);
-        //this.updateSubComponentsSize();
 
         actualisation();
     }
@@ -156,7 +147,6 @@ public class Game_IHM extends JFrame implements ComponentListener {
         this.add(configPanel, c);
 
         this.setVisible(true);
-        //this.updateSubComponentsSize();
 
         actualisation();
     }
@@ -177,7 +167,6 @@ public class Game_IHM extends JFrame implements ComponentListener {
 
         this.add(joueurPanel, c);
         this.setVisible(true);
-        //this.updateSubComponentsSize();
 
         actualisation();
     }
@@ -210,7 +199,9 @@ public class Game_IHM extends JFrame implements ComponentListener {
 
         actualisation();
         monPlato.updateCurrentPlayer();
+        monPlato.updateCurrentPlayer();
         this.updateSubComponentsSize();
+        monPlato.updateComponentAndSubComponentsSize();
 
     }
 

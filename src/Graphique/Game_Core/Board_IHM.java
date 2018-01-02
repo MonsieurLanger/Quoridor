@@ -76,4 +76,12 @@ public class Board_IHM extends JPanel {
         }
     }
 
+    void resetAllCases() {
+                for (List<CaseIHM> listeCases : this.boadCases) {
+            for (CaseIHM caseCourrante : listeCases) {
+                caseCourrante.setUse(false);
+            }
+        }
+    }
+
 }

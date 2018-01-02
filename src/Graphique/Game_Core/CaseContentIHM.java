@@ -1,11 +1,17 @@
 package Graphique.Game_Core;
 
 import Graphique.Ressources.GetIHMRessources;
+import Modèle.Color;
+import Modèle.Player;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JLabel;
 
 /**
- * Contenu image d'une case qui prends la taille du conteneur ou une taille fixée
+ * Contenu image d'une case qui prends la taille du conteneur ou une taille
+ * fixée
+ *
  * @author MOREL Charles <charles.morel@cpe.fr>
  */
 public class CaseContentIHM extends JLabel {
@@ -36,7 +42,7 @@ public class CaseContentIHM extends JLabel {
             imgWidth = this.getParent().getSize().width - 2;
             imgHeight = this.getParent().getSize().height - 2;
         } else {
-        //    -> sinon c'est la taille définie précédement moins deux pixels
+            //    -> sinon c'est la taille définie précédement moins deux pixels
             imgWidth = this.width - 2;
             imgHeight = this.height - 2;
         }

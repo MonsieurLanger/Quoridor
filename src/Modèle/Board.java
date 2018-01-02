@@ -70,10 +70,10 @@ public class Board {
     
     //---> voir plus tard, gestion au niveau d'un tableau de Wall du joueur etc
     //ajout modif dans le board?
-    public  boolean placeWall(Wall wall, Cell cell_finale, Board board){ 
+    public  boolean placeWall(Wall wall, Cell cell_finale){ 
         boolean ret=false;
         Coord coord_finales = new Coord(cell_finale.coord.x,cell_finale.coord.y);
-        if (Wall.isMoveOk(coord_finales,board)){
+        if (Wall.isMoveOk(coord_finales,this)){
             if(cell_finale.isEmpty()==true){
                 cell_finale.type="Barriere";
                 cell_finale.empty=false;
@@ -114,6 +114,7 @@ public class Board {
         return ret;
     }
 
+
      //Fonction qui retour tableau de joueur (afin de récup leur coord etc..
     public  Coord[] coord_Player(){
         int cptr=0;
@@ -128,7 +129,30 @@ public class Board {
         }
         return coord;
     }
+    
+        public  boolean isWallHere(Cell cell){
+        boolean ret=false;
+        if(cell.isEmpty()==ret){
+            if("Barriere".equals(cell.type)){
+               ret=true;
+            }
+        }
+        return ret;
+    }
 
+             //Fonction qui retour tableau de murs (afin de récup leur coord etc..
+    public  Coord[] coord_Wall(){
+        int cptr=0;
+        Coord[] coord= new Coord[2];
+        Coord coord_j2= new Coord();
+        for (int i=0;i<this.plateau.length;i++){
+            if(isWallHere(this.plateau[i])==true){
+                    coord[cptr]=this.plateau[i].coord;
+                    cptr++;
+            }
+        }
+        return coord;
+    }
     
     //Fonction de recherche de cellule en fonction de cooordonnées
     public static Cell findCell(Coord coord, Board board){
@@ -177,7 +201,7 @@ public class Board {
        System.out.println("Coordonnées des joueurs avec coord_Player : "+Arrays.toString(coord_Player()));
        Wall wall_test = new Wall();
         System.out.println(this.plateau[1].isEmpty());
-        System.out.println("test place_wall : "+placeWall(wall_test,this.plateau[1],this));
+        System.out.println("test place_wall : "+placeWall(wall_test,this.plateau[1]));
         System.out.println(this.plateau[1].isEmpty());
     }
 }

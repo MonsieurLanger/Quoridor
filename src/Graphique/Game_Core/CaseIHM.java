@@ -2,8 +2,11 @@ package Graphique.Game_Core;
 
 import Graphique.Ressources.GetIHMRessources;
 import Modèle.Coord;
+import Modèle.Player;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +23,20 @@ public class CaseIHM extends JPanel {
     private boolean isFocused;
     private int x;
     private int y;
+
+    private static List<String> playersImgs;
+    private static int currentPlayerImg;
+
+    public static void updatePlayersImgs(Player p1, Player p2, Player p3, Player p4) {
+        CaseIHM.playersImgs = new ArrayList<String>();
+        CaseIHM.playersImgs.add(p1.getColorPlyer().getImgName());
+        CaseIHM.playersImgs.add(p2.getColorPlyer().getImgName());
+        CaseIHM.currentPlayerImg = 0;
+    }
+
+    public static void forcePlayerImg(int id) {
+        CaseIHM.currentPlayerImg = id;
+    }
 
     public CaseIHM(int x, int y) {
         // Initialisation du statut non utilisé ni focused + cooredonnées
@@ -79,7 +96,16 @@ public class CaseIHM extends JPanel {
             JLabel caseContent = new JLabel();
             switch (this.type) {
                 case PIECE:
+                    if(CaseIHM.currentPlayerImg == -1)
+                    {
                     caseContent = new CaseContentIHM("piece.png");
+                    }
+                    else
+                    {
+                        String test = CaseIHM.playersImgs.get(CaseIHM.currentPlayerImg)+"Pion.png";
+                        caseContent = new CaseContentIHM(CaseIHM.playersImgs.get(CaseIHM.currentPlayerImg)+"Pion.png");
+                        CaseIHM.currentPlayerImg = -1;
+                    }
                     break;
                 case HORIZNTAL_WALL:
                     caseContent = new CaseContentIHM("wall_h.jpg");

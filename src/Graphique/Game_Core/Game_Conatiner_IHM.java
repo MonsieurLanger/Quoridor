@@ -5,6 +5,7 @@ import Modèle.Color;
 import Modèle.Coord;
 import Modèle.Game;
 import Modèle.Piece;
+import Modèle.Wall;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -48,6 +49,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     private int numJoueur;
     private boolean fromStock;
     private Game myGame;
+    private boolean gameTimerPaused;
 
     public Game_Conatiner_IHM(Game g) {
         // Mise en place de la mise en page
@@ -71,10 +73,6 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.boardCentredPanel = new JPanel();
         this.board = new Board_IHM();
         layeredPane = new JLayeredPane();
-        List<Coord> test = (List<Coord>) Arrays.asList(this.myGame.getMyBoard().coord_Player());
-        for (Coord coord : test) {
-            this.board.setUseOnCase(coord.x, coord.y);
-        }
         layeredPane.addMouseListener(this);
         layeredPane.addMouseMotionListener(this);
         layeredPane.add(this.board, JLayeredPane.DEFAULT_LAYER);
@@ -118,6 +116,10 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         Timer timer = new Timer(1000, taskPerformer);
         timer.setRepeats(true);
         timer.start();
+        this.gameTimerPaused = false;
+
+        // Mise à jour des pièces présentes sur le plateau de jeu
+        this.syncIhmToModel();
     }
 
     public void updateComponentAndSubComponentsSize() {
@@ -150,6 +152,23 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         this.revalidate();
     }
 
+    private void syncIhmToModel() {
+        this.board.resetAllCases();
+        CaseIHM.updatePlayersImgs(this.myGame.getPlayer1(), this.myGame.getPlayer2(), null, null);
+        List<Coord> liste = (List<Coord>) Arrays.asList(this.myGame.getMyBoard().coord_Player());
+        int idImg = 0;
+        for (Coord coord : liste) {
+            CaseIHM.forcePlayerImg(idImg);
+            this.board.setUseOnCase(coord.x, coord.y);
+            idImg++;
+        }
+        // TODO: décommenter dès que coord_Wall sera valable
+//        liste = (List<Coord>) Arrays.asList(this.myGame.getMyBoard().coord_Wall());
+//        for (Coord coord : liste) {
+//            this.board.setUseOnCase(coord.x, coord.y);
+//        }
+    }
+
     private void updateWallNumbers(int nb) {
         this.wallNumber.removeAll();
         this.wallNumber.add(new JLabel("x " + nb));
@@ -157,24 +176,27 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     }
 
     private void updateGameTime() {
-        this.gameTime++;
         this.gameTimer.removeAll();
-        if (gameTime % 60 < 10) {
-            this.gameTimer.add(new JLabel("Temps de jeu: " + (this.gameTime / 60) + ":0" + (this.gameTime % 60)));
+        if (this.gameTimerPaused) {
+            this.gameTimer.add(new JLabel("Jeu en pause..."));
         } else {
-            this.gameTimer.add(new JLabel("Temps de jeu: " + (this.gameTime / 60) + ":" + (this.gameTime % 60)));
+            this.gameTime++;
+            if (gameTime % 60 < 10) {
+                this.gameTimer.add(new JLabel("Temps de jeu: " + (this.gameTime / 60) + ":0" + (this.gameTime % 60)));
+            } else {
+                this.gameTimer.add(new JLabel("Temps de jeu: " + (this.gameTime / 60) + ":" + (this.gameTime % 60)));
+            }
         }
         this.gameTimer.repaint();
         this.gameTimer.revalidate();
+    }
 
+    public void switchTimePause() {
+        this.gameTimerPaused = !this.gameTimerPaused;
     }
 
     public void updateCurrentPlayer() {
-        if (this.numJoueur == 1) {
-            this.numJoueur = 2;
-        } else {
-            this.numJoueur = 1;
-        }
+        this.numJoueur = (this.numJoueur % 2) + 1;
         this.currentPlayerName.removeAll();
         if (this.numJoueur == 1) {
             this.currentPlayerName.add(new JLabel("Joueur courrant: " + this.myGame.getPlayer1().getPseudo()));
@@ -194,6 +216,11 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
 
     @Override
     public void mousePressed(MouseEvent me) {
+        // On ne peut rien faire si le jeu est en pause
+        if (this.gameTimerPaused) {
+            return;
+        }
+
         // Mise à zero de la pièce déplacée et du faite qu'il s'agit d'un mur du stock
         pieceDeplaced = null;
         this.fromStock = false;
@@ -246,7 +273,12 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
 
     @Override
     public void mouseReleased(MouseEvent me) {
+        // On ne peut rien faire si le jeu est en pause
+        if (this.gameTimerPaused) {
+            return;
+        }
 
+        // Si aucune pièce n'est en déplacement, on ne peut rien faire
         if (pieceDeplaced == null) {
             return;
         }
@@ -264,11 +296,33 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             // Si on es dans une case, alors on la met à jour
             // et on enlève le focus
             CaseIHM caseCourrante = (CaseIHM) c;
-            boolean conclusion = this.myGame.getMyBoard().movePiece(new Piece(Color.NOIR, new Modèle.Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y)), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Joueur"));
-            if (conclusion) {
-                System.out.println("OK");
+            /* TODO: ici on relache la pièce
+             ->  si this.fromStock == true, alors ça veut dire que l'on a pris un mur (Wall) depuis le stock de murs (ceux en bas de l'écran)
+             -> si caseCourrante.getType() != TypeCaseIHM.PIECE alors ça veut dire que l'on déplace un mur déjà présent sur le plateau de jeu
+                  la source d'un wall fait une case:
+                       -> this.caseDepart.getCoords().x, this.caseDepart.getCoords().y
+                  la destination d'un wall fait deux cases:
+                      - case 1: caseCourrante.getCoords().x, caseCourrante.getCoords().y 
+                      - case 2: CAS HORIZNTAL_WALL caseCourrante.getCoords().x, caseCourrante.getCoords().y +1
+                                CAS VERTICAL_WALL caseCourrante.getCoords().x +1, caseCourrante.getCoords().y
+             -> sinon, il s'agit d'un déplacement d'une pièce 
+             */
+            if (this.fromStock || caseCourrante.getType() != TypeCaseIHM.PIECE) {
+                if (this.typePieceDeplaced == TypeCaseIHM.HORIZNTAL_WALL) {
+                    this.myGame.getMyBoard().placeWall(new Wall(), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Barriere"));
+                }
+                if (this.typePieceDeplaced == TypeCaseIHM.VERTICAL_WALL) {
+                    this.myGame.getMyBoard().placeWall(new Wall(), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Barriere"));
+                }
+                this.updateCurrentPlayer();
             } else {
-                System.err.println("!OK");
+                boolean ret = this.myGame.getMyBoard().movePiece(new Piece(Color.NOIR, new Modèle.Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y)), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Joueur"));
+                if (ret) {
+                    System.out.println("Déplacement OK");
+                    this.updateCurrentPlayer();
+                } else {
+                    System.err.println("Déplacement pas OK");
+                }
             }
             caseCourrante.setUse(true);
             caseCourrante.setFocus(false);
@@ -278,9 +332,8 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             }
         }
         // On met à jour le joueuer courrant et les cases mises en focus
-        this.updateCurrentPlayer();
         this.board.resetFocusedCases();
-
+        this.syncIhmToModel();
     }
 
     @Override
@@ -295,6 +348,12 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
 
     @Override
     public void mouseDragged(MouseEvent me) {
+        // On ne peut rien faire si le jeu est en pause
+        if (this.gameTimerPaused) {
+            return;
+        }
+
+        // Si aucune pièce n'est en déplacement, on ne peut rien faire
         if (pieceDeplaced == null) {
             return;
         }

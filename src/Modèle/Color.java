@@ -10,24 +10,30 @@ package Modèle;
  * @author nrmv4488
  */
 public enum Color {
-    BLEU ("Bleu"),
-    ROUGE ("Rouge"),
-    NOIR ("Noir"),
-    JAUNE ("Jaune"),
-    VIOLET ("Violet"),
-    VERT ("Vert"),
-    ORANGE ("Orange");
+    BLEU ("Bleu","blue"),
+    ROUGE ("Rouge", "red"),
+    NOIR ("Noir","noir"),
+    JAUNE ("Jaune","yellow"),
+    VIOLET ("Violet","violet"),
+    VERT ("Vert","green"),
+    ORANGE ("Orange","orange");
     
     private String name = "";
+    private String imgName = "";
     private boolean taken=false;
     //Constructeur
-    Color(String name){
+    Color(String name, String imgName){
         this.name=name;
+        this.imgName=imgName;
     }
     
     @Override
     public String toString(){
         return name;
+    }
+
+    public String getImgName(){
+        return this.imgName;
     }
    
    /*public static void main(String [] args){
