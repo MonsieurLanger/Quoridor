@@ -11,9 +11,9 @@ import javax.swing.JPanel;
  *
  * @author Eddine Langer
  */
-public class Plateau_IHM extends JPanel{
+public class Plateau_IHM extends JPanel {
 
     public Plateau_IHM() {
     }
-    
+
 }

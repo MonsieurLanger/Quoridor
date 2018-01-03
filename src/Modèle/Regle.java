@@ -10,6 +10,7 @@ package Modèle;
  * @author Eddine Langer
  */
 public class Regle {
+
     private int numRule;
     private String recap;
     private String describeRule;
@@ -19,20 +20,16 @@ public class Regle {
         this.numRule = numRule;
         this.recap = recap;
         this.describeRule = describeRule;
-        this.active=false;
+        this.active = false;
     }
 
     public String getRecap() {
         return recap;
     }
 
-    
-
     public int getNumRule() {
         return numRule;
     }
-
-   
 
     public String getDescribeRule() {
         return describeRule;
@@ -46,6 +43,4 @@ public class Regle {
         return active;
     }
 
-
-    
 }

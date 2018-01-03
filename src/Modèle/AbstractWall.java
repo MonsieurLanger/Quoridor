@@ -9,12 +9,12 @@ package Modèle;
  *
  * @author hariri
  */
-public class AbstractWall implements Interface_Wall{
+public class AbstractWall implements Interface_Wall {
+
     Coord coord;
 
     public AbstractWall() {
     }
-
 
     @Override
     public int getX() {
@@ -28,15 +28,14 @@ public class AbstractWall implements Interface_Wall{
 
     @Override
     public boolean Move(int xfinal, int yFinal) {
-        boolean bool=false;
+        boolean bool = false;
         return bool;
     }
 
     @Override
     public boolean isMoveOK(int x, int y) {
-        boolean bool=false;
-        return bool; 
+        boolean bool = false;
+        return bool;
     }
-    
-    
+
 }

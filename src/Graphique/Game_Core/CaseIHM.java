@@ -21,6 +21,7 @@ public class CaseIHM extends JPanel {
     private final TypeCaseIHM type;
     private boolean isUsed;
     private boolean isFocused;
+    private boolean isAvailible;
     private int x;
     private int y;
 
@@ -42,6 +43,7 @@ public class CaseIHM extends JPanel {
         // Initialisation du statut non utilisé ni focused + cooredonnées
         this.isUsed = false;
         this.isFocused = false;
+        this.isAvailible = false;
         this.x = x;
         this.y = y;
         // Recherche du type de case en fonction de ses coordonnées
@@ -76,6 +78,8 @@ public class CaseIHM extends JPanel {
                     this.setBackground(Color.darkGray);
                     break;
             }
+        } else if (this.isAvailible) {
+            this.setBackground(Color.green);
         } else {
             // Si on n'est pas utilisé alors on colore en fonction de s'il s'agit d'une case pièce ou mur
             switch (this.type) {
@@ -96,14 +100,11 @@ public class CaseIHM extends JPanel {
             JLabel caseContent = new JLabel();
             switch (this.type) {
                 case PIECE:
-                    if(CaseIHM.currentPlayerImg == -1)
-                    {
-                    caseContent = new CaseContentIHM("piece.png");
-                    }
-                    else
-                    {
-                        String test = CaseIHM.playersImgs.get(CaseIHM.currentPlayerImg)+"Pion.png";
-                        caseContent = new CaseContentIHM(CaseIHM.playersImgs.get(CaseIHM.currentPlayerImg)+"Pion.png");
+                    if (CaseIHM.currentPlayerImg == -1) {
+                        caseContent = new CaseContentIHM("piece.png");
+                    } else {
+                        String test = CaseIHM.playersImgs.get(CaseIHM.currentPlayerImg) + "Pion.png";
+                        caseContent = new CaseContentIHM(CaseIHM.playersImgs.get(CaseIHM.currentPlayerImg) + "Pion.png");
                         CaseIHM.currentPlayerImg = -1;
                     }
                     break;
@@ -172,6 +173,10 @@ public class CaseIHM extends JPanel {
         this.setBounds(xGille, yGrille, largeur, hauteur);
     }
 
+    public boolean getIsUsed() {
+        return isUsed;
+    }
+
     public void setUse(boolean isUsed) {
         this.isUsed = isUsed;
         this.updateCase();
@@ -180,6 +185,10 @@ public class CaseIHM extends JPanel {
     public void setFocus(boolean isFocused) {
         this.isFocused = isFocused;
         this.updateCase();
+    }
+
+    public void setMoveAvailible(boolean isAvailible) {
+        this.isAvailible = isAvailible;
     }
 
     public TypeCaseIHM getType() {

@@ -7,43 +7,42 @@ package Modèle;
 
 /**
  *
- *  Represent a single square on the quoridor grid.
+ * Represent a single square on the quoridor grid.
+ *
  * @author nrmv4488
  */
-
 public class Cell {
+
     boolean empty;
     Coord coord;
     String type;
     int indice;
-  
-    
+
     //Constructeur, par défault la case est vide
-    public Cell(Coord coord, String type){
+    public Cell(Coord coord, String type) {
         this.coord = coord;
         this.empty = true;
-        this.type=type;
+        this.type = type;
     }
-    
-    boolean isEmpty(){
+
+    boolean isEmpty() {
         return this.empty;
     }
-    
-    Coord getPiece(){
-        if (this.isEmpty()== false){
+
+    Coord getPiece() {
+        if (this.isEmpty() == false) {
             return this.coord;
-        }
-        else{
+        } else {
             return null;
         }
     }
-    
+
     @Override
-    public String toString(){
-        return "Case type :"+this.type+" ,Case coordonnées: "+this.coord;
+    public String toString() {
+        return "Case type :" + this.type + " ,Case coordonnées: " + this.coord;
     }
-    
-  /*public static void main(String [] args){
+
+    /*public static void main(String [] args){
        int x= 0;
         int y= 0;
         Coord coord[];
@@ -65,6 +64,4 @@ public class Cell {
           System.out.printf("tab[j]= "+tab[j].coord+"\n");
       }
   }*/
-    
-    
 }

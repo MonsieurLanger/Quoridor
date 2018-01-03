@@ -15,18 +15,22 @@ import javax.swing.JPanel;
  *
  * @author Eddine Langer
  */
-public abstract class Menu extends JPanel implements ActionListener,MouseListener{
+public abstract class Menu extends JPanel implements ActionListener, MouseListener {
+
     protected Game_IHM parentPanel;
-    protected  GridBagConstraints c;
-    
-    public Menu(Game_IHM gIHM){
-        this.setSize(500,900);
-        parentPanel=gIHM;
+    protected GridBagConstraints c;
+
+    public Menu(Game_IHM gIHM) {
+        this.setSize(500, 900);
+        parentPanel = gIHM;
         this.addMouseListener(this);
         this.setLayout(new GridBagLayout());
         c = new GridBagConstraints();
-    
+
     }
-    protected void initButtonListener(){};
-    
+
+    protected void initButtonListener() {
+    }
+;
+
 }

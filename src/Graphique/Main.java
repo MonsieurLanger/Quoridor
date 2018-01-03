@@ -14,11 +14,12 @@ import Modèle.Player;
  * @author Eddine Langer
  */
 public class Main {
-     public static void main(String[] args) {
-        //Chargement des images
-     //   Game g=new Game(new Player("Joueur 1", Color.BLEU),new Player("Joueur 2",Color.ROUGE),null);
 
-        Game_IHM game=new Game_IHM();
-            
+    public static void main(String[] args) {
+        //Chargement des images
+        //   Game g=new Game(new Player("Joueur 1", Color.BLEU),new Player("Joueur 2",Color.ROUGE),null);
+
+        Game_IHM game = new Game_IHM();
+
     }
 }

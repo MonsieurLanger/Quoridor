@@ -10,33 +10,34 @@ package Modèle;
  * @author nrmv4488
  */
 public enum Color {
-    BLEU ("Bleu","blue"),
-    ROUGE ("Rouge", "red"),
-    NOIR ("Noir","noir"),
-    JAUNE ("Jaune","yellow"),
-    VIOLET ("Violet","violet"),
-    VERT ("Vert","green"),
-    ORANGE ("Orange","orange");
-    
+    BLEU("Bleu", "blue"),
+    ROUGE("Rouge", "red"),
+    NOIR("Noir", "noir"),
+    JAUNE("Jaune", "yellow"),
+    VIOLET("Violet", "violet"),
+    VERT("Vert", "green"),
+    ORANGE("Orange", "orange");
+
     private String name = "";
     private String imgName = "";
-    private boolean taken=false;
+    private boolean taken = false;
+
     //Constructeur
-    Color(String name, String imgName){
-        this.name=name;
-        this.imgName=imgName;
+    Color(String name, String imgName) {
+        this.name = name;
+        this.imgName = imgName;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
 
-    public String getImgName(){
+    public String getImgName() {
         return this.imgName;
     }
-   
-   /*public static void main(String [] args){
+
+    /*public static void main(String [] args){
         Color color[];
         String tab[]= {"BLEU","ROSE","JAUNE","VERT","ORANGE"};
         for (int i=0; i<5;i++){
@@ -44,8 +45,7 @@ public enum Color {
             System.out.println("color"+i+"= "+color[i]);
         }
     }
-*/
-
+     */
     public boolean getTaken() {
         return taken;
     }

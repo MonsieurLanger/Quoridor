@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -31,7 +32,7 @@ import javax.swing.Timer;
 public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMotionListener {
 
     private JPanel gameTimer;
-    private JLabel currentPlayerTimer;
+    private JPanel currentPlayerTimer;
     private JPanel currentPlayerName;
     private Board_IHM board;
     private JPanel verticalWall;
@@ -44,7 +45,8 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
     private CaseContentIHM pieceDeplaced;
     private TypeCaseIHM typePieceDeplaced;
 
-    private int nbBarrieres;
+    private List<Integer> nbBarrieres;
+    private List<Integer> playerTime;
     private int gameTime;
     private int numJoueur;
     private boolean fromStock;
@@ -58,9 +60,13 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
         // Initialisation de la partie supérieure du JPanel
         JPanel infosPanel = new JPanel(new GridLayout(1, 3));
         this.gameTime = 0;
+        this.playerTime = new ArrayList<Integer>();
+        for (int init = 0; init < 4; init++) {
+            this.playerTime.add(0);
+        }
         this.gameTimer = new JPanel();
+        this.currentPlayerTimer = new JPanel();
         this.updateGameTime();
-        this.currentPlayerTimer = new JLabel();
         this.currentPlayerName = new JPanel();
         this.numJoueur = 2;
         this.myGame = g;
@@ -94,8 +100,11 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
 
         this.wallNumber = new JPanel();
         this.actionsPannel.add(this.wallNumber);
-        this.nbBarrieres = 10;
-        this.updateWallNumbers(this.nbBarrieres);
+        this.nbBarrieres = new ArrayList<Integer>();
+        for (int init = 0; init < 4; init++) {
+            this.nbBarrieres.add(10);
+        }
+        this.updateWallNumbers();
 
         // Ajout des composants au continer
         this.add(infosPanel, BorderLayout.NORTH);
@@ -162,23 +171,24 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             this.board.setUseOnCase(coord.x, coord.y);
             idImg++;
         }
-        // TODO: décommenter dès que coord_Wall sera valable
-//        liste = (List<Coord>) Arrays.asList(this.myGame.getMyBoard().coord_Wall());
-//        for (Coord coord : liste) {
-//            this.board.setUseOnCase(coord.x, coord.y);
-//        }
+        liste = this.myGame.getMyBoard().coord_Wall();
+        for (Coord coord : liste) {
+            this.board.setUseOnCase(coord.x, coord.y);
+        }
     }
 
-    private void updateWallNumbers(int nb) {
+    private void updateWallNumbers() {
         this.wallNumber.removeAll();
-        this.wallNumber.add(new JLabel("x " + nb));
+        this.wallNumber.add(new JLabel("x " + this.nbBarrieres.get(this.numJoueur)));
         this.wallNumber.repaint();
     }
 
     private void updateGameTime() {
         this.gameTimer.removeAll();
+        this.currentPlayerTimer.removeAll();
         if (this.gameTimerPaused) {
             this.gameTimer.add(new JLabel("Jeu en pause..."));
+            this.currentPlayerTimer.add(new JLabel("..."));
         } else {
             this.gameTime++;
             if (gameTime % 60 < 10) {
@@ -186,7 +196,16 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             } else {
                 this.gameTimer.add(new JLabel("Temps de jeu: " + (this.gameTime / 60) + ":" + (this.gameTime % 60)));
             }
+            this.playerTime.set(this.numJoueur, this.playerTime.get(this.numJoueur) + 1);
+            int currentGameTimer = this.playerTime.get(this.numJoueur);
+            if (currentGameTimer % 60 < 10) {
+                this.currentPlayerTimer.add(new JLabel("Temps joueur: " + (currentGameTimer / 60) + ":0" + (currentGameTimer % 60)));
+            } else {
+                this.currentPlayerTimer.add(new JLabel("Temps joueur: " + (currentGameTimer / 60) + ":" + (currentGameTimer % 60)));
+            }
         }
+        this.currentPlayerTimer.repaint();
+        this.currentPlayerTimer.revalidate();
         this.gameTimer.repaint();
         this.gameTimer.revalidate();
     }
@@ -241,6 +260,13 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             this.typePieceDeplaced = currentCase.getType();
             // On ajoute la pièce sur la partie Drag n Drop
             layeredPane.add(pieceDeplaced, JLayeredPane.DRAG_LAYER);
+            // On affiche les cases valides pour le Drag n Drop
+            if (currentCase.getType() == TypeCaseIHM.PIECE) {
+                List<Coord> casesValides = this.myGame.getMyBoard().getAvailibleCoordsForPiece(new Modèle.Coord(currentCase.getCoords().x, currentCase.getCoords().y));
+                for (Coord caseValide : casesValides) {
+                    this.board.setMoveAvailibleOnCase(caseValide.x, caseValide.y);
+                }
+            }
         }
 
         // On recherche si la pièce est dans le stock de barrières
@@ -296,44 +322,57 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             // Si on es dans une case, alors on la met à jour
             // et on enlève le focus
             CaseIHM caseCourrante = (CaseIHM) c;
-            /* TODO: ici on relache la pièce
-             ->  si this.fromStock == true, alors ça veut dire que l'on a pris un mur (Wall) depuis le stock de murs (ceux en bas de l'écran)
-             -> si caseCourrante.getType() != TypeCaseIHM.PIECE alors ça veut dire que l'on déplace un mur déjà présent sur le plateau de jeu
-                  la source d'un wall fait une case:
-                       -> this.caseDepart.getCoords().x, this.caseDepart.getCoords().y
-                  la destination d'un wall fait deux cases:
-                      - case 1: caseCourrante.getCoords().x, caseCourrante.getCoords().y 
-                      - case 2: CAS HORIZNTAL_WALL caseCourrante.getCoords().x, caseCourrante.getCoords().y +1
-                                CAS VERTICAL_WALL caseCourrante.getCoords().x +1, caseCourrante.getCoords().y
-             -> sinon, il s'agit d'un déplacement d'une pièce 
-             */
-            if (this.fromStock || caseCourrante.getType() != TypeCaseIHM.PIECE) {
+            boolean isActionOk = false;
+            if (this.fromStock) {
                 if (this.typePieceDeplaced == TypeCaseIHM.HORIZNTAL_WALL) {
-                    this.myGame.getMyBoard().placeWall(new Wall(), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Barriere"));
+                    isActionOk = this.myGame.getMyBoard().placeWall(new Wall(), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Barriere"), new Cell(new Coord(caseCourrante.getCoords().x + 2, caseCourrante.getCoords().y), "Barriere"));
                 }
                 if (this.typePieceDeplaced == TypeCaseIHM.VERTICAL_WALL) {
-                    this.myGame.getMyBoard().placeWall(new Wall(), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Barriere"));
+                    isActionOk = this.myGame.getMyBoard().placeWall(new Wall(), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Barriere"), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y + 2), "Barriere"));
                 }
+                // Si on a posé une barrière et qu'elle venait du stock du joueur, alors on décrémente son stock
+                if (this.fromStock && isActionOk) {
+                    this.nbBarrieres.set(this.numJoueur, this.nbBarrieres.get(this.numJoueur) - 1);
+                }
+            } else if (caseCourrante.getType() != TypeCaseIHM.PIECE) {
+                Wall wallDepart;
+                if (this.typePieceDeplaced == TypeCaseIHM.HORIZNTAL_WALL) {
+                    if (this.board.getCaseUsedStatus(this.caseDepart.getCoords().x - 2, this.caseDepart.getCoords().y)) {
+                        wallDepart = new Wall(new Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y), new Coord(this.caseDepart.getCoords().x - 2, this.caseDepart.getCoords().y));
+                    } else {
+                        wallDepart = new Wall(new Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y), new Coord(this.caseDepart.getCoords().x + 2, this.caseDepart.getCoords().y));
+                    }
+                    isActionOk = this.myGame.getMyBoard().placeWall(wallDepart, new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Barriere"), new Cell(new Coord(caseCourrante.getCoords().x + 2, caseCourrante.getCoords().y), "Barriere"));
+                }
+                if (this.typePieceDeplaced == TypeCaseIHM.VERTICAL_WALL) {
+                    if (this.board.getCaseUsedStatus(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y - 2)) {
+                        wallDepart = new Wall(new Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y), new Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y - 2));
+                    } else {
+                        wallDepart = new Wall(new Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y), new Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y + 2));
+                    }
+                    isActionOk = this.myGame.getMyBoard().placeWall(wallDepart, new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Barriere"), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y + 2), "Barriere"));
+                }
+            } else {
+                // On déplace la pièce
+                isActionOk = this.myGame.getMyBoard().movePiece(new Piece(Color.NOIR, new Modèle.Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y)), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Joueur"));
+            }
+            // Si l'action effectuée par l'utilisateur estt Ok, alors on change le joueur courrant
+            // sinon, on affiche une erreur
+            if (isActionOk) {
                 this.updateCurrentPlayer();
             } else {
-                boolean ret = this.myGame.getMyBoard().movePiece(new Piece(Color.NOIR, new Modèle.Coord(this.caseDepart.getCoords().x, this.caseDepart.getCoords().y)), new Cell(new Coord(caseCourrante.getCoords().x, caseCourrante.getCoords().y), "Joueur"));
-                if (ret) {
-                    System.out.println("Déplacement OK");
-                    this.updateCurrentPlayer();
-                } else {
-                    System.err.println("Déplacement pas OK");
-                }
+                JOptionPane.showMessageDialog(null,
+                        "Action impossible:\n" + this.myGame.getMyBoard().getLastMoveErrorMsg(),
+                        "Erreur",
+                        JOptionPane.WARNING_MESSAGE);
             }
             caseCourrante.setUse(true);
             caseCourrante.setFocus(false);
-            // On met à jour l'indicateur de barrières en stock
-            if (this.fromStock) {
-                this.updateWallNumbers(--this.nbBarrieres);
-            }
         }
-        // On met à jour le joueuer courrant et les cases mises en focus
-        this.board.resetFocusedCases();
+        // On met à jour les cases mises en focus, on se resynchronise avec le modèle, on affiche le nombre de murs dispo pour le joueur
+        this.board.resetCaseStatus();
         this.syncIhmToModel();
+        this.updateWallNumbers();
     }
 
     @Override
@@ -370,7 +409,7 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
             CaseIHM caseCourrante = (CaseIHM) c;
             int x = caseCourrante.getCoords().x;
             int y = caseCourrante.getCoords().y;
-            this.board.resetFocusedCases();
+            this.board.resetCaseStatus();
             if (caseCourrante.getType() == this.typePieceDeplaced) {
                 this.board.setFocusOnCase(x, y);
                 switch (this.typePieceDeplaced) {

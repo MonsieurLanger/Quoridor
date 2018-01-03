@@ -15,32 +15,34 @@ import javax.swing.JButton;
  *
  * @author Eddine Langer
  */
-public class Menu_Choix extends Menu{
+public class Menu_Choix extends Menu {
+
     private JButton join;
     private JButton create;
     private JButton backAcc;
+
     public Menu_Choix(Game_IHM gIHM) {
         super(gIHM);
-         c.insets = new Insets(30, 30, 30, 30);
+        c.insets = new Insets(30, 30, 30, 30);
 
         join = new JButton("Rejoindre une partie");
         join.setPreferredSize(new Dimension(200, 50));
-        c.gridx=0;
-        c.gridy=0;
-        this.add(join,c);
-        
+        c.gridx = 0;
+        c.gridy = 0;
+        this.add(join, c);
+
         create = new JButton("Créer une partie");
         create.setPreferredSize(new Dimension(200, 50));
-        c.gridx=0;
-        c.gridy=1;
-        this.add(create,c);
-        
+        c.gridx = 0;
+        c.gridy = 1;
+        this.add(create, c);
+
         backAcc = new JButton("Retour");
         backAcc.setPreferredSize(new Dimension(200, 50));
-        c.gridx=0;
-        c.gridy=2;
-        this.add(backAcc,c);
-        
+        c.gridx = 0;
+        c.gridy = 2;
+        this.add(backAcc, c);
+
         initButtonListener();
         this.setVisible(true);
     }
@@ -52,10 +54,6 @@ public class Menu_Choix extends Menu{
         backAcc.addActionListener(this);
     }
 
-    
-    
-    
-    
     @Override
     public void mouseClicked(MouseEvent me) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -73,7 +71,7 @@ public class Menu_Choix extends Menu{
 
     @Override
     public void mouseEntered(MouseEvent me) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -83,20 +81,18 @@ public class Menu_Choix extends Menu{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-            
-        Object src=ae.getSource();
-        if(src==backAcc){
+
+        Object src = ae.getSource();
+        if (src == backAcc) {
             System.out.println("Retour");
             this.parentPanel.afficheAccueil(this);
-        }
-        else if(src==join){
+        } else if (src == join) {
             System.out.println("Rejoindre");
             this.parentPanel.afficheJoueur(this);
-        }
-        else if(src==create){
+        } else if (src == create) {
             System.out.println("Créer ");
             this.parentPanel.afficheConfig(this);
         }
     }
-    
+
 }

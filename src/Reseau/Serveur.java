@@ -10,5 +10,5 @@ package Reseau;
  * @author Eddine Langer
  */
 public class Serveur {
-    
+
 }
