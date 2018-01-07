@@ -52,7 +52,6 @@ private int session;
         c.gridx=1;
         c.gridy=0;
         c.gridwidth=2;
-        initText();
         this.add(nomJoueur,c);
         
         couleur = new JLabel("Couleur du Pion : ");
@@ -109,7 +108,8 @@ private int session;
         c.gridy=5;
         c.gridwidth=3;
         this.add(annuler,c);
-        
+        initText();
+
         initButtonListener();
         this.setVisible(true);
     }
@@ -156,32 +156,71 @@ private int session;
         
         
     }
+    private void actuImageP(Color c){
+        System.out.println("la couleur " + c + imagePion);
+        switch(c) {
+           case BLEU:
+               imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/bluePion.png")));
+               break;
+           case JAUNE:
+                imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/yellowPion.png")));
+                break;
+           case ORANGE:
+                imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/orangePion.png")));
+                break;
+           case NOIR:
+                imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/noirPion.png")));
+                break;
+           case ROUGE:
+                imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/redPion.png")));
+                break;
+           case VERT:
+                imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/greenPion.png")));
+                break;
+           case VIOLET:
+                imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/violetPion.png")));
+                break;
+           default:
+                break;
+       }
+       
+        
+        
+    }
     private void initText(){
         
           if(this.parentPanel.myGame.getPlayer1().isConfigured()==false ){
-              nomJoueur.setText("Joueur 1");
+              nomJoueur.setText(this.parentPanel.myGame.getPlayer1().getPseudo());
+              System.out.println(this.parentPanel.myGame.getPlayer1().getColorPlyer());
+              actuImageP(this.parentPanel.myGame.getPlayer1().getColorPlyer());
               this.parentPanel.myGame.getPlayer1().setConfigured(true);
               session=1;
-              System.out.println("INIT1");
+             System.out.println("INIT1");
               
           }
           else if(this.parentPanel.myGame.getPlayer2().isConfigured()==false){
-              nomJoueur.setText("Joueur 2");
+              nomJoueur.setText(this.parentPanel.myGame.getPlayer2().getPseudo());
+              actuImageP(this.parentPanel.myGame.getPlayer2().getColorPlyer());
+
               this.parentPanel.myGame.getPlayer2().setConfigured(true);
               session=2;
               System.out.println("INIT12");
           }
           else if(this.parentPanel.myGame.getPlayer3()!=null && this.parentPanel.myGame.getPlayer3().isConfigured()==false && this.parentPanel.myGame.getNbJoueur()>2){
               nomJoueur.setText("Joueur 3");
+              actuImageP(this.parentPanel.myGame.getPlayer3().getColorPlyer());
+
               this.parentPanel.myGame.getPlayer3().setConfigured(true);
               session=3;
-              System.out.println("INIT3");
+             // System.out.println("INIT3");
           }
           else if(this.parentPanel.myGame.getPlayer4()!=null &&this.parentPanel.myGame.getPlayer4().isConfigured()==false && this.parentPanel.myGame.getNbJoueur()>2){
               nomJoueur.setText("Joueur 4");
+              actuImageP(this.parentPanel.myGame.getPlayer4().getColorPlyer());
+
               this.parentPanel.myGame.getPlayer4().setConfigured(true);
               session=4;
-              System.out.println("INIT4");
+              //System.out.println("INIT4");
           }
     
     }
@@ -191,14 +230,14 @@ private int session;
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
        
 
-        System.out.println("Le Pseudo " + nomJoueur.getText());
+        //System.out.println("Le Pseudo " + nomJoueur.getText());
        Object src=ae.getSource();
        if(src==annuler){
             this.parentPanel.afficheChoix(this);
         }
        if(src==pret){
 //            this.parentPanel
-           System.out.println(" La Session " + session);
+           //System.out.println(" La Session " + session);
         switch (session) {
             case 1: 
                 this.parentPanel.myGame.getPlayer1().setPseudo(nomJoueur.getText());
@@ -222,9 +261,19 @@ private int session;
             if(session==1 || session==3){
                initText();
                this.parentPanel.afficheJoueur(this);
+               System.out.println("IF");
+
             }
             else{
-                 this.parentPanel.afficheJeu(this);
+                this.parentPanel.afficheJeu(this);
+                
+                
+                this.parentPanel.myGame.getPlayer1().setConfigured(false);
+                this.parentPanel.myGame.getPlayer2().setConfigured(false);
+                initText();
+                System.out.println("ELSE");
+
+                 
             }
             
             
