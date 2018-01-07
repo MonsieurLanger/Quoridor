@@ -109,7 +109,6 @@ private int session;
         c.gridwidth=3;
         this.add(annuler,c);
         initText();
-
         initButtonListener();
         this.setVisible(true);
     }
@@ -156,6 +155,32 @@ private int session;
         
         
     }
+    
+    private void goTo(Color c){
+        indColor=0;
+       while(tabColor[indColor]!=c){
+           indColor++;
+       }
+        if(tabColor[indColor]==Color.BLEU){
+            gauche.setEnabled(false);
+        }
+        else {
+            gauche.setEnabled(true);
+        }
+      
+        if(tabColor[indColor]==Color.VIOLET){
+            droite.setEnabled(false);
+        }
+        else {
+            droite.setEnabled(true);
+        }
+        nomCouleur.setText(tabColor[indColor].toString());
+        System.out.println(tabColor[indColor].toString()+ " goTo()");
+        
+        actuImage();
+        tabColor[indColor].setTaken(false);
+    
+    }
     private void actuImageP(Color c){
         System.out.println("la couleur " + c + imagePion);
         switch(c) {
@@ -188,27 +213,32 @@ private int session;
         
     }
     private void initText(){
-        
+         majColor();
           if(this.parentPanel.myGame.getPlayer1().isConfigured()==false ){
               nomJoueur.setText(this.parentPanel.myGame.getPlayer1().getPseudo());
               System.out.println(this.parentPanel.myGame.getPlayer1().getColorPlyer());
-              actuImageP(this.parentPanel.myGame.getPlayer1().getColorPlyer());
+              //actuImageP(this.parentPanel.myGame.getPlayer1().getColorPlyer());
+              
+              goTo(this.parentPanel.myGame.getPlayer1().getColorPlyer());
+              
               this.parentPanel.myGame.getPlayer1().setConfigured(true);
               session=1;
-             System.out.println("INIT1");
+             //System.out.println("INIT1");
               
           }
           else if(this.parentPanel.myGame.getPlayer2().isConfigured()==false){
               nomJoueur.setText(this.parentPanel.myGame.getPlayer2().getPseudo());
-              actuImageP(this.parentPanel.myGame.getPlayer2().getColorPlyer());
-
+              //actuImageP(this.parentPanel.myGame.getPlayer2().getColorPlyer());
+              goTo(this.parentPanel.myGame.getPlayer2().getColorPlyer());
+                
               this.parentPanel.myGame.getPlayer2().setConfigured(true);
               session=2;
-              System.out.println("INIT12");
+              //System.out.println("INIT12");
           }
           else if(this.parentPanel.myGame.getPlayer3()!=null && this.parentPanel.myGame.getPlayer3().isConfigured()==false && this.parentPanel.myGame.getNbJoueur()>2){
               nomJoueur.setText("Joueur 3");
-              actuImageP(this.parentPanel.myGame.getPlayer3().getColorPlyer());
+              goTo(this.parentPanel.myGame.getPlayer3().getColorPlyer());
+              //actuImageP(this.parentPanel.myGame.getPlayer3().getColorPlyer());
 
               this.parentPanel.myGame.getPlayer3().setConfigured(true);
               session=3;
@@ -216,15 +246,28 @@ private int session;
           }
           else if(this.parentPanel.myGame.getPlayer4()!=null &&this.parentPanel.myGame.getPlayer4().isConfigured()==false && this.parentPanel.myGame.getNbJoueur()>2){
               nomJoueur.setText("Joueur 4");
-              actuImageP(this.parentPanel.myGame.getPlayer4().getColorPlyer());
+              goTo(this.parentPanel.myGame.getPlayer4().getColorPlyer());
+              //actuImageP(this.parentPanel.myGame.getPlayer4().getColorPlyer());
 
               this.parentPanel.myGame.getPlayer4().setConfigured(true);
               session=4;
               //System.out.println("INIT4");
           }
-    
+                 
+
     }
-    
+    private void majColor(){
+        System.out.println("MAJCOLOR");
+        for(int i=0;i<tabColor.length;i++){
+            if(tabColor[i]==this.parentPanel.myGame.getPlayer1().getColorPlyer()||tabColor[i]==this.parentPanel.myGame.getPlayer2().getColorPlyer()){
+                    tabColor[i].setTaken(true);
+            }
+            else{
+                    tabColor[i].setTaken(false);
+            }
+
+        }
+    }
     @Override
     public void actionPerformed(ActionEvent ae) {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -232,6 +275,10 @@ private int session;
 
         //System.out.println("Le Pseudo " + nomJoueur.getText());
        Object src=ae.getSource();
+       
+       
+       
+       
        if(src==annuler){
             this.parentPanel.afficheChoix(this);
         }
@@ -258,10 +305,11 @@ private int session;
             default:
                 break;
         }
+            
             if(session==1 || session==3){
                initText();
                this.parentPanel.afficheJoueur(this);
-               System.out.println("IF");
+               //System.out.println("IF");
 
             }
             else{
@@ -271,7 +319,7 @@ private int session;
                 this.parentPanel.myGame.getPlayer1().setConfigured(false);
                 this.parentPanel.myGame.getPlayer2().setConfigured(false);
                 initText();
-                System.out.println("ELSE");
+                //System.out.println("ELSE");
 
                  
             }
@@ -282,17 +330,8 @@ private int session;
       
        if(src==gauche){
             if(tabColor[indColor]!=Color.BLEU){
-                int tmp=indColor;
-                /* bug 
-                while(tabColor[indColor-1]!=null || tabColor[indColor-1].getTaken()==false || tabColor[indColor] ==Color.BLEU){
-                    indColor--;
-                }
-                /* A tester */
-                /*  
-                if(tabColor[indColor] ==Color.BLEU &&tabColor[indColor].getTaken()==true){
-                   indColor=tmp;
-                }
-                */
+              
+               
                 indColor--;
                 
                 nomCouleur.setText(tabColor[indColor].toString());
@@ -302,7 +341,16 @@ private int session;
                 if(tabColor[indColor]==Color.VERT){
                     droite.setEnabled(true);
                 }
+                
+                
                 actuImage();
+                
+                if(tabColor[indColor].getTaken()==true){
+                    pret.setEnabled(false);
+                }
+                else{
+                    pret.setEnabled(true);
+                }
             }
             
         }
@@ -318,6 +366,14 @@ private int session;
                     droite.setEnabled(false);
                 }
                  actuImage();
+                  
+                
+                if(tabColor[indColor].getTaken()==true){
+                    pret.setEnabled(false);
+                }
+                else{
+                    pret.setEnabled(true);
+                }
             }
         }
     }
