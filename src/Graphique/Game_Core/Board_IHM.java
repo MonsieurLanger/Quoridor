@@ -6,12 +6,13 @@ import javax.swing.JPanel;
 
 /**
  * Plateau de jeu (damier)
+ *
  * @author MOREL Charles
  */
 public class Board_IHM extends JPanel {
 
     private List<List<CaseIHM>> boadCases;
-    private List<CaseIHM> focusedCases;
+    private List<CaseIHM> casesWithSpecialStatus;
 
     public Board_IHM() {
         // On initialise le layout
@@ -19,9 +20,7 @@ public class Board_IHM extends JPanel {
         // On générèe le tableau
         this.generateBoard();
         // On met en place la liste des cases focused
-        this.focusedCases = new ArrayList<CaseIHM>();
-        this.boadCases.get(8).get(0).setUse(true);
-        this.boadCases.get(8).get(16).setUse(true);
+        this.casesWithSpecialStatus = new ArrayList<CaseIHM>();
     }
 
     private void generateBoard() {
@@ -54,21 +53,48 @@ public class Board_IHM extends JPanel {
         }
     }
 
-    public void resetFocusedCases() {
+    public void resetCaseStatus() {
         // On remet à zero toutes les cases focused
-        for (CaseIHM caseToUnfosus : this.focusedCases) {
+        for (CaseIHM caseToUnfosus : this.casesWithSpecialStatus) {
             caseToUnfosus.setFocus(false);
+            caseToUnfosus.setMoveAvailible(false);
         }
         // On remet à zerola liste des cases où enlever le focus
-        this.focusedCases.clear();
+        this.casesWithSpecialStatus.clear();
     }
 
     public void setFocusOnCase(int x, int y) {
         // On met le focus sur une case
         if (x >= 0 && x <= 16 && y >= 0 && y <= 16) {
-            this.focusedCases.add(this.boadCases.get(x).get(y));
+            this.casesWithSpecialStatus.add(this.boadCases.get(x).get(y));
             this.boadCases.get(x).get(y).setFocus(true);
         }
     }
 
+    public void setMoveAvailibleOnCase(int x, int y) {
+        // On met le focus sur une case
+        if (x >= 0 && x <= 16 && y >= 0 && y <= 16) {
+            this.casesWithSpecialStatus.add(this.boadCases.get(x).get(y));
+            this.boadCases.get(x).get(y).setMoveAvailible(true);
+        }
+    }
+
+    public void setUseOnCase(int x, int y) {
+        // On met le use sur une case
+        if (x >= 0 && x <= 16 && y >= 0 && y <= 16) {
+            this.boadCases.get(x).get(y).setUse(true);
+        }
+    }
+
+    public void resetAllCases() {
+        for (List<CaseIHM> listeCases : this.boadCases) {
+            for (CaseIHM caseCourrante : listeCases) {
+                caseCourrante.setUse(false);
+            }
+        }
+    }
+
+    public boolean getCaseUsedStatus(int x, int y) {
+        return this.boadCases.get(x).get(y).getIsUsed();
+    }
 }

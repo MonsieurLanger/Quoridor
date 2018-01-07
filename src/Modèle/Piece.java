@@ -29,40 +29,38 @@ public class Piece extends AbstractPiece {
                     //vérif s'il y a un autre joueur
                     if (Board.findCell(coord_finales, board).empty == true) {
                         //vérif s'il y a une barriere::
+                        Coord coord_temp;
                         //déplacement en X
                         if (yFinal == this.coord.y) {
+                            //--> créer coord pour le findCell
                             if (xFinal > this.coord.x) {//déplacement vers la droite
-                                //--> créer coord pour le findCell
-                                Coord coord_temp = new Coord(this.coord.x + 1, this.coord.y);
-                                if (Board.findCell(coord_temp, board).empty == true) {//si cell en +1 isEmpty==true ok 
-                                    ret = true;
-                                }else{
-                                    System.out.println("Déplacement non autorisé, il y a une barrière.");
-                                }
+                                coord_temp = new Coord(this.coord.x + 1, this.coord.y);
+                            } else {//déplacement vers la gauche
+                                coord_temp = new Coord(this.coord.x - 1, this.coord.y);
                             }
-                        //déplacement en Y
-                        } else {
-                            if (yFinal > this.coord.y) {//déplacement vers le bas
-                                //--> créer coord pour findcell
-                                Coord coord_temp = new Coord(this.coord.x, this.coord.y + 1);
-                                if (Board.findCell(coord_temp, board).empty == true) {//si cell en +1 isEmpty==true ok 
-                                    ret = true;
-                                }else{
-                                    System.out.println("Déplacement non autorisé, il y a une barrière.");
-                                }
-                            }
+                        } //déplacement en Y
+                        else if (yFinal > this.coord.y) {//déplacement vers le bas
+                            coord_temp = new Coord(this.coord.x, this.coord.y + 1);
+                        } else {//déplacement vers le haut
+                            coord_temp = new Coord(this.coord.x, this.coord.y - 1);
                         }
-                    }else{
-                        System.out.println("Déplacement non autorisé, il y a un autre joueur sur la case.");
+                        if (Board.findCell(coord_temp, board).empty == true) {//si cell en +1 isEmpty==true ok 
+                            ret = true;
+                        } else {
+                            this.setMoveErrorMsg(board, "Déplacement non autorisé, il y a une barrière.");
+                        }
+
+                    } else {
+                        this.setMoveErrorMsg(board, "Déplacement non autorisé, il y a un autre joueur sur la case.");
                     }
-                }else{
-                    System.out.println("Déplacement non autorisé, la case ne fait pas partie du jeu.");
+                } else {
+                    this.setMoveErrorMsg(board, "Déplacement non autorisé, la case ne fait pas partie du jeu.");
                 }
-            }else{
-                System.out.println("Déplacement non autorisé, un déplacement se fait d'une case, non diagonal.");
+            } else {
+                this.setMoveErrorMsg(board, "Déplacement non autorisé, un déplacement se fait d'une case, non diagonal.");
             }
         } else {
-            System.out.println("Mouvement impossible");
+            this.setMoveErrorMsg(board, "Mouvement impossible");
         }
         return ret;
     }

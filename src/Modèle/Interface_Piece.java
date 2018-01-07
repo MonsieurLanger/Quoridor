@@ -12,7 +12,7 @@ package Modèle;
 public interface Interface_Piece {
 
     public Color getColor();
-    
+
     public String getName();
 
     public int getX();
@@ -22,5 +22,5 @@ public interface Interface_Piece {
     public boolean isMoveOk(Coord coord_finales, Board board);
 
     public boolean Move(Coord coord_finales, Board board);
-    
+
 }

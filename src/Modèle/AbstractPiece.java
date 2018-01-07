@@ -9,7 +9,8 @@ package Modèle;
  *
  * @author NRMV4488
  */
-public abstract class AbstractPiece implements Interface_Piece{
+public abstract class AbstractPiece implements Interface_Piece {
+
     Coord coord;
     final Color color;
 
@@ -19,8 +20,8 @@ public abstract class AbstractPiece implements Interface_Piece{
     }
 
     @Override
-    public String toString(){
-        return this.getName()+" "+this.coord.toString();
+    public String toString() {
+        return this.getName() + " " + this.coord.toString();
     }
 
     @Override
@@ -45,11 +46,15 @@ public abstract class AbstractPiece implements Interface_Piece{
 
     @Override
     public boolean Move(Coord coord_finales, Board board) {
-        if(isMoveOk(coord_finales, board)){
-        coord.x = coord_finales.x;
-        coord.y = coord_finales.y;
+        if (isMoveOk(coord_finales, board)) {
+            coord.x = coord_finales.x;
+            coord.y = coord_finales.y;
         }
         return true;
+    }
+
+    protected void setMoveErrorMsg(Board board, String msg) {
+        board.setLastMoveErrorMsg(msg);
     }
 
     @Override

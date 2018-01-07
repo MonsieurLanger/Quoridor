@@ -2,8 +2,11 @@ package Graphique.Game_Core;
 
 import Graphique.Ressources.GetIHMRessources;
 import Modèle.Coord;
+import Modèle.Player;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,13 +21,29 @@ public class CaseIHM extends JPanel {
     private final TypeCaseIHM type;
     private boolean isUsed;
     private boolean isFocused;
+    private boolean isAvailible;
     private int x;
     private int y;
+
+    private static List<String> playersImgs;
+    private static int currentPlayerImg;
+
+    public static void updatePlayersImgs(Player p1, Player p2, Player p3, Player p4) {
+        CaseIHM.playersImgs = new ArrayList<String>();
+        CaseIHM.playersImgs.add(p1.getColorPlyer().getImgName());
+        CaseIHM.playersImgs.add(p2.getColorPlyer().getImgName());
+        CaseIHM.currentPlayerImg = 0;
+    }
+
+    public static void forcePlayerImg(int id) {
+        CaseIHM.currentPlayerImg = id;
+    }
 
     public CaseIHM(int x, int y) {
         // Initialisation du statut non utilisé ni focused + cooredonnées
         this.isUsed = false;
         this.isFocused = false;
+        this.isAvailible = false;
         this.x = x;
         this.y = y;
         // Recherche du type de case en fonction de ses coordonnées
@@ -59,6 +78,8 @@ public class CaseIHM extends JPanel {
                     this.setBackground(Color.darkGray);
                     break;
             }
+        } else if (this.isAvailible) {
+            this.setBackground(Color.green);
         } else {
             // Si on n'est pas utilisé alors on colore en fonction de s'il s'agit d'une case pièce ou mur
             switch (this.type) {
@@ -79,7 +100,13 @@ public class CaseIHM extends JPanel {
             JLabel caseContent = new JLabel();
             switch (this.type) {
                 case PIECE:
-                    caseContent = new CaseContentIHM("piece.png");
+                    if (CaseIHM.currentPlayerImg == -1) {
+                        caseContent = new CaseContentIHM("piece.png");
+                    } else {
+                        String test = CaseIHM.playersImgs.get(CaseIHM.currentPlayerImg) + "Pion.png";
+                        caseContent = new CaseContentIHM(CaseIHM.playersImgs.get(CaseIHM.currentPlayerImg) + "Pion.png");
+                        CaseIHM.currentPlayerImg = -1;
+                    }
                     break;
                 case HORIZNTAL_WALL:
                     caseContent = new CaseContentIHM("wall_h.jpg");
@@ -146,6 +173,10 @@ public class CaseIHM extends JPanel {
         this.setBounds(xGille, yGrille, largeur, hauteur);
     }
 
+    public boolean getIsUsed() {
+        return isUsed;
+    }
+
     public void setUse(boolean isUsed) {
         this.isUsed = isUsed;
         this.updateCase();
@@ -154,6 +185,10 @@ public class CaseIHM extends JPanel {
     public void setFocus(boolean isFocused) {
         this.isFocused = isFocused;
         this.updateCase();
+    }
+
+    public void setMoveAvailible(boolean isAvailible) {
+        this.isAvailible = isAvailible;
     }
 
     public TypeCaseIHM getType() {

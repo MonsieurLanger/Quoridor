@@ -11,30 +11,31 @@ package Modèle;
  * @author NRMV4488
  */
 public class Coord {
+
     public int x;
     public int y;
-    
+
     //Constructeur par défaut
-    public Coord(){
-        this.x=0;
-        this.y=0;
-    }
-    
-    //Constructeur
-    public Coord(int x,int y){
-            this.x=x;
-            this.y=y;
+    public Coord() {
+        this.x = 0;
+        this.y = 0;
     }
 
-    public static boolean coord_valides(Coord coord){
-            return ( ((coord.x)<=16) && ((coord.x)>=0) && ((coord.y)<=16) && ((coord.y)>=0));
+    //Constructeur
+    public Coord(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
-    
+
+    public static boolean coord_valides(Coord coord) {
+        return (((coord.x) <= 16) && ((coord.x) >= 0) && ((coord.y) <= 16) && ((coord.y) >= 0));
+    }
+
     @Override
     public String toString() {
-            return "[x=" + x + ", y=" + y + "]";
+        return "[x=" + x + ", y=" + y + "]";
     }
-    
+
     /*public static void main (String[] args){
         int x= 4;
         int y= 4;
