@@ -20,34 +20,32 @@ import javax.swing.JTextField;
  *
  * @author Eddine Langer
  */
-public class Menu_Joueur extends Menu {
+public class Menu_Joueur extends Menu{
+private JLabel labelJoueur;
+private JTextField nomJoueur;
 
-    private JLabel labelJoueur;
-    private JTextField nomJoueur;
+private JLabel couleur;
+private JLabel nomCouleur;
+private JButton droite;
+private JButton gauche;
 
-    private JLabel couleur;
-    private JLabel nomCouleur;
-    private JButton droite;
-    private JButton gauche;
-
-    private JLabel imagePion;
-    private JButton pret;
-    private JButton annuler;
-    private Color tabColor[] = {Color.BLEU, Color.JAUNE, Color.ORANGE, Color.NOIR, Color.ROUGE, Color.VERT, Color.VIOLET};
-    private int indColor;
-    private int session;
-
+private JLabel imagePion;
+private JButton pret;
+private JButton annuler;
+private Color tabColor[]={Color.BLEU,Color.JAUNE,Color.ORANGE,Color.NOIR,Color.ROUGE,Color.VERT,Color.VIOLET};
+private int indColor;
+private int session;
     public Menu_Joueur(Game_IHM gIHM) {
         super(gIHM);
-        session = 1;
+        session=1;
         c.insets = new Insets(15, 15, 15, 15);
         labelJoueur = new JLabel("Nom du Joueur :");
         labelJoueur.setPreferredSize(new Dimension(100, 50));
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 1;
-        this.add(labelJoueur, c);
-
+        c.gridx=0;
+        c.gridy=0;
+        c.gridwidth=1;
+        this.add(labelJoueur,c);
+        
         nomJoueur = new JTextField();
         nomJoueur.setColumns(10);
         nomJoueur.setPreferredSize(new Dimension(200, 50));
@@ -58,50 +56,52 @@ public class Menu_Joueur extends Menu {
         
         couleur = new JLabel("Couleur du Pion : ");
         couleur.setPreferredSize(new Dimension(100, 50));
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 3;
-        this.add(couleur, c);
-
+        c.gridx=0;
+        c.gridy=1;
+        c.gridwidth=3;
+        this.add(couleur,c);
+        
         gauche = new JButton("<");
         gauche.setPreferredSize(new Dimension(50, 50));
-        c.gridx = 0;
-        c.gridy = 2;
-        c.gridwidth = 1;
-        this.add(gauche, c);
+        c.gridx=0;
+        c.gridy=2;
+        c.gridwidth=1;
+        this.add(gauche,c);
         gauche.setEnabled(false);
-        indColor = 0;
+        indColor=0;
         nomCouleur = new JLabel(tabColor[indColor].toString());
         //nomCouleur.setHorizontalAlignment();
-
+        
         nomCouleur.setPreferredSize(new Dimension(115, 50));
-        c.gridx = 1;
-        c.gridy = 2;
-        c.gridwidth = 1;
-        this.add(nomCouleur, c);
-
+        c.gridx=1;
+        c.gridy=2;
+        c.gridwidth=1;
+        this.add(nomCouleur,c);
+        
+        
+        
         droite = new JButton(">");
         droite.setPreferredSize(new Dimension(50, 50));
-        c.gridx = 2;
-        c.gridy = 2;
-        c.gridwidth = 1;
-        this.add(droite, c);
-
+        c.gridx=2;
+        c.gridy=2;
+        c.gridwidth=1;
+        this.add(droite,c);
+        
         imagePion = new JLabel(new ImageIcon(getClass().getResource("Ressources/bluePion.png")));
-
+ 
         imagePion.setPreferredSize(new Dimension(50, 100));
-        c.gridx = 0;
-        c.gridy = 3;
-        c.gridwidth = 3;
-        this.add(imagePion, c);
-
+        c.gridx=0;
+        c.gridy=3;
+        c.gridwidth=3;
+        this.add(imagePion,c);
+        
         pret = new JButton("Prêt");
-        pret.setPreferredSize(new Dimension(200, 50));
-        c.gridx = 0;
-        c.gridy = 4;
-        c.gridwidth = 3;
-        this.add(pret, c);
-
+        pret.setPreferredSize(new Dimension(200,50));
+        c.gridx=0;
+        c.gridy=4;
+        c.gridwidth=3;
+        this.add(pret,c);
+        
         annuler = new JButton("Annuler");
         annuler.setPreferredSize(new Dimension(200,50));
         c.gridx=0;
@@ -113,7 +113,7 @@ public class Menu_Joueur extends Menu {
         this.setVisible(true);
     }
 
-    @Override
+@Override
     protected void initButtonListener() {
         super.initButtonListener(); //To change body of generated methods, choose Tools | Templates.
         pret.addActionListener(this);
@@ -121,31 +121,31 @@ public class Menu_Joueur extends Menu {
         nomJoueur.addActionListener(this);
         gauche.addActionListener(this);
         droite.addActionListener(this);
-
+    
     }
-
-    private void actuImage() {
-
-        switch (tabColor[indColor]) {
-            case BLEU:
-                imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/bluePion.png")));
-                break;
-            case JAUNE:
+    
+    private void actuImage(){
+        
+        switch(tabColor[indColor]) {
+           case BLEU:
+               imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/bluePion.png")));
+               break;
+           case JAUNE:
                 imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/yellowPion.png")));
                 break;
-            case ORANGE:
+           case ORANGE:
                 imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/orangePion.png")));
                 break;
-            case NOIR:
+           case NOIR:
                 imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/noirPion.png")));
                 break;
-            case ROUGE:
+           case ROUGE:
                 imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/redPion.png")));
                 break;
-            case VERT:
+           case VERT:
                 imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/greenPion.png")));
                 break;
-            case VIOLET:
+           case VIOLET:
                 imagePion.setIcon(new ImageIcon(getClass().getResource("Ressources/violetPion.png")));
                 break;
            default:
@@ -333,12 +333,12 @@ public class Menu_Joueur extends Menu {
               
                
                 indColor--;
-
+                
                 nomCouleur.setText(tabColor[indColor].toString());
-                if (tabColor[indColor] == Color.BLEU) {
+                if(tabColor[indColor]==Color.BLEU){
                     gauche.setEnabled(false);
                 }
-                if (tabColor[indColor] == Color.VERT) {
+                if(tabColor[indColor]==Color.VERT){
                     droite.setEnabled(true);
                 }
                 
@@ -352,17 +352,17 @@ public class Menu_Joueur extends Menu {
                     pret.setEnabled(true);
                 }
             }
-
+            
         }
-        if (src == droite) {
-            if (tabColor[indColor] != Color.VIOLET) {
+       if(src==droite){
+            if(tabColor[indColor]!=Color.VIOLET){
                 indColor++;
                 nomCouleur.setText(tabColor[indColor].toString());
-                if (tabColor[indColor] == Color.JAUNE) {
+                if(tabColor[indColor]==Color.JAUNE){
                     gauche.setEnabled(true);
-
+              
                 }
-                if (tabColor[indColor] == Color.VIOLET) {
+                if(tabColor[indColor]==Color.VIOLET){
                     droite.setEnabled(false);
                 }
                  actuImage();
@@ -380,7 +380,7 @@ public class Menu_Joueur extends Menu {
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -390,17 +390,17 @@ public class Menu_Joueur extends Menu {
 
     @Override
     public void mouseReleased(MouseEvent me) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent me) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent me) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

@@ -235,11 +235,18 @@ public class Game_Conatiner_IHM extends JPanel implements MouseListener, MouseMo
 
     @Override
     public void mousePressed(MouseEvent me) {
+        
+        
+        
+        
         // On ne peut rien faire si le jeu est en pause
         if (this.gameTimerPaused) {
             return;
         }
-
+        
+        /*Ajout Eddine */
+        
+        
         // Mise à zero de la pièce déplacée et du faite qu'il s'agit d'un mur du stock
         pieceDeplaced = null;
         this.fromStock = false;
