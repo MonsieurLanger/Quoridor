@@ -72,6 +72,7 @@ public class Game_IHM extends JFrame implements ComponentListener {
     private void init() {
         c = new GridBagConstraints();
         myGame = new Game(new Player("Joueur 1", Color.BLEU), new Player("Joueur 2", Color.ROUGE), new Board());
+        myGame.getRules().get(0).setActive(true);
         monPlato = null;
         accueilPanel = new Menu_Accueil(this);
         choixPanel = new Menu_Choix(this);
@@ -172,6 +173,8 @@ public class Game_IHM extends JFrame implements ComponentListener {
     }
 
     void afficheJeu(Object t) {
+         myGame = new Game(new Player(myGame.getPlayer1().getPseudo(),myGame.getPlayer1().getColorPlyer()), new Player(myGame.getPlayer2().getPseudo(),myGame.getPlayer2().getColorPlyer()), new Board());
+
         if (t == joueurPanel) {
             this.remove(joueurPanel);
             if (this.monPlato != null) {
