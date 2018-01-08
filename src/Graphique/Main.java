@@ -5,10 +5,6 @@
  */
 package Graphique;
 
-import Modèle.Color;
-import Modèle.Game;
-import Modèle.Player;
-
 /**
  *
  * @author Eddine Langer
